@@ -83,11 +83,13 @@ class User < ApplicationRecord
 
     def create_customer
       if self.customer_id.blank?
-        # customer = Stripe::Customer.create({
-        #  email: @user.email
-        # })
+        Stripe.api_key = Rails.configuration.stripe[:secret_key]
 
-        # self.customer_id = customer.id
+        customer = Stripe::Customer.create({
+          email: @user.email
+        })
+
+        self.customer_id = customer.id
       end
     end
 
