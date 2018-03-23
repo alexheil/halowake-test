@@ -39,6 +39,8 @@ gem 'friendly_id'
 gem 'devise'
 gem 'kaminari'
 
+gem 'stripe'
+
 gem 'shrine'
 gem "image_processing"
 gem "mini_magick"
