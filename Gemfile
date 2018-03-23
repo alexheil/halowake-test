@@ -37,13 +37,15 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'friendly_id'
 gem 'devise'
+
 gem 'kaminari'
 
 gem 'stripe'
 
 gem 'shrine'
-gem "image_processing"
-gem "mini_magick"
+gem 'image_processing'
+gem 'mini_magick'
+gem 'aws-sdk', '~> 2.1'
 
 group :production do
   gem 'pg', '~> 0.21.0'
