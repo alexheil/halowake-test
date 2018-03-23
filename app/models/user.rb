@@ -76,7 +76,7 @@ class User < ApplicationRecord
   end
 
   def is_member
-    self.membership.present?
+    # self.membership.present?
   end
 
   private
