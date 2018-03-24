@@ -27,7 +27,7 @@ class User < ApplicationRecord
   has_one :membership, dependent: :destroy
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
-  # before_save :downcase_username
+  before_save :downcase_username
 
   def validate_username
     if User.where(email: username).exists?
