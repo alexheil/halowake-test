@@ -1,18 +1,26 @@
 require "shrine"
-require "shrine/storage/s3"
+require 'shrine'
+
+if Rails.env.development?
+  require "shrine/storage/file_system"
+  Shrine.storages = {
+    cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
+    store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store")
+  }
+else
+  require "shrine/storage/s3"
+  s3_options = {
+    access_key_id:     Rails.application.secrets.s3_access_key_id,
+    secret_access_key: Rails.application.secrets.s3_secret_access_key,
+    region:            Rails.application.secrets.s3_region,
+    bucket:            Rails.application.secrets.s3_bucket
+  }
+  Shrine.storages = {
+    cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+    store: Shrine::Storage::S3.new(prefix: "store", **s3_options)
+  }
+end
 
 Shrine.plugin :activerecord
 Shrine.plugin :logging, logger: Rails.logger
 Shrine.plugin :validation_helpers
- 
-s3_options = {
-    access_key_id:      ENV['S3_KEY'],
-    secret_access_key:  ENV['S3_SECRET'],
-    region:             ENV['S3_REGION'],
-    bucket:             ENV['S3_BUCKET'],
-}
- 
-Shrine.storages = {
-    cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
-    store: Shrine::Storage::S3.new(prefix: "store", **s3_options),
-}
