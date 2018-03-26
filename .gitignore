@@ -18,7 +18,7 @@
 !/tmp/.keep
 
 # Hide secrets
-/config/secrets.yml
+config/secrets.yml
 .classpath
 
 # Ignore Byebug command history file.
