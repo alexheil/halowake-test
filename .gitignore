@@ -17,11 +17,11 @@
 !/log/.keep
 !/tmp/.keep
 
+# Hide secrets
+/config/secrets.yml
+.classpath
+
 # Ignore Byebug command history file.
 .byebug_history
 
 public/uploads
-
-# Hide secrets
-/config/secrets.yml
-.classpath
