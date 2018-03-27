@@ -9,10 +9,10 @@ if Rails.env.development?
 else
   require "shrine/storage/s3"
   s3_options = {
-    access_key_id:     Rails.application.secrets.s3_access_key_id,
-    secret_access_key: Rails.application.secrets.s3_secret_access_key,
-    region:            Rails.application.secrets.s3_region,
-    bucket:            Rails.application.secrets.s3_bucket
+    access_key_id:     ENV['AWS_ACCESS_KEY'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    region:            ENV['AWS_REGION'],
+    bucket:            ENV['S3_BUCKET_NAME']
   }
   Shrine.storages = {
     cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
