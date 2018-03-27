@@ -48,7 +48,7 @@ class Users::MembershipsController < ApplicationController
 
     if subscription.save
       @membership.update_attributes(
-        membership_id: subscription.id
+        membership_id: subscription.id,
         membership_type: params[:membership][:membership_type]
       )
     end
