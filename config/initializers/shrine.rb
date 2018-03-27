@@ -1,5 +1,4 @@
 require "shrine"
-require 'shrine'
 
 if Rails.env.development?
   require "shrine/storage/file_system"
@@ -24,3 +23,4 @@ end
 Shrine.plugin :activerecord
 Shrine.plugin :logging, logger: Rails.logger
 Shrine.plugin :validation_helpers
+Shrine.plugin :presign_endpoint

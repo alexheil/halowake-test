@@ -5,6 +5,8 @@ class ImageUploader < Shrine
   plugin :processing
   plugin :versions
 
+  plugin :upload_endpoint if Rails.env.development? || Rails.env.test?
+
   plugin :determine_mime_type
   plugin :cached_attachment_data
   plugin :remove_attachment
