@@ -22,6 +22,8 @@ class Users::MembershipsController < ApplicationController
       @membership.current_id = "platinum_id"
     end
 
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
     # find customer
     customer = Stripe::Customer.retrieve(@user.customer_id)
 
