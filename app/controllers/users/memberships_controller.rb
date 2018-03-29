@@ -12,16 +12,10 @@ class Users::MembershipsController < ApplicationController
     @membership = @user.membership
 
     # update current_id to match plan id
-    if @membership.bronze?
-      @membership.current_id = "bronze_id"
-    elsif @membership.silver?
-      @membership.current_id = "silver_id"
-    elsif @membership.gold?
-      @membership.current_id = "gold_id"
-    elsif @membership.platinum?
-      @membership.current_id = "platinum_id"
-    end
-
+    @membership.update_attributes(
+      current_id: params[:membership][:membership_type] + "_id"
+    )
+   
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
     # find customer
@@ -32,7 +26,7 @@ class Users::MembershipsController < ApplicationController
       # create a Stripe membership
       subscription = Stripe::Subscription.create({
       customer: customer.id,
-        items: [{plan: params[:membership][:current_id]}],
+        items: [{plan: @membership.current_id}],
       })
     else
       # grab Stripe membership and update it
@@ -48,10 +42,7 @@ class Users::MembershipsController < ApplicationController
     if subscription.save
       @membership.update_attributes(
         membership_id: subscription.id,
-        bronze: params[:membership][:bronze],
-        silver: params[:membership][:silver],
-        gold: params[:membership][:gold],
-        platinum: params[:membership][:platinum]
+        membership_type: params[:membership][:membership_type]
       )
       redirect_to user_path(@user)
     end
