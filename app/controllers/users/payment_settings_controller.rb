@@ -11,9 +11,10 @@ class Users::PaymentSettingsController < ApplicationController
 
   def create
 
-    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
     @account = Stripe::Account.create(
-      managed: true,
+      type: 'custom',
       country: params[:payment_setting][:country],
       email: @user.email,
       tos_acceptance: {
@@ -43,11 +44,11 @@ class Users::PaymentSettingsController < ApplicationController
         country: @account.country,
         stripe_id: @account.id
       )
-      redirect_to edit_payment_setting_path(@user, @payment)
-      flash[:notice] = "before we can transfer your payments we need more information."
+      redirect_to edit_user_payment_settings_path(@user, @payment)
+      flash[:notice] = "Before we can transfer your payments we need more information."
     else
       redirect_to user_path(@user)
-      flash[:alert] = "your merchant account failed to create."
+      flash[:alert] = "Your merchant account failed to create."
     end
 
   end
@@ -59,7 +60,8 @@ class Users::PaymentSettingsController < ApplicationController
   def update
     @payment = @user.payment_setting
 
-    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
     account = Stripe::Account.retrieve(@payment.stripe_id)
 
     if params[:payment_setting][:bank_account_number].present?
@@ -127,7 +129,7 @@ class Users::PaymentSettingsController < ApplicationController
       @user = current_user
       if @user.payment_setting
         @payment = @user.payment_setting
-        redirect_to edit_payment_setting_path(@user, @payment) if @payment.country.present?
+        redirect_to edit_user_payment_settings_path(@user, @payment) if @payment.country.present?
       end
     end
 
