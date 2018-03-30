@@ -45,6 +45,9 @@ class Users::MembershipsController < ApplicationController
         membership_type: params[:membership][:membership_type]
       )
       redirect_to user_path(@user)
+    elsif customer.source.blank?
+      # redirect ot user settings page to add card        
+      redirect_to edit_user_registration_path(@user)
     end
 
   end

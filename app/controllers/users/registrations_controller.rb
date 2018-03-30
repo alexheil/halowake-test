@@ -36,6 +36,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def edit_payment_source
+    @user = current_user
+  end
+
+  def update_payment_source
+    @user = current_user
+    
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
+    # find customer
+    customer = Stripe::Customer.retrieve(@user.customer_id)
+
+  end
+
   # DELETE /resource
   # def destroy
   #   super

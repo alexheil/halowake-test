@@ -34,7 +34,8 @@ class Users::PurchasesController < ApplicationController
     @purchase = Purchase.find(params[:id])
     @buyer = current_user
 
-    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
     token = params[:stripeToken]
     amount = ((@purchase.complete_price) * 100)
     application_fee = ((@purchase.complete_price * 0.134 + 0.30) * 100).round
