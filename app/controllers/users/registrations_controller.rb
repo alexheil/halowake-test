@@ -51,6 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     token = params[:stripeToken]
 
     customer.source = token
+    customer.default_source = token
     
     customer.save
 

@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'partials/themes' %>
-    <%= render 'partials/stripe' if (params[:action] == 'checkout') %>
+    <%= render 'partials/stripe' if (params[:action] == 'checkout') || (params[:action] == 'update_source') %>
   </head>
 
   <body>

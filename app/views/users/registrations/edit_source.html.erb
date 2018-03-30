@@ -1,0 +1,42 @@
+<%= form_for(@user, url: update_source_path(@user), :html => {:id => "payment-form"}) do |f| %>
+  <span class="payment-errors"></span>
+
+<div id="card-element">
+  <div class="field">
+    <div class="one-thirds">
+      Card number
+    </div>
+    <div class="two-thirds">
+      <input class="text-field" type="text" size="20" data-stripe="number"/>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="one-thirds">
+      CVC
+    </div>
+    <div class="two-thirds">
+      <input class="text-field" type="text" size="4" data-stripe="cvc"/>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="one-thirds">
+      Month <span class="posted">(MM)</span>
+    </div>
+    <div class="two-thirds">
+      <input class="text-field" type="text" size="2" data-stripe="exp-month"/>
+    </div>
+  </div>
+  <div class="field">
+    <div class="one-thirds">
+      Year <span class="posted">(YYYY)</span>
+    </div>
+    <div class="two-thirds">
+      <input class="text-field" type="text" size="4" data-stripe="exp-year"/>
+    </div>
+  </div>
+</div>
+
+  <button type="submit" class="submit-button">Submit payment</button>
+<% end %>
