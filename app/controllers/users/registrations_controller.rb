@@ -36,18 +36,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def edit_payment_source
+  def edit_source
     @user = current_user
   end
 
-  def update_payment_source
+  def update_source
     @user = current_user
-    
+
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
     # find customer
     customer = Stripe::Customer.retrieve(@user.customer_id)
 
+    token = params[:stripeToken]
+
+    customer.source = token
+    
+    customer.save
+
+    if customer.save
+      redirect_to edit_user_registration_path(@user)
+    end
   end
 
   # DELETE /resource
