@@ -52,7 +52,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     customer.source = token
     customer.default_source = token
-    
     customer.save
 
     if customer.save
