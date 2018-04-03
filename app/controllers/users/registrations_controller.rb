@@ -50,7 +50,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     token = params[:stripeToken]
 
-    customer.source = token
+    puts "LOOK AT ME!!!!!"
+
+    customer.sources.create({source: token})
     customer.default_source = token
     customer.save
 

@@ -1,7 +1,6 @@
 <%= form_for(@user, url: update_source_path(@user), :html => {:id => "payment-form"}) do |f| %>
   <span class="payment-errors"></span>
 
-<div id="card-element">
   <div class="field">
     <div class="one-thirds">
       Card number
@@ -36,7 +35,6 @@
       <input class="text-field" type="text" size="4" data-stripe="exp-year"/>
     </div>
   </div>
-</div>
 
   <button type="submit" class="submit-button">Submit payment</button>
 <% end %>
