@@ -37,7 +37,7 @@ class Users::MembershipsController < ApplicationController
       }]
     end
 
-    # subscription.save
+    subscription.save
 
     if subscription.save
       @membership.update_attributes(
@@ -47,7 +47,7 @@ class Users::MembershipsController < ApplicationController
       redirect_to user_path(@user)
     elsif customer.source.blank?
       # redirect ot user settings page to add card        
-      redirect_to edit_user_registration_path(@user)
+      redirect_to edit_source_path
     end
 
   end
