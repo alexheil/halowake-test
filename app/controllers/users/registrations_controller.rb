@@ -43,9 +43,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update_source
     @user = current_user
 
+    redirection = nil
+    if params[:url].present?
+      redirection = Base64.decode64(params[:url].to_s)
+    end
+
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
-    # find customer
     customer = Stripe::Customer.retrieve(@user.customer_id)
 
     token = params[:stripeToken]
@@ -55,7 +59,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     customer.save
 
     if customer.save
-      redirect_to edit_user_registration_path(@user)
+      if redirection.present?
+        path = redirection
+      else
+        path = user_path(@user)
+      end
+      redirect_to path
     end
   end
 

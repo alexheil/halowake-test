@@ -20,34 +20,37 @@ class Users::MembershipsController < ApplicationController
 
     # find customer
     customer = Stripe::Customer.retrieve(@user.customer_id)
-
-    # if user has subscription find it if not create it
-    if @membership.membership_id.blank?
-      # create a Stripe membership
-      subscription = Stripe::Subscription.create({
-      customer: customer.id,
-        items: [{plan: @membership.current_id}],
-      })
+    
+    # check if customer has a source on file
+    if customer.default_source.blank?
+      url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}/edit"
+      redirect_to edit_source_path(@user, :url => Base64.encode64(url))
     else
-      # grab Stripe membership and update it
-      subscription = Stripe::Subscription.retrieve(@membership.membership_id)
-      subscription.items = [{
-        id: subscription.items.data[0].id,
-        plan: @membership.current_id
-      }]
-    end
+      # if user has subscription find it if not create i
+      if @membership.membership_id.blank?
+        # create a Stripe membership
+        subscription = Stripe::Subscription.create({
+        customer: customer.id,
+          items: [{plan: @membership.current_id}],
+        })
+      else
+        # grab Stripe membership and update it
+        subscription = Stripe::Subscription.retrieve(@membership.membership_id)
+        subscription.items = [{
+          id: subscription.items.data[0].id,
+          plan: @membership.current_id
+        }]
+      end
 
-    subscription.save
+      subscription.save
 
-    if subscription.save
-      @membership.update_attributes(
-        membership_id: subscription.id,
-        membership_type: params[:membership][:membership_type]
-      )
-      redirect_to user_path(@user)
-    elsif customer.source.blank?
-      # redirect ot user settings page to add card        
-      redirect_to edit_source_path
+      if subscription.save
+        @membership.update_attributes(
+          membership_id: subscription.id,
+          membership_type: params[:membership][:membership_type]
+        )
+        redirect_to user_path(@user)
+      end
     end
 
   end
