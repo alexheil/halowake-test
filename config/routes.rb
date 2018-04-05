@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'sign_out', to: 'users/sessions#destroy'
     get 'sign_in', to: 'users/sessions#new'
     get 'register', to: 'users/registrations#new'
-    get 'edit_source', to: 'users/registrations#edit_source'
+    get 'edit_source', to: 'users/registrations#edit_source', path: 'edit_source/:user_id'
     patch 'update_source', to: 'users/registrations#update_source'
   end
 
