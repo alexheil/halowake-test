@@ -19,6 +19,7 @@
       <% if current_user.is_member %>
         <li><%= link_to "Your Page", user_path(current_user), class: "nav-links" %></li>
         <li><%= link_to "Membership", edit_user_membership_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to "Account Settings", edit_registration_path(current_user), class: "nav-links" %></li>
         <li>
           <% if current_user.payment_setting.present? %>
             <%= link_to "Payment Settings", edit_user_payment_settings_path(current_user), class: "nav-links" %>
