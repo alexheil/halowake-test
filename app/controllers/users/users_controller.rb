@@ -9,5 +9,10 @@ class Users::UsersController < ApplicationController
       @album = Album.new
     end
   end
+
+  def purchases
+    @user = current_user
+    @purchase = @user.purchases
+  end
   
 end

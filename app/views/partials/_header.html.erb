@@ -18,6 +18,7 @@
     <% if user_signed_in? %>
       <% if current_user.is_member %>
         <li><%= link_to "Your Page", user_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to "Purchases", user_purchases_path(current_user), class: "nav-links" %></li>
         <li><%= link_to "Membership", edit_user_membership_path(current_user), class: "nav-links" %></li>
         <li><%= link_to "Account Settings", edit_registration_path(current_user), class: "nav-links" %></li>
         <li>
