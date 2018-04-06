@@ -19,7 +19,13 @@
       <% if current_user.is_member %>
         <li><%= link_to "Your Page", user_path(current_user), class: "nav-links" %></li>
         <li><%= link_to "Membership", edit_user_membership_path(current_user), class: "nav-links" %></li>
-        <li><%= link_to "Payment Settings", edit_user_payment_settings_path(current_user), class: "nav-links" %></li>
+        <li>
+          <% if current_user.payment_setting.present? %>
+            <%= link_to "Payment Settings", edit_user_payment_settings_path(current_user), class: "nav-links" %>
+          <% else %>
+            <%= link_to "Payment Settings", new_user_payment_settings_path(current_user), class: "nav-links" %>
+          <% end %>
+        </li>
       <% end %>
       <li><%= link_to "Sign Out", sign_out_path, class: "nav-links" %></li>
     <% else %>

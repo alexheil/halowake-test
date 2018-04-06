@@ -9,6 +9,11 @@ class Users::PhotosController < ApplicationController
     @user = User.friendly.find(params[:user_id])
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:id])
+
+    if user_signed_in?
+      Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+      @customer = Stripe::Customer.retrieve(current_user.customer_id)
+    end
   end
 
   def create

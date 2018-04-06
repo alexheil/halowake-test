@@ -230,6 +230,11 @@
         </div>
         <%= f.submit "Purchase", data: { disable_with: 'Loading...' }, class: "submit-button" %>
       <% end %>
+      <div class="one-space">
+        <% if @customer.default_source.present? %>
+          You have a card on file. Pressing "Purchase" will automatically finish this process, including charging your card. If you'd like to change your card, <%= link_to "please do so before continuing", edit_source_path(current_user) %>.
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
