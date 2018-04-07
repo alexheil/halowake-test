@@ -1,1 +1,38 @@
-<%= @user.username %>
+<div class="wrapper">
+  <div class="container">
+
+    <%= render 'users/partials/nameplate' %>
+
+    <div class="border-bottom">
+      <div id="albums-tab" class="two-column center tab">
+        Bought
+      </div>
+      <div id="feed-tab" class="two-column center tab">
+        Sold
+      </div>
+    </div>
+
+
+    <main class="five-space">
+
+      <div id="albums-container">
+        <% Purchase.where(buyer_id: current_user.id).find_each do |purchase| %>
+          <div class="one-space">
+            <%= link_to User.find(purchase.seller_id).username, user_path(User.find(purchase.seller_id)) %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="feed-container">
+        <% Purchase.where(seller_id: current_user.id).find_each do |purchase| %>
+          <div class="one-space">
+            <%= purchase.stripe_charge_id %>
+          </div>
+        <% end %>
+      </div>
+
+    </main>
+
+  </div>
+</div>
+

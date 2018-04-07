@@ -16,7 +16,7 @@ class Users::PurchasesController < ApplicationController
       customer = Stripe::Customer.retrieve(current_user.customer_id)
 
       if customer.default_source.present?
-        
+
         amount = ((@purchase.complete_price) * 100)
         percent = @user.membership.percent * 0.01
         application_fee = ((@purchase.complete_price * (percent + 0.034) + 0.30) * 100).round
@@ -104,6 +104,9 @@ class Users::PurchasesController < ApplicationController
       render 'checkout'
       flash.now[:alert] = "You have failed."
     end
+  end
+
+  def edit
   end
 
   private 

@@ -36,9 +36,8 @@ Rails.application.routes.draw do
           end
         end
       end
-      get 'purchases' => 'users/users#purchases'
     end
-
+    get 'purchases' => 'users/users#purchases'
   end
 
   resources :relationships, controller: 'users/relationships', only: [:create, :update, :destroy]
