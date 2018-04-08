@@ -16,6 +16,7 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
       t.string :country, default: ""
       t.string :zip_code, default: ""
       t.boolean :is_shipped, default: false, null: false
+      t.string :slug
 
       t.timestamps
     end

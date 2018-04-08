@@ -17,8 +17,8 @@
 
       <div id="albums-container">
         <% Purchase.where(buyer_id: current_user.id).find_each do |purchase| %>
-          <div class="one-space">
-            <%= link_to User.find(purchase.seller_id).username, user_path(User.find(purchase.seller_id)) %>
+          <div class="border-bottom one-space">
+            <%= link_to Photo.find(purchase.photo_id).title, user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
           </div>
         <% end %>
       </div>

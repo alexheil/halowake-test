@@ -1,5 +1,13 @@
 class Users::PurchasesController < ApplicationController
 
+  def show
+    @seller = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:photo_id])
+    @purchase = Purchase.friendly.find(params[:id])
+    @buyer = current_user
+  end
+
   def create
     @user = User.friendly.find(params[:user_id])
     @album = Album.friendly.find(params[:album_id])
@@ -60,7 +68,7 @@ class Users::PurchasesController < ApplicationController
     @seller = User.friendly.find(params[:user_id])
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
-    @purchase = Purchase.find(params[:id])
+    @purchase = Purchase.friendly.find(params[:id])
     @buyer = current_user
   end
 
@@ -68,7 +76,7 @@ class Users::PurchasesController < ApplicationController
     @seller = User.friendly.find(params[:user_id])
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
-    @purchase = Purchase.find(params[:id])
+    @purchase = Purchase.friendly.find(params[:id])
     @buyer = current_user
 
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
@@ -107,6 +115,9 @@ class Users::PurchasesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
   end
 
   private 

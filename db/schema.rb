@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.string   "country",            default: ""
     t.string   "zip_code",           default: ""
     t.boolean  "is_shipped",         default: false, null: false
+    t.string   "slug"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
