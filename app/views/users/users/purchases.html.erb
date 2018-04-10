@@ -32,10 +32,14 @@
               <% end %>
             </div>
             <div class="one-fourth">
-              <% if purchase.is_shipped? %>
-                Shipped
+              <% if purchase.photo.is_shippable? %>
+                <% if purchase.is_shipped? %>
+                  Shipped
+                <% else %>
+                  Not shipped
+                <% end %>
               <% else %>
-                Not shipped
+                Download
               <% end %>
             </div>
           </div>
