@@ -82,6 +82,8 @@
       </div>
     <% end %>
 
+    <%= @photo.is_art? %> - <%= @photo.is_photo? %> - <%= @photo.downloadable? %> - <%= @photo.shippable? %>
+
     <% if @photo.is_photo == true && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
       <div class="nameplate border-bottom">
         <% if @photo.camera.present? %>

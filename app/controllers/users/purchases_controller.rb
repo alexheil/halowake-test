@@ -47,8 +47,11 @@ class Users::PurchasesController < ApplicationController
             stripe_charge_id: charge.id
           )
           # send_purchase_email
-          redirect_to user_album_photo_path(@user, @album, @photo)
-          flash[:notice] = "#{@user.username} needs to know where to ship this."
+          if @purchase.photo.shippable?
+            redirect_to edit_user_album_photo_purchase_path(@seller, @album, @photo, @purchase)
+          else
+            redirect_to user_purchases_path(@user)
+          end
         else
           render 'checkout'
           flash.now[:alert] = "You have failed."
@@ -106,8 +109,11 @@ class Users::PurchasesController < ApplicationController
         stripe_charge_id: charge.id
       )
       # send_purchase_email
-      redirect_to edit_user_album_photo_purchase_path(@seller, @album, @photo, @purchase)
-      flash[:notice] = "#{@seller.username} needs to know where to ship this."
+      if @purchase.photo.shippable?
+        redirect_to edit_user_album_photo_purchase_path(@seller, @album, @photo, @purchase)
+      else
+        redirect_to user_purchases_path(@buyer)
+      end
     else
       render 'checkout'
       flash.now[:alert] = "You have failed."
@@ -129,10 +135,10 @@ class Users::PurchasesController < ApplicationController
     @purchase = Purchase.friendly.find(params[:id])
     @buyer = User.friendly.find(@purchase.buyer_id)
 
-    if current_user = @buyer && @purchase.update_attributes(purchase_params)
-      redirect_to user_purchases_path(current_user)
-    elsif current_user = @seller && @purchase.update_attributes(is_shipped: true)
-      redirect_to user_purchases_path(current_user)
+    if current_user == @buyer && @purchase.update_attributes(purchase_params)
+      redirect_to user_purchases_path(@buyer)
+    elsif current_user == @seller && @purchase.update_attributes(is_shipped: true)
+      redirect_to user_purchases_path(@seller)
     end
   end
 
