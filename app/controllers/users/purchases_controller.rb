@@ -105,7 +105,7 @@ class Users::PurchasesController < ApplicationController
       @purchase.update_attributes(
         stripe_charge_id: charge.id
       )
-      send_purchase_email
+      # send_purchase_email
       redirect_to edit_user_album_photo_purchase_path(@seller, @album, @photo, @purchase)
       flash[:notice] = "#{@seller.username} needs to know where to ship this."
     else
