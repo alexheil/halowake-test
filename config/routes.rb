@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :albums, controller: 'users/albums', except: [:index, :new, :edit] do
       resources :photos, controller: 'users/photos', except: [:index, :new, :edit] do
         resources :votes, controller: 'users/votes', only: [:create, :destroy]
-        resources :purchases, controller: 'users/purchases', only: [:show, :create, :edit, :update, :destroy] do
+        resources :purchases, path: 'purchases', controller: 'users/purchases', only: [:show, :create, :edit, :update, :destroy] do
           member do
             get 'checkout'
             patch 'charge'

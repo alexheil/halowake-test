@@ -105,8 +105,8 @@ class Users::PurchasesController < ApplicationController
       @purchase.update_attributes(
         stripe_charge_id: charge.id
       )
-      # send_purchase_email
-      redirect_to user_album_photo_path(@seller, @album, @photo)
+      send_purchase_email
+      redirect_to edit_user_album_photo_purchase_path(@seller, @album, @photo, @purchase)
       flash[:notice] = "#{@seller.username} needs to know where to ship this."
     else
       render 'checkout'
@@ -115,9 +115,25 @@ class Users::PurchasesController < ApplicationController
   end
 
   def edit
+    @seller = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:photo_id])
+    @purchase = Purchase.friendly.find(params[:id])
+    @buyer = User.friendly.find(@purchase.buyer_id)
   end
 
   def update
+    @seller = User.friendly.find(params[:user_id])
+    @album = Album.friendly.find(params[:album_id])
+    @photo = Photo.friendly.find(params[:photo_id])
+    @purchase = Purchase.friendly.find(params[:id])
+    @buyer = User.friendly.find(@purchase.buyer_id)
+
+    if current_user = @buyer && @purchase.update_attributes(purchase_params)
+      redirect_to user_purchases_path(current_user)
+    elsif current_user = @seller && @purchase.update_attributes(is_shipped: true)
+      redirect_to user_purchases_path(current_user)
+    end
   end
 
   private 

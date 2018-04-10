@@ -17,16 +17,54 @@
 
       <div id="albums-container">
         <% Purchase.where(buyer_id: current_user.id).find_each do |purchase| %>
-          <div class="border-bottom nameplate">
-            <%= link_to Photo.find(purchase.photo_id).title, user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
+          <div class="border-bottom one-space">
+            <div class="one-fourth">
+              <%= link_to Photo.find(purchase.photo_id).title, user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
+            </div>
+            <div class="one-fourth">
+              <%= purchase.complete_price %> <%= User.find(purchase.seller_id).payment_setting.currency %>
+            </div>
+            <div class="one-fourth">
+              <% if purchase.stripe_charge_id.present? %>
+                Paid
+              <% else %>
+                <%= link_to "Not paid yet", checkout_user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
+              <% end %>
+            </div>
+            <div class="one-fourth">
+              <% if purchase.is_shipped? %>
+                Shipped
+              <% else %>
+                Not shipped
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
 
       <div id="feed-container">
         <% Purchase.where(seller_id: current_user.id).find_each do |purchase| %>
-          <div class="one-space">
-            <%= purchase.stripe_charge_id %>
+          <div class="border-bottom one-space">
+            <div class="one-fourth">
+              <%= link_to Photo.find(purchase.photo_id).title, user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
+            </div>
+            <div class="one-fourth">
+              <%= purchase.complete_price %> <%= User.find(purchase.seller_id).payment_setting.currency %>
+            </div>
+            <div class="one-fourth">
+              <% if purchase.stripe_charge_id.present? %>
+                Paid
+              <% else %>
+                <%= link_to "Not paid yet", checkout_user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
+              <% end %>
+            </div>
+            <div class="one-fourth">
+              <% if purchase.is_shipped? %>
+                Shipped
+              <% else %>
+                Not shipped
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
