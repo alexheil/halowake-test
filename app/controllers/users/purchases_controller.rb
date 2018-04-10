@@ -5,7 +5,7 @@ class Users::PurchasesController < ApplicationController
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:photo_id])
     @purchase = Purchase.friendly.find(params[:id])
-    @buyer = current_user
+    @buyer = @buyer = User.friendly.find(@purchase.buyer_id)
   end
 
   def create

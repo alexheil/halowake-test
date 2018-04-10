@@ -1,1 +1,36 @@
-<%= @seller.username %>
+<%= User.friendly.fine(@purchase.buyer_id).username %>
+
+<% if @purchase.stripe_charge_id.present? %>
+  Paid
+<% elsif @purchase.stripe_charge_id.blank? && current_user == @buyer %>
+  <%= link_to "Not paid", checkout_user_album_photo_purchase_path(@seller, @album, @photo, @purchase) %>
+<% else %>
+  Not paid
+<% end %>
+
+<%= @purchase.quantity %>
+
+<%= @purchase.complete_price %>
+
+Buyer information
+
+<%= @purchase. %>
+
+<% if purchase.photo.shippable? %>
+  <% if purchase.is_shipped? %>
+    Shipped
+  <% elsif purchase.street_address.present? %>
+    <%= form_for(purchase, url: user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id))) do |f| %>
+      <%= f.submit "Mark as shipped", class: "follow" %>
+    <% end %>
+  <% else %>
+    No shipping address
+  <% end %>
+  <% if @purchase.street_address.present? %>
+    <%= @purchase.street_address %>, <%= @purchase.city %>, <%= @purchase.state if @purchase.state.present? %>, <%= @purchase.country %> <%= @purchase.zip_code %>
+  <% end %>
+<% else %>
+  Downloadable
+<% end %>
+
+<%= @purchase.is_shipped %>
