@@ -1,6 +1,6 @@
 class Membership < ApplicationRecord
 
-  enum membership_type: [:copper, :bronze, :silver, :gold, :platinum]
+  enum membership_type: [:bronze, :silver, :gold, :platinum]
 
   belongs_to :user
 

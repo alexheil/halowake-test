@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.string   "membership_id",   default: ""
     t.string   "current_id",      default: ""
     t.integer  "membership_type", default: 0
-    t.integer  "amount",          default: 0
     t.integer  "percent",         default: 20
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
