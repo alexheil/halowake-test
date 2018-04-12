@@ -9,16 +9,14 @@ class Membership < ApplicationRecord
   private
 
     def percent_for_membership
-      if self.copper?
+      if self.bronze?
         self.percent = 20
-      elsif self.bronze?
-        self.percent = 15
       elsif self.silver?
-        self.percent = 10
+        self.percent = 15
       elsif self.gold?
-        self.percent = 5
+        self.percent = 10
       elsif self.platinum?
-        self.percent = 0
+        self.percent = 5
       end
     end
 

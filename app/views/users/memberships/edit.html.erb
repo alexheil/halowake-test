@@ -8,8 +8,6 @@
 
       <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
 
-        <%= f.radio_button(:membership_type, "copper") %>
-        <%= label(:membership_type, "Copper") %>
         <%= f.radio_button(:membership_type, "bronze") %>
         <%= label(:membership_type, "Bronze") %>
         <%= f.radio_button(:membership_type, "silver") %>
