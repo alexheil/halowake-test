@@ -15,7 +15,7 @@ class Users::VotesController < ApplicationController
         format.js { render :action => "votes" }
       end
     else
-      render 'new'
+      redirect_to user_path(@user)
       flash.now[:alert] = "You've failed!"
     end
   end

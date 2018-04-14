@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
 
-    <%= render 'users/partials/nameplate' %>
+    <span class="update-profile"><%= render 'users/partials/profiles/nameplate' %></span>
 
     <% if user_signed_in? && current_user == @user %>
       <div class="nameplate border-bottom">
@@ -103,7 +103,7 @@
       <div id="close-profile" class="one-space">
         Close
       </div>
-      <%= form_for(@profile, url: user_profile_path(@user)) do |f| %>
+      <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/profile_errors' %>
         
         <div class="field">

@@ -71,7 +71,6 @@ var editProfile = function() {
     $(".wrapper").removeClass("blur");
   });
 
-
   $('#close-profile').click(function() {
     $('#profile-form').hide(300);
     $('#close-profile').hide();

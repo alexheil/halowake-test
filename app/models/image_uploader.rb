@@ -9,12 +9,20 @@ class ImageUploader < Shrine
   plugin :cached_attachment_data
   plugin :remove_attachment
 
-  process(:store) do |io, context|
-    { original: io, thumb: resize_to_limit!(io.download, 500, 500) }
+  process(:store) do |io|
+    original = io.download
+    processor = ImageProcessing::MiniMagick
+
+    size_1920 = processor.source(original).resize_to_limit!(1920, 1920)
+    size_600 = processor.source(size_1920).resize_to_limit!(600, 600)
+
+    original.close!
+
+    { original: io, large: size_1920, thumb: size_600 }
   end
 
   Attacher.validate do
-    validate_max_size 1.megabyte, message: "is too large (max is 1 MB)"
+    validate_max_size 10.megabyte, message: "is too large (max is 1 MB)"
     validate_mime_type_inclusion ['image/jpg', 'image/jpeg', 'image/png']
   end
 
