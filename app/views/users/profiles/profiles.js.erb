@@ -1,9 +1,7 @@
 $('.update-profile').html('<%=  escape_javascript(render :partial => 'users/partials/profiles/nameplate') %>');
 
-$('.submit-button').click(function() {
-  $('#profile-form').hide(300);
-  $('#close-profile').hide();
-  $('#edit-profile').show();
-  $('#back').hide();
-  $(".wrapper").removeClass("blur");
-});
+$('#profile-form').hide(300);
+$('#close-profile').hide();
+$('#edit-profile').show();
+$('#back').hide();
+$(".wrapper").removeClass("blur");
