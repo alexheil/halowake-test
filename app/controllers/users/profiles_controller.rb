@@ -14,6 +14,7 @@ class Users::ProfilesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "profiles" }
+        flash.now[:notice] = "You have successfully updated your profile."
       end
     else
       render 'edit'

@@ -6,20 +6,20 @@
 var menuToggle = function() {
 
   $('#menu-click').click(function() {
-    $('#menu-container').show(100);
-    $('#back').show();
+    $('#menu-container').fadeIn(300);
+    $('.back').fadeIn(300);
     $(".wrapper").addClass("blur");
   });
 
-  $('#back').click(function() {
-    $('#menu-container').hide(100);
-    $('#back').hide();
+  $('.back').click(function() {
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeOut(300);
     $(".wrapper").removeClass("blur");
   });
 
   $('#close-menu').click(function() {
-    $('#menu-container').hide(100);
-    $('#back').hide();
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeOut(300);
     $(".wrapper").removeClass("blur");
   });
 
@@ -32,73 +32,80 @@ $(document).on('turbolinks:load', menuToggle);
 var editProfile = function() {
 
   $('#edit-profile').click(function() {
-    $('#profile-form').show(300);
-    $('#close-profile').show();
-    $('#edit-profile').hide();
-    $('#back').show();
-    $(".wrapper").addClass("blur");
+    $('#profile-form').fadeIn(300);
+    $('#close-profile').fadeIn(300);
+    $('#edit-profile').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
   });
 
   $('#create-album').click(function() {
-    $('#album-form').show(300);
-    $('#close-album').show();
-    $('#create-album').hide();
-    $('#back').show();
-    $(".wrapper").addClass("blur");
+    $('#album-form').fadeIn(300);
+    $('#close-album').fadeIn(300);
+    $('#create-album').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
   });
 
   $('#edit-photo-click').click(function() {
-    $('#album-form').show(300);
-    $('#close-album').show();
-    $('#edit-photo-click').hide();
-    $('#back').show();
-    $(".wrapper").addClass("blur");
+    $('#album-form').fadeIn(300);
+    $('#close-album').fadeIn(300);
+    $('#edit-photo-click').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
   });
 
   $('#edit-album-click').click(function() {
-    $('#edit-album-form').show(300);
-    $('#edit-close-album').show();
-    $('#edit-album-click').hide();
-    $('#back').show();
-    $(".wrapper").addClass("blur");
+    $('#edit-album-form').fadeIn(300);
+    $('#edit-close-album').fadeIn(300);
+    $('#edit-album-click').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
   });
 
   $('#edit-close-album').click(function() {
-    $('#edit-album-form').hide(300);
-    $('#edit-close-album').hide();
-    $('#edit-album-click').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+    $('#edit-album-form').fadeOut(300);
+    $('#edit-close-album').fadeOut(300);
+    $('#edit-album-click').fadeIn(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
   });
 
   $('#close-profile').click(function() {
-    $('#profile-form').hide(300);
-    $('#close-profile').hide();
-    $('#edit-profile').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+    $('#profile-form').fadeOut(300);
+    $('#close-profile').fadeOut(300);
+    $('#edit-profile').fadeIn(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
   });
 
   $('#close-album').click(function() {
-    $('#album-form').hide(300);
-    $('#close-album').hide();
-    $('#edit-photo-click').show();
-    $('#create-album').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+    $('#album-form').fadeOut(300);
+    $('#close-album').fadeOut(300);
+    $('#edit-photo-click').fadeIn(300);
+    $('#create-album').fadeIn(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
   });
 
-  $('#back').click(function() {
-    $('#profile-form').hide(300);
-    $('#album-form').hide(300);
-    $('#close-profile').hide();
-    $('#edit-album-form').hide(300);
-    $('#create-album').show();
-    $('#edit-profile').show();
-    $('#edit-photo-click').show();
-    $('#edit-album-click').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+  $('.back').click(function() {
+    $('#profile-form').fadeOut(300);
+    $('#album-form').fadeOut(300);
+    $('#close-profile').fadeOut(300);
+    $('#edit-album-form').fadeOut(300);
+    $('.flash_js').fadeOut(300)
+    $('#create-album').fadeIn(300);
+    $('#edit-profile').fadeIn(300);
+    $('#edit-photo-click').fadeIn(300);
+    $('#edit-album-click').fadeIn(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
+  });
+
+  $('.flash_js').on('click','#close-alert', function() {
+    $('.flash_js').fadeOut(300)
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
   });
 
 };
@@ -110,17 +117,17 @@ $(document).on('turbolinks:load', editProfile);
 var userTabs = function() {
 
   $('#albums-tab').click(function() {
-    $('#albums-container').show(300);
+    $('#albums-container').fadeIn(300);
     $('#feed-container').hide();
     $('#albums-tab').css("background-color", "#ccc");
-    $('#feed-tab').css("background-color", "#f4f4f4");
+    $('#feed-tab').css("background-color", "#fff");
   });
 
   $('#feed-tab').click(function() {
-    $('#albums-container').hide(300);
-    $('#feed-container').show();
+    $('#albums-container').hide();
+    $('#feed-container').fadeIn(300);
     $('#feed-tab').css("background-color", "#ccc");
-    $('#albums-tab').css("background-color", "#f4f4f4");
+    $('#albums-tab').css("background-color", "#fff");
   });
 
 };
@@ -167,27 +174,27 @@ $(document).on('turbolinks:load', forSale);
 var purchaseForm = function() {
 
   $('#purchase-photo').click(function() {
-    $('#purchase-form').show(300);
-    $('#close-profile').show();
-    $('#purchase-photo').hide();
-    $('#back').show();
-    $(".wrapper").addClass("blur");
+    $('#purchase-form').fadeIn(300);
+    $('#close-profile').fadeIn(300);
+    $('#purchase-photo').fadeOut(300);
+    $('.back').fadeIn(300);
+    $(".wrapper").addClass("blur", 300);
   });
 
   $('#close-profile').click(function() {
-    $('#purchase-form').hide(300);
-    $('#close-profile').hide();
-    $('#purchase-photo').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+    $('#purchase-form').fadeOut(300);
+    $('#close-profile').fadeOut(300);
+    $('#purchase-photo').fadeIn(300);
+    $('.back').fadeOut(300);
+    $(".wrapper").removeClass("blur", 300);
   });
 
-  $('#back').click(function() {
-    $('#purchase-form').hide(300);
-    $('#close-album').hide();
-    $('#purchase-photo').show();
-    $('#back').hide();
-    $(".wrapper").removeClass("blur");
+  $('.back').click(function() {
+    $('#purchase-form').fadeOut(300);
+    $('#close-album').fadeOut(300);
+    $('#purchase-photo').fadeIn(300);
+    $('.back').fadeOut(300);
+    $(".wrapper").removeClass("blur", 300);
   });
 
 };

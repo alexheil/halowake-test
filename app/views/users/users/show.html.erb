@@ -39,16 +39,16 @@
       <% if @user.albums.any? %>
         <div id="albums-container">
           <% @user.albums.each do |album| %>
-          <div class="one-half relative">
+          <div class="first-column relative">
             <% album.photos.take(1).each do |photo| %>
               <%= link_to(user_album_path(@user, album)) do %>
-                <img class="thumbnail-image-large" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
+                <img class="thumbnail-image" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
               <% end %>
             <% end %>
           </div>
 
-          <div class="one-half">
-            <div class="medium-text one-space">
+          <div class="second-column">
+            <div class="medium-text">
               <%= link_to album.title, user_album_path(@user, album) %>
             </div>
             <div class="one-space">
@@ -97,7 +97,6 @@
 
 <% if user_signed_in? && current_user == @user %>
 
-  <div id="back"></div>
   <div id="profile-form">
     <div class="profile-form-inside">
       <div id="close-profile" class="one-space">
@@ -283,7 +282,6 @@
 
 <% if user_signed_in? && current_user == @user %>
 
-  <div id="back"></div>
   <div id="album-form">
     <div class="profile-form-inside">
       <div id="close-album" class="one-space">

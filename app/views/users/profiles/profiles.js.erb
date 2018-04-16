@@ -2,5 +2,4 @@ $('.update-profile').html('<%=  escape_javascript(render :partial => 'users/part
 $('#profile-form').hide(300);
 $('#close-profile').hide();
 $('#edit-profile').show();
-$('#back').hide();
-$(".wrapper").removeClass("blur");
+$('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');

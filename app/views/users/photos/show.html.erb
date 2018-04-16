@@ -197,7 +197,7 @@
 </div>
 
 <% if @photo.for_sale == true %>
-  <div id="back"></div>
+
   <div id="purchase-form">
     <div class="profile-form-inside">
       <div id="close-profile" class="one-space">
@@ -239,11 +239,11 @@
       </div>
     </div>
   </div>
+
 <% end %>
 
 <% if user_signed_in? && current_user == @user %>
 
-  <div id="back"></div>
   <div id="album-form">
     <div class="profile-form-inside">
       <div id="close-album" class="one-space">

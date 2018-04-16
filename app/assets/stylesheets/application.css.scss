@@ -111,19 +111,27 @@ a {
   color: #3f729b;
 }
 
-.flash_js {
-  width: 100%;
-  position: relative;
-  z-index: 4;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
+.flash {
+  position: fixed;
+  margin: 0 auto;
+  z-index: 1001;
+  width: 60%;
+  top: 10%;
+  left: 20%;
 }
 
 .alert-notice {
-  background-color: #4CAF50;
+  border-top: 10px solid #4CAF50;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
 }
 
 .alert-alert {
-  background-color: #F44336;
+  border-top: 10px solid #F44336;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
 }
 
 .alert {
@@ -131,6 +139,31 @@ a {
   margin: 0 auto;
   padding: 1vh 0;
   font-family: $fancy-font
+}
+
+.flashback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+#close-alert {
+  @include transition;
+  width: 100%;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $black;
+  }
 }
 
 /* **************** BLOCKS ******************* */
@@ -275,7 +308,7 @@ a {
 }
 
 .nameplate {
-  padding: 5vh 0;
+  padding: 3vh 0;
 }
 
 .border-bottom {
@@ -287,9 +320,9 @@ a {
 }
 
 .tab {
-  padding: 5vh 0;
+  padding: 1vh 0;
   &:hover {
-    background: #ccc;
+    background: #eee;
   }
 }
 
@@ -312,15 +345,15 @@ a {
 .side-header {
   position: fixed;
   text-align: center;
-  top: 0;
-  right: 0;
   z-index: 9999;
   width: auto;
-  background: $black;
   height: 100%;
   color: $white;
   a {
     color: $white;
+    &:hover {
+      color: $main-color;
+    }
   }
   ul {
     padding: 0vh 2vw;
@@ -534,7 +567,7 @@ a {
 .home-button {
   @include buttons;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $white;
   color: $white;
   &:hover {
@@ -546,7 +579,7 @@ a {
 .submit-button {
   @include buttons;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -662,7 +695,7 @@ a {
 #edit-profile {
   @include buttons;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -676,7 +709,7 @@ a {
 #create-album {
   @include buttons;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -691,7 +724,7 @@ a {
   @include buttons;
   display: none;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -705,7 +738,7 @@ a {
   @include buttons;
   display: none;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -719,7 +752,7 @@ a {
   @include buttons;
   display: none;
   width: 100%;
-  padding: 2vh 2vw;
+  padding: 1vh 1vw;
   border: 2px solid $main-color;
   color: $main-color;
   cursor: pointer;
@@ -729,61 +762,19 @@ a {
   }
 }
 
-#back {
+.back {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: #212121;
-  filter: alpha(opacity=75);
-  -moz-opacity: 0.75;
-  -khtml-opacity: 0.75;
-  opacity: 0.75;
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
   z-index: 1000;
   display: none;
-}
-
-#close {
-  display: block;
-  width: 50px;
-  height: 50px;
-  box-sizing: border-box;
-  color: $black;
-  text-decoration: none;
-  position: absolute;
-  z-index: 1001;
-  cursor: pointer;
-  &:before {
-    content: "";
-    display: block;
-    height: 30px;
-    width: 2px;
-    z-index: 1001;
-    background: black;
-    position: absolute;
-    left: 25px;
-    top:10px;
-    -webkit-transform:rotate(45deg);
-    -moz-transform:rotate(45deg);
-    -o-transform:rotate(45deg);
-    transform:rotate(45deg);
-  }
-  &:after {
-    content: "";
-    display: block;
-    height: 30px;
-    width: 2px;
-    z-index: 1001;
-    background: black;
-    position: absolute;
-    left: 25px;
-    top:10px;
-    -webkit-transform:rotate(-45deg);
-    -moz-transform:rotate(-45deg);
-    -o-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-  }
 }
 
 #profile-form {
@@ -799,6 +790,7 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 2vh 2vw;
+    border-radius: 4px;
   }
 }
 
@@ -815,6 +807,7 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 2vh 2vw;
+    border-radius: 4px;
   }
 }
 
@@ -831,6 +824,7 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 2vh 2vw;
+    border-radius: 4px;
   }
 }
 
@@ -872,6 +866,7 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 2vh 2vw;
+    border-radius: 4px;
   }
 }
 
@@ -907,12 +902,13 @@ a {
   cursor: pointer;
   color: $white;
   &:hover {
-    color: $accent-color1;
+    color: $main-color;
   }
 }
 
 #menu-container {
   display: none;
+  width: 100%;
 }
 
 /* **************** MEDIA QUERIES ************ */
