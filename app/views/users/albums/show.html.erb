@@ -62,7 +62,7 @@
       <div id="close-profile" class="one-space">
         Close
       </div>
-      <%= form_for(@profile, url: user_profile_path(@user)) do |f| %>
+      <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/profile_errors' %>
         
         <div class="field">

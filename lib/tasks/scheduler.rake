@@ -4,7 +4,7 @@ task :need_to_pay_mailer => :environment do
   Purchase.need_to_pay_mailer
   puts "Purchase mail sent!"
 end
-task :delete_expired_artist_merch_purchase => :environment do
+task :delete_expired_purchase => :environment do
   puts "Delete all old purchases."
   Purchase.delete_expired_purchase
   puts "Purchases deleted!"
