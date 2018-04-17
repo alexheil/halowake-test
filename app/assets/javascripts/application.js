@@ -152,6 +152,7 @@ var forSale = function() {
       $('#is-art-click').prop('checked', true);
       $('#art-fields').show();
     }
+
   }).change();
 
   $('#is-art-click').change(function() {
@@ -170,6 +171,31 @@ var forSale = function() {
 
 $(document).ready(forSale);
 $(document).on('turbolinks:load', forSale);
+
+var photoOrArt = function() {
+
+  $('#is-art-click').click(function() {
+    $('#art-fields').show();
+    $('#photo-fields').hide();
+  });
+
+  $('#is-photo-click').click(function() {
+    $('#art-fields').hide();
+    $('#photo-fields').show();
+  });
+
+  $('#shippable').click(function() {
+    $('#shippable-fields').show();
+  });
+
+  $('#downloadable').click(function() {
+    $('#shippable-fields').hide();
+  });
+
+};
+
+$(document).ready(photoOrArt);
+$(document).on('turbolinks:load', photoOrArt);
 
 var purchaseForm = function() {
 

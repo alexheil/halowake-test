@@ -4,6 +4,9 @@ class Photo < ApplicationRecord
 
   include ImageUploader[:image]
 
+  enum photo_type: [:photo, :art]
+  enum transport_type: [:downloadable, :shippable]
+
   default_scope -> { order('id DESC') }
 
   belongs_to :album
@@ -18,8 +21,6 @@ class Photo < ApplicationRecord
   validates :quantity, presence: true, if: :is_for_sale
   #validates :total_price, presence: true, if: :is_for_sale
   
-  before_save :downloadable_or_shippable_check
-  before_save :art_or_photo_check
   before_save :reset_photo_options
   before_save :reset_art_options
   before_save :reset_sales_options
@@ -46,28 +47,8 @@ class Photo < ApplicationRecord
       end
     end
 
-    def art_or_photo_check
-      if self.is_photo? && self.is_art?
-        self.is_photo = 1
-        self.is_art = 0
-      elsif self.is_photo == false && self.is_art == false
-        self.is_photo = 1
-        self.is_art = 0
-      end
-    end
-
-    def downloadable_or_shippable_check
-      if self.downloadable? && self.shippable?
-        self.shippable = 1
-        self.downloadable = 0
-      elsif self.downloadable == false && self.shippable == false
-        self.shippable = 1
-        self.downloadable = 0
-      end
-    end
-
     def reset_photo_options
-      if self.is_art?
+      if self.art?
         self.resolution = nil
         self.camera = nil
         self.lens = nil
@@ -80,7 +61,7 @@ class Photo < ApplicationRecord
     end
 
     def reset_art_options
-      if self.is_photo?
+      if self.photo?
         self.tool = nil
         self.medium = nil
         self.surface = nil

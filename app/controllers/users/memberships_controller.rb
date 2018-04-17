@@ -70,7 +70,7 @@ class Users::MembershipsController < ApplicationController
     end
 
     def membership_params
-      params.require(:membership).permit(:membership_id, :current_id, :copper, :bronze, :bronze_id, :silver, :silver_id, :gold, :gold_id, :platinum, :platinum_id, :membership_type, :amount, :percent)
+      params.require(:membership).permit(:membership_id, :current_id, :membership_type, :percent)
     end
 
 end

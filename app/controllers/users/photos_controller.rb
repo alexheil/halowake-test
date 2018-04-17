@@ -66,7 +66,7 @@ class Users::PhotosController < ApplicationController
     end
 
     def photo_params
-      params.require(:photo).permit(:title, :image, :remove_image, :description, :resolution, :camera, :lens, :aperture, :exposure, :flash, :focal_length, :iso, :for_sale, :base_price, :shipping_price, :total_price, :currency, :quantity, :is_art, :is_photo, :tool, :medium, :surface, :size, :style, :downloadable, :shippable)
+      params.require(:photo).permit(:title, :image, :remove_image, :description, :resolution, :camera, :lens, :aperture, :exposure, :flash, :focal_length, :iso, :for_sale, :base_price, :shipping_price, :total_price, :currency, :quantity, :photo_type, :tool, :medium, :surface, :size, :style, :transport_type)
     end
 
 end

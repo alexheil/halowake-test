@@ -269,19 +269,19 @@
 
         <div class="field">
           <div class="one-thirds">
-            <%= f.label :is_photo %>
+            <%= f.label(:photo_type, "Photo") %>
           </div>
           <div class="two-thirds">
-            <%= f.check_box :is_photo, class: "text-field", id: "is-photo-click" %>
+            <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
           </div>
         </div>
 
         <div class="field">
           <div class="one-thirds">
-            <%= f.label :is_art %>
+            <%= f.label(:photo_type, "art") %>
           </div>
           <div class="two-thirds">
-            <%= f.check_box :is_art, class: "text-field", id: "is-art-click" %>
+            <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
           </div>
         </div>
 
@@ -428,26 +428,28 @@
             </div>
             <div class="field">
               <div class="one-thirds">
-                <%= f.label :downloadable %>
+                <%= f.label(:transport_type, "Downloadable") %>
               </div>
               <div class="two-thirds">
-                <%= f.check_box :downloadable, class: "text-field", id: "downloadable" %>
+                <%= f.radio_button(:transport_type, "downloadable", id: "downloadable") %>
               </div>
             </div>
             <div class="field">
               <div class="one-thirds">
-                <%= f.label :shippable %>
+                <%= f.label(:transport_type, "Shippable") %>
               </div>
               <div class="two-thirds">
-                <%= f.check_box :shippable, class: "text-field", id: "shippable" %>
+                <%= f.radio_button(:transport_type, "shippable", id: "shippable") %>
               </div>
             </div>
-            <div class="field">
-              <div class="one-thirds">
-                <%= f.label :shipping_price %>
-              </div>
-              <div class="two-thirds">
-                <%= f.text_field :shipping_price, class: "text-field" %>
+            <div id="shippable-fields">
+              <div class="field">
+                <div class="one-thirds">
+                  <%= f.label :shipping_price %>
+                </div>
+                <div class="two-thirds">
+                  <%= f.text_field :shipping_price, class: "text-field" %>
+                </div>
               </div>
             </div>
             <div class="field">

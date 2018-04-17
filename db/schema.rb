@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.integer  "album_id"
     t.string   "title",          default: ""
     t.text     "image_data"
-    t.boolean  "is_art",         default: false
-    t.boolean  "is_photo",       default: true
+    t.integer  "photo_type",     default: 0
     t.text     "description",    default: ""
     t.string   "resolution",     default: ""
     t.string   "camera",         default: ""
@@ -87,8 +86,7 @@ ActiveRecord::Schema.define(version: 20180125192226) do
     t.boolean  "for_sale",       default: false
     t.integer  "base_price"
     t.integer  "shipping_price"
-    t.boolean  "shippable",      default: true
-    t.boolean  "downloadable",   default: false
+    t.integer  "transport_type", default: 0
     t.integer  "total_price"
     t.string   "currency"
     t.integer  "quantity"

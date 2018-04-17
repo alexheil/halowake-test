@@ -1,5 +1,6 @@
 $('.update-profile').html('<%=  escape_javascript(render :partial => 'users/partials/profiles/nameplate') %>');
 $('#profile-form').hide(300);
-$('#close-profile').hide();
-$('#edit-profile').show();
+$('#close-profile').fadeOut(300);
+$('#edit-profile').fadeIn(300);
+$('.flash_js').fadeIn(300);
 $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
