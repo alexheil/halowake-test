@@ -17,10 +17,11 @@ class Photo < ApplicationRecord
 
   validates :currency, presence: true, if: :is_for_sale
   validates :base_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
-  validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale
+  validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale && :shippable?
   validates :quantity, presence: true, if: :is_for_sale
   #validates :total_price, presence: true, if: :is_for_sale
   
+  before_save :no_shipping
   before_save :reset_photo_options
   before_save :reset_art_options
   before_save :reset_sales_options
@@ -35,6 +36,10 @@ class Photo < ApplicationRecord
 
     def is_for_sale
       self.for_sale == true
+    end
+
+    def no_shipping
+      self.shipping_price = 0 if self.downloadable?
     end
 
     def reset_sales_options
@@ -71,7 +76,7 @@ class Photo < ApplicationRecord
     end
 
     def total_price_calculator
-      self.total_price = base_price + shipping_price if self.for_sale == true
+      self.total_price = base_price + shipping_price if self.for_sale?
     end
 
     def should_generate_new_friendly_id?

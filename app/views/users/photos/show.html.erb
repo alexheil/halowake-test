@@ -62,7 +62,7 @@
               <%= @photo.base_price %> <%= @photo.currency %>
             </div>
           <% end %>
-          <% if @photo.base_price.present? %>
+          <% if @photo.shippable? %>
             <div class="one-sixth">
               <div>
                 Shipping Price:
@@ -82,9 +82,9 @@
       </div>
     <% end %>
 
-    <%= @photo.is_art? %> - <%= @photo.is_photo? %> - <%= @photo.downloadable? %> - <%= @photo.shippable? %>
+    <%= @photo.art? %> - <%= @photo.photo? %> - <%= @photo.downloadable? %> - <%= @photo.shippable? %>
 
-    <% if @photo.is_photo == true && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
+    <% if @photo.photo? && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
       <div class="nameplate border-bottom">
         <% if @photo.camera.present? %>
           <div class="one-space-bottom medium-text">
@@ -142,7 +142,7 @@
       </div>
     <% end %>
 
-    <% if @photo.is_art == true && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
+    <% if @photo.art? && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
       <div class="nameplate border-bottom">
         <% if @photo.tool.present? %>
           <div class="one-sixth">
@@ -196,7 +196,7 @@
   </div>
 </div>
 
-<% if @photo.for_sale == true %>
+<% if @photo.for_sale? %>
 
   <div id="purchase-form">
     <div class="profile-form-inside">
@@ -232,11 +232,11 @@
         </div>
         <%= f.submit "Purchase", data: { disable_with: 'Loading...' }, class: "submit-button" %>
       <% end %>
-      <div class="one-space">
-        <% if @customer.default_source.present? %>
+      <% if @customer.default_source.present? %>
+        <div class="one-space">
           You have a card on file. Pressing "Purchase" will automatically finish this process, including charging your card. If you'd like to change your card, <%= link_to "please do so before continuing", edit_source_path(current_user) %>.
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -260,16 +260,6 @@
             <%= f.text_field :title, class: "text-field" %>
           </div>
         </div>
-        <% if @photo.image_data? %>
-          <div class="field">
-            <div class="one-thirds">
-              <%= f.label :remove_image %>
-            </div>
-            <div class="two-thirds">
-              <%= f.check_box :remove_image, class: "text-field" %>
-            </div>
-          </div>
-        <% end %>
         <div class="field">
           <div class="one-thirds">
             <%= f.label :image %>
@@ -282,19 +272,19 @@
 
         <div class="field">
           <div class="one-thirds">
-            <%= f.label :is_photo %>
+            <%= f.label(:photo_type, "Photo") %>
           </div>
           <div class="two-thirds">
-            <%= f.check_box :is_photo, class: "text-field", id: "is-photo-click" %>
+            <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
           </div>
         </div>
 
         <div class="field">
           <div class="one-thirds">
-            <%= f.label :is_art %>
+            <%= f.label(:photo_type, "Art") %>
           </div>
           <div class="two-thirds">
-            <%= f.check_box :is_art, class: "text-field", id: "is-art-click" %>
+            <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
           </div>
         </div>
 
@@ -421,7 +411,7 @@
           </div>
         </div>
 
-        <% if current_user.is_member %>
+        <% if current_user.payment_setting.present? && current_user.payment_setting.stripe_id.present? %>
           <div class="field">
             <div class="one-thirds">
               <%= f.label :for_sale %>
@@ -441,26 +431,28 @@
             </div>
             <div class="field">
               <div class="one-thirds">
-                <%= f.label :downloadable %>
+                <%= f.label(:transport_type, "Downloadable") %>
               </div>
               <div class="two-thirds">
-                <%= f.check_box :downloadable, class: "text-field", id: "downloadable" %>
+                <%= f.radio_button(:transport_type, "downloadable", id: "downloadable") %>
               </div>
             </div>
             <div class="field">
               <div class="one-thirds">
-                <%= f.label :shippable %>
+                <%= f.label(:transport_type, "Shippable") %>
               </div>
               <div class="two-thirds">
-                <%= f.check_box :shippable, class: "text-field", id: "shippable" %>
+                <%= f.radio_button(:transport_type, "shippable", id: "shippable") %>
               </div>
             </div>
-            <div class="field">
-              <div class="one-thirds">
-                <%= f.label :shipping_price %>
-              </div>
-              <div class="two-thirds">
-                <%= f.text_field :shipping_price, class: "text-field" %>
+            <div id="shippable-fields">
+              <div class="field">
+                <div class="one-thirds">
+                  <%= f.label :shipping_price %>
+                </div>
+                <div class="two-thirds">
+                  <%= f.text_field :shipping_price, class: "text-field" %>
+                </div>
               </div>
             </div>
             <div class="field">

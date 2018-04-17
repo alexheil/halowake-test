@@ -141,32 +141,6 @@ var forSale = function() {
     $('#for-sale-container').toggle(this.checked);
   }).change();
 
-  $('#is-photo-click').change(function() {
-    $('#photo-fields').toggle(this.checked);
-    $('#art-fields').hide();
-    if ($(this).prop('checked')) {
-      $('#art-fields').hide();
-      $('#is-art-click').prop('checked', false);
-    }
-    else {
-      $('#is-art-click').prop('checked', true);
-      $('#art-fields').show();
-    }
-
-  }).change();
-
-  $('#is-art-click').change(function() {
-    $('#art-fields').toggle(this.checked);
-    if ($(this).prop('checked')) {
-      $('#photo-fields').hide();
-      $('#is-photo-click').prop('checked', false);
-    }
-    else {
-      $('#is-photo-click').prop('checked', true);
-      $('#photo-fields').show();
-    }
-  });
-
 };
 
 $(document).ready(forSale);
