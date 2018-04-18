@@ -1,3 +1,6 @@
 $('.update-profile').html('<%=  escape_javascript(render :partial => 'users/partials/profiles/nameplate') %>');
 $('.flash_js').fadeIn(300);
 $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
+setTimeout(function() {
+  $('.flash_js').fadeOut();
+}, 5000);

@@ -1,6 +1,12 @@
 $('.update-profile').html('<%=  escape_javascript(render :partial => 'users/partials/profiles/nameplate') %>');
+$('.css-theme').html('<%=  escape_javascript(render :partial => 'partials/themes') %>');
 $('#profile-form').fadeOut(300);
 $('#close-profile').fadeOut(300);
 $('#edit-profile').fadeIn(300);
+$('.back').fadeOut(300);
+$('.wrapper').removeClass("blur", 300);
 $('.flash_js').fadeIn(300);
 $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
+setTimeout(function() {
+  $('.flash_js').fadeOut();
+}, 5000);
