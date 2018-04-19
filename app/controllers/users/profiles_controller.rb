@@ -5,7 +5,7 @@ class Users::ProfilesController < ApplicationController
   before_action :set_user
 
   def update
-    @profile = @user.profile
+   # @profile = @user.profile
     @location = @user.location
     @theme = @user.theme
     @location.update_attributes(location_params)
