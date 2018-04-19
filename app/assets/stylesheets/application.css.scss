@@ -754,6 +754,20 @@ a {
   }
 }
 
+#close-photo-form {
+  @include buttons;
+  display: none;
+  width: 100%;
+  padding: 1vh 1vw;
+  border: 2px solid $main-color;
+  color: $main-color;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+    background-color: $main-color;
+  }
+}
+
 #edit-close-album {
   @include buttons;
   display: none;

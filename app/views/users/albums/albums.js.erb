@@ -1,0 +1,16 @@
+$('.album_display').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_display') %>');
+$('.album_tabs').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_tabs') %>');
+$('.album_form').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_form') %>');
+$('.album_title').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_title') %>');
+$('.album_description').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_description') %>');
+$('.album_links').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_links') %>');
+$('#edit-album-form').fadeOut(300);
+$('#close-album').fadeOut(300);
+$('#create-album').fadeIn(300);
+$('.back').fadeOut(300);
+$('.wrapper').removeClass("blur", 300);
+$('.flash_js').fadeIn(300);
+$('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
+setTimeout(function() {
+  $('.flash_js').fadeOut();
+}, 5000);

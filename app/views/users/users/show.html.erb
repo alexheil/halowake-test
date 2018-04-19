@@ -19,72 +19,11 @@
       </div>
     <% end %>
 
-    <% if @user.albums.any? %>
-      <div id="albums-tab" class="two-column center tab border-bottom">
-        Albums
-      </div>
-      <div id="feed-tab" class="two-column center tab border-bottom">
-        Feed
-      </div>
-    <% elsif @user.photos.any? || @user.following.count > 0 %>
-      <div class="nameplate center border-bottom">
-        Feed
-      </div>
-    <% end %>
+    <span class="album_tabs"><%= render "users/partials/albums/album_tabs" %></span>
 
     <main class="five-space">
 
-      <% if @user.albums.any? %>
-        <div id="albums-container">
-          <% @user.albums.each do |album| %>
-          <div class="first-column relative">
-            <% album.photos.take(1).each do |photo| %>
-              <%= link_to(user_album_path(@user, album)) do %>
-                <img class="thumbnail-image" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="second-column">
-            <div class="medium-text">
-              <%= link_to album.title, user_album_path(@user, album) %>
-            </div>
-            <div class="one-space">
-              <%= album.description %>
-            </div>
-          </div>
-
-          <% end %>
-        </div>
-
-        <div id="feed-container">
-          <% @user.feed.each do |photo| %>
-            <div class="three-column relative">
-              <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
-                <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-              <% end %>
-              <div class="centered">
-                <div class="text-hover large-text">
-                  +<%= photo.votes.count %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <% @user.feed.each do |photo| %>
-          <div class="three-column relative">
-            <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
-              <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-            <% end %>
-            <div class="centered">
-              <div class="text-hover large-text">
-                +<%= photo.votes.count %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      <span class="album_display"><%= render "users/partials/albums/album_display" %></span>
 
     </main>
 
@@ -280,33 +219,6 @@
 
 <% if user_signed_in? && current_user == @user %>
 
-  <div id="album-form">
-    <div class="profile-form-inside">
-      <div id="close-album" class="one-space">
-        Close
-      </div>
+  <span class="album_form"><%= render "users/partials/albums/album_form" %></span>
 
-      <%= form_for(Album.new, url: user_albums_path(@user)) do |f| %>
-        <%= render 'partials/errors/album_errors' %>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :title %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :title, class: "text-field" %>
-          </div>
-        </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :description %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_area :description, class: "text-area" %>
-          </div>
-        </div>
-        <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-      <% end %>
-
-    </div>
-  </div>
 <% end %>

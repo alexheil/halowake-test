@@ -21,8 +21,11 @@ class Users::PhotosController < ApplicationController
     @photo = @album.photos.build(photo_params)
     @photo.user_id = @user.id
     if @photo.save
-      redirect_to user_album_path(@user, @album)
-      flash[:notice] = "You've successfully added a photo!"
+      respond_to do |format|
+        format.html { redirect_to user_album_path(@user, @album) }
+        format.js { render :action => "photos" }
+        flash.now[:notice] = "You've successfully added a photo!"
+      end
     else
       redirect_to (:back)
       flash.now[:alert] = "You've failed!"
@@ -33,8 +36,11 @@ class Users::PhotosController < ApplicationController
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:id])
     if @photo.update_attributes(photo_params)
-      redirect_to user_album_photo_path(@user, @album, @photo)
-      flash[:notice] = "You've successfully updated your item!"
+      respond_to do |format|
+        format.html { redirect_to user_album_path(@user, @album) }
+        format.js { render :action => "photos" }
+        flash.now[:notice] = "You've successfully updated your photo!"
+      end
     else
       redirect_to (:back)
       flash.now[:alert] = "You've failed!"
@@ -42,8 +48,13 @@ class Users::PhotosController < ApplicationController
   end
 
   def destroy
+    @album = Album.friendly.find(params[:album_id])
     Photo.friendly.find(params[:id]).destroy
-    redirect_to user_path(@user)
+    respond_to do |format|
+      format.html { redirect_to user_album_path(@user, @album) }
+      format.js { render :action => "photos" }
+      flash.now[:notice] = "You've successfully deleted your photo!"
+    end
   end
 
   private

@@ -1,0 +1,144 @@
+<% if @photo.for_sale == true %>
+  <div class="nameplate border-bottom">
+    <div class="first-column">
+      <div id="purchase-photo" class="submit-button">
+        Purchase
+      </div>
+    </div>
+    <div class="second-column">
+      <% if @photo.base_price.present? %>
+        <div class="one-sixth">
+          <div>
+            Base Price:
+          </div>
+          <%= @photo.base_price %> <%= @photo.currency %>
+        </div>
+      <% end %>
+      <% if @photo.shippable? %>
+        <div class="one-sixth">
+          <div>
+            Shipping Price:
+          </div>
+          <%= @photo.shipping_price %> <%= @photo.currency %>
+        </div>
+      <% end %>
+      <% if @photo.total_price.present? %>
+        <div class="one-sixth">
+          <div>
+            Total Price:
+          </div>
+          <%= @photo.total_price %> <%= @photo.currency %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if @photo.photo? && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
+  <div class="nameplate border-bottom">
+    <% if @photo.camera.present? %>
+      <div class="one-space-bottom medium-text">
+        <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24" %>
+      </div>
+    <% end %>
+    <% if @photo.lens.present? %>
+      <div class="one-sixth">
+        <div>
+          Lens:
+        </div>
+        <%= @photo.lens %>
+      </div>
+    <% end %>
+    <% if @photo.aperture.present? %>
+      <div class="one-sixth">
+        <div>
+          Aperture:
+        </div>
+        <%= @photo.aperture %>
+      </div>
+    <% end %>
+    <% if @photo.exposure.present? %>
+      <div class="one-sixth">
+        <div>
+          Exposure:
+        </div>
+        <%= @photo.exposure %>
+      </div>
+    <% end %>
+    <% if @photo.flash.present? %>
+      <div class="one-sixth">  
+        <div>
+          Flash:
+        </div>
+        <%= @photo.flash %>
+      </div>
+    <% end %>
+    <% if @photo.focal_length.present? %>
+      <div class="one-sixth"> 
+        <div>
+          Focal length:
+        </div>
+        <%= @photo.focal_length %>
+      </div>
+    <% end %>
+    <% if @photo.iso.present? %>
+      <div class="one-sixth">
+        <div>
+          ISO:
+        </div>
+        <%= @photo.iso %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @photo.art? && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
+  <div class="nameplate border-bottom">
+    <% if @photo.tool.present? %>
+      <div class="one-sixth">
+        <div>
+          Tool:
+        </div>
+        <%= @photo.tool %>
+      </div>
+    <% end %>
+    <% if @photo.medium.present? %>
+      <div class="one-sixth">
+        <div>
+          Medium:
+        </div>
+        <%= @photo.medium %>
+      </div>
+    <% end %>
+    <% if @photo.surface.present? %>
+      <div class="one-sixth">
+        <div>
+          Surface:
+        </div>
+        <%= @photo.surface %>
+      </div>
+    <% end %>
+    <% if @photo.style.present? %>
+      <div class="one-sixth">  
+        <div>
+          Style:
+        </div>
+        <%= @photo.style %>
+      </div>
+    <% end %>
+    <% if @photo.size.present? %>
+      <div class="one-sixth"> 
+        <div>
+          Size:
+        </div>
+        <%= @photo.size %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @photo.description.present? %>
+  <div class="nameplate border-bottom">
+    <%= sanitize(@photo.description) %>
+  </div>
+<% end %>

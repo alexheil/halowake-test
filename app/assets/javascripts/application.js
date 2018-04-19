@@ -42,6 +42,7 @@ var editProfile = function() {
   $('#create-album').click(function() {
     $('#album-form').fadeIn(300);
     $('#close-album').fadeIn(300);
+    $('#close-photo-form').fadeIn(300);
     $('#create-album').fadeOut(300);
     $('.back').fadeIn(300);
     $('.wrapper').addClass("blur", 300);
@@ -50,12 +51,13 @@ var editProfile = function() {
   $('#edit-photo-click').click(function() {
     $('#album-form').fadeIn(300);
     $('#close-album').fadeIn(300);
+    $('#close-photo-form').fadeIn(300);
     $('#edit-photo-click').fadeOut(300);
     $('.back').fadeIn(300);
     $('.wrapper').addClass("blur", 300);
   });
 
-  $('#edit-album-click').click(function() {
+  $(".album_title").on("click", "#edit-album-click", function() {
     $('#edit-album-form').fadeIn(300);
     $('#edit-close-album').fadeIn(300);
     $('#edit-album-click').fadeOut(300);
@@ -79,7 +81,7 @@ var editProfile = function() {
     $('.wrapper').removeClass("blur", 300);
   });
 
-  $('#close-album').click(function() {
+  $(".album_form").on("click", "#close-album", function() {
     $('#album-form').fadeOut(300);
     $('#close-album').fadeOut(300);
     $('#edit-photo-click').fadeIn(300);
@@ -87,6 +89,14 @@ var editProfile = function() {
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
   });
+
+  $('#close-photo-form').click(function() {
+    $('#album-form').fadeOut(300);
+    $('#close-photo-form').fadeOut(300);
+    $('#edit-photo-click').fadeIn(300);
+    $('#create-album').fadeIn(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);  });
 
   $('.back').click(function() {
     $('#profile-form').fadeOut(300);
@@ -116,14 +126,14 @@ $(document).on('turbolinks:load', editProfile);
 
 var userTabs = function() {
 
-  $('#albums-tab').click(function() {
+  $('.album_tabs').on('click','#albums-tab', function() {
     $('#albums-container').fadeIn(300);
     $('#feed-container').hide();
     $('#albums-tab').css("background-color", "#ccc");
     $('#feed-tab').css("background-color", "#fff");
   });
 
-  $('#feed-tab').click(function() {
+  $('.album_tabs').on('click','#feed-tab', function() {
     $('#albums-container').hide();
     $('#feed-container').fadeIn(300);
     $('#feed-tab').css("background-color", "#ccc");

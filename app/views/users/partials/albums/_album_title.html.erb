@@ -1,0 +1,6 @@
+<div class="nameplate border-bottom large-text">
+  <%= @album.title %>
+  <% if user_signed_in? && current_user == @user %>
+    <span class="tiny-text"> - <span id="edit-album-click">Edit this album</span></span>
+  <% end %>
+</div>

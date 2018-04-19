@@ -1,0 +1,29 @@
+<div id="album-form">
+  <div class="profile-form-inside">
+    <div id="close-album" class="one-space">
+      Close
+    </div>
+
+    <%= form_for(Album.new, url: user_albums_path(@user), remote: true) do |f| %>
+      <%= render 'partials/errors/album_errors' %>
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label :title %>
+        </div>
+        <div class="two-thirds">
+          <%= f.text_field :title, class: "text-field" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label :description %>
+        </div>
+        <div class="two-thirds">
+          <%= f.text_area :description, class: "text-area" %>
+        </div>
+      </div>
+      <%= f.submit "Create photo album", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+    <% end %>
+
+  </div>
+</div>

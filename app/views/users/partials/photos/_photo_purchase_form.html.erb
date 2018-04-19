@@ -1,0 +1,45 @@
+<% if @photo.for_sale? %>
+
+  <div id="purchase-form">
+    <div class="profile-form-inside">
+      <div id="close-profile" class="one-space">
+        Close
+      </div>
+      <div class="medium-text one-space">
+        <%= @photo.title %>
+      </div>
+      <div class="one-space">
+        <%= @photo.total_price %> <%= @photo.currency %>
+      </div>
+      <%= form_for(Purchase.new, url: user_album_photo_purchases_path(@user, @album, @photo)) do |f| %>
+        <%= render 'partials/errors/photo_errors' %>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :quantity %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :quantity, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :pay_your_own_price %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :pay_your_own_price, class: "text-field" %>
+          </div>
+          <div class="one-space">
+            Put extra money in your artist's pocket. The Stripe fee for this transaction will be $<%= (@photo.total_price * 0.04 + 0.30).ceil %>.
+          </div>
+        </div>
+        <%= f.submit "Purchase", data: { disable_with: 'Loading...' }, class: "submit-button" %>
+      <% end %>
+      <% if @customer.default_source.present? %>
+        <div class="one-space">
+          You have a card on file. Pressing "Purchase" will automatically finish this process, including charging your card. If you'd like to change your card, <%= link_to "please do so before continuing", edit_source_path(current_user) %>.
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

@@ -7,7 +7,7 @@ class Users::RelationshipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "relationships" }
-      flash.now[:notice] = "You have successfully followed."
+      flash.now[:notice] = "You have successfully followed #{@user.profile.first_name.presence || @user.username}."
     end
   end
 
@@ -18,7 +18,7 @@ class Users::RelationshipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to (:back) }
       format.js { render :action => "relationships" }
-      flash.now[:notice] = "You have successfully unfollowed."
+      flash.now[:notice] = "You have successfully unfollowed #{@user.profile.first_name.presence || @user.username}."
     end
   end
   

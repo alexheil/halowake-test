@@ -1,0 +1,12 @@
+<% @album.photos.each do |photo| %>
+  <div class="three-column relative">
+    <%= link_to(user_album_photo_path(@user, @album, photo)) do %>
+      <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
+    <% end %>
+    <div class="centered">
+      <div class="text-hover large-text">
+        +<%= photo.votes.count %>
+      </div>
+    </div>
+  </div>
+<% end %>

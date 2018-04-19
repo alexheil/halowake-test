@@ -13,7 +13,7 @@
       <div class="vote_button">
         <%= render 'users/partials/votes/vote_button' %>
       </div>
-      <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <%= @photo.title %><span class="tiny-text"> - posted on <%= @photo.created_at.strftime("%m.%d.%Y") %> by <%= link_to @user.username, user_path(@user) unless @user.profile.first_name.present? || @user.profile.last_name.present? %> 
+      <span class="vote_count"><%= render 'users/partials/votes/vote_count' %></span> - <span class="photo_title"><%= render "users/partials/photos/photo_title" %></span><span class="tiny-text"> - posted on <%= @photo.created_at.strftime("%m.%d.%Y") %> by <%= link_to @user.username, user_path(@user) unless @user.profile.first_name.present? || @user.profile.last_name.present? %> 
         <%= link_to(user_path(@user)) do %>
           <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %>
         <% end %>
@@ -46,211 +46,22 @@
       </span>
     </div>
 
-    <% if @photo.for_sale == true %>
-      <div class="nameplate border-bottom">
-        <div class="first-column">
-          <div id="purchase-photo" class="submit-button">
-            Purchase
-          </div>
-        </div>
-        <div class="second-column">
-          <% if @photo.base_price.present? %>
-            <div class="one-sixth">
-              <div>
-                Base Price:
-              </div>
-              <%= @photo.base_price %> <%= @photo.currency %>
-            </div>
-          <% end %>
-          <% if @photo.shippable? %>
-            <div class="one-sixth">
-              <div>
-                Shipping Price:
-              </div>
-              <%= @photo.shipping_price %> <%= @photo.currency %>
-            </div>
-          <% end %>
-          <% if @photo.total_price.present? %>
-            <div class="one-sixth">
-              <div>
-                Total Price:
-              </div>
-              <%= @photo.total_price %> <%= @photo.currency %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-
-    <%= @photo.art? %> - <%= @photo.photo? %> - <%= @photo.downloadable? %> - <%= @photo.shippable? %>
-
-    <% if @photo.photo? && (@photo.camera.present? || @photo.lens.present? || @photo.aperture.present? || @photo.exposure.present? || @photo.flash.present? || @photo.focal_length.present? || @photo.iso.present?) %>
-      <div class="nameplate border-bottom">
-        <% if @photo.camera.present? %>
-          <div class="one-space-bottom medium-text">
-            <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24" %>
-          </div>
-        <% end %>
-        <% if @photo.lens.present? %>
-          <div class="one-sixth">
-            <div>
-              Lens:
-            </div>
-            <%= @photo.lens %>
-          </div>
-        <% end %>
-        <% if @photo.aperture.present? %>
-          <div class="one-sixth">
-            <div>
-              Aperture:
-            </div>
-            <%= @photo.aperture %>
-          </div>
-        <% end %>
-        <% if @photo.exposure.present? %>
-          <div class="one-sixth">
-            <div>
-              Exposure:
-            </div>
-            <%= @photo.exposure %>
-          </div>
-        <% end %>
-        <% if @photo.flash.present? %>
-          <div class="one-sixth">  
-            <div>
-              Flash:
-            </div>
-            <%= @photo.flash %>
-          </div>
-        <% end %>
-        <% if @photo.focal_length.present? %>
-          <div class="one-sixth"> 
-            <div>
-              Focal length:
-            </div>
-            <%= @photo.focal_length %>
-          </div>
-        <% end %>
-        <% if @photo.iso.present? %>
-          <div class="one-sixth">
-            <div>
-              ISO:
-            </div>
-            <%= @photo.iso %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% if @photo.art? && (@photo.tool.present? || @photo.medium.present? || @photo.surface.present? || @photo.size.present? || @photo.style.present?) %>
-      <div class="nameplate border-bottom">
-        <% if @photo.tool.present? %>
-          <div class="one-sixth">
-            <div>
-              Tool:
-            </div>
-            <%= @photo.tool %>
-          </div>
-        <% end %>
-        <% if @photo.medium.present? %>
-          <div class="one-sixth">
-            <div>
-              Medium:
-            </div>
-            <%= @photo.medium %>
-          </div>
-        <% end %>
-        <% if @photo.surface.present? %>
-          <div class="one-sixth">
-            <div>
-              Surface:
-            </div>
-            <%= @photo.surface %>
-          </div>
-        <% end %>
-        <% if @photo.style.present? %>
-          <div class="one-sixth">  
-            <div>
-              Style:
-            </div>
-            <%= @photo.style %>
-          </div>
-        <% end %>
-        <% if @photo.size.present? %>
-          <div class="one-sixth"> 
-            <div>
-              Size:
-            </div>
-            <%= @photo.size %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% if @photo.description.present? %>
-      <div class="nameplate border-bottom">
-        <%= sanitize(@photo.description) %>
-      </div>
-    <% end %>
+    <span class="photo_details"><%= render "users/partials/photos/photo_details" %></span>
 
   </div>
 </div>
 
-<% if @photo.for_sale? %>
-
-  <div id="purchase-form">
-    <div class="profile-form-inside">
-      <div id="close-profile" class="one-space">
-        Close
-      </div>
-      <div class="medium-text one-space">
-        <%= @photo.title %>
-      </div>
-      <div class="one-space">
-        <%= @photo.total_price %> <%= @photo.currency %>
-      </div>
-      <%= form_for(Purchase.new, url: user_album_photo_purchases_path(@user, @album, @photo)) do |f| %>
-        <%= render 'partials/errors/photo_errors' %>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :quantity %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :quantity, class: "text-field" %>
-          </div>
-        </div>
-        <div class="field">
-          <div class="one-thirds">
-            <%= f.label :pay_your_own_price %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :pay_your_own_price, class: "text-field" %>
-          </div>
-          <div class="one-space">
-            Put extra money in your artist's pocket. The Stripe fee for this transaction will be $<%= (@photo.total_price * 0.04 + 0.30).ceil %>.
-          </div>
-        </div>
-        <%= f.submit "Purchase", data: { disable_with: 'Loading...' }, class: "submit-button" %>
-      <% end %>
-      <% if @customer.default_source.present? %>
-        <div class="one-space">
-          You have a card on file. Pressing "Purchase" will automatically finish this process, including charging your card. If you'd like to change your card, <%= link_to "please do so before continuing", edit_source_path(current_user) %>.
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-<% end %>
+<span class="photo_purchase_form"><%= render "users/partials/photos/photo_purchase_form" %></span>
 
 <% if user_signed_in? && current_user == @user %>
 
   <div id="album-form">
     <div class="profile-form-inside">
-      <div id="close-album" class="one-space">
+      <div id="close-photo-form" class="one-space">
         Close
       </div>
 
-      <%= form_for(@photo, url: user_album_photo_path(@user, @album, @photo)) do |f| %>
+      <%= form_for(@photo, url: user_album_photo_path(@user, @album, @photo), remote: true) do |f| %>
         <%= render 'partials/errors/photo_errors' %>
         <div class="field">
           <div class="one-thirds">

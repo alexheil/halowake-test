@@ -1,0 +1,15 @@
+$('.photo_form').html('<%=  escape_javascript(render :partial => 'users/partials/photos/photo_form') %>');
+$('.album_links').html('<%=  escape_javascript(render :partial => 'users/partials/albums/album_links') %>');
+$('.photo_title').html('<%=  escape_javascript(render :partial => 'users/partials/photos/photo_title') %>');
+$('.photo_details').html('<%=  escape_javascript(render :partial => 'users/partials/photos/photo_details') %>');
+$('.photo_purchase_form').html('<%=  escape_javascript(render :partial => 'users/partials/photos/photo_purchase_form') %>');
+$('#album-form').fadeOut(300);
+$('#close-photo-form').fadeOut(300);
+$('#edit-photo-click').fadeIn(300);
+$('.back').fadeOut(300);
+$('.wrapper').removeClass("blur", 300);
+$('.flash_js').fadeIn(300);
+$('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
+setTimeout(function() {
+  $('.flash_js').fadeOut();
+}, 5000);

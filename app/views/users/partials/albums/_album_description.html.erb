@@ -1,0 +1,5 @@
+<% if @album.description.present? %>
+  <div class="nameplate border-bottom">
+    <%= sanitize(@album.description) %>
+  </div>
+<% end %>

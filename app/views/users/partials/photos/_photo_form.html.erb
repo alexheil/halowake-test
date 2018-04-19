@@ -1,0 +1,235 @@
+<div id="album-form">
+  <div class="profile-form-inside">
+    <div id="close-photo-form" class="one-space">
+      Close
+    </div>
+
+    <%= form_for(@photo, url: user_album_photos_path(@user, @album), remote: true) do |f| %>
+      <%= render 'partials/errors/photo_errors' %>
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label :title %>
+        </div>
+        <div class="two-thirds">
+          <%= f.text_field :title, class: "text-field" %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label :image %>
+        </div>
+        <div class="two-thirds">
+          <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
+          <%= f.file_field :image %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label(:photo_type, "Photo") %>
+        </div>
+        <div class="two-thirds">
+          <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label(:photo_type, "Art") %>
+        </div>
+        <div class="two-thirds">
+          <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
+        </div>
+      </div>
+
+      <div class="field-padding border-bottom border-top">
+        Optional fields
+      </div>
+
+      <div id="photo-fields">
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :resolution %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :resolution, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :camera %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :camera, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :lens %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :lens, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :aperture %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :aperture, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :exposure %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :exposure, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :flash %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :flash, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :focal_length %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :focal_length, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :iso %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :iso, class: "text-field" %>
+          </div>
+        </div>
+      </div>
+
+      <div id="art-fields">
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :tool %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :tool, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :medium %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :medium, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :surface %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :surface, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :style %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :style, class: "text-field" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :size %>
+          </div>
+          <div class="two-thirds">
+            <%= f.text_field :size, class: "text-field" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="one-thirds">
+          <%= f.label :description %>
+        </div>
+        <div class="two-thirds">
+          <%= f.text_area :description, class: "text-area" %>
+        </div>
+      </div>
+
+      <% if current_user.payment_setting.present? && current_user.payment_setting.stripe_id.present? %>
+        <div class="field">
+          <div class="one-thirds">
+            <%= f.label :for_sale %>
+          </div>
+          <div class="two-thirds">
+            <%= f.check_box :for_sale, class: "text-field", id: "for-sale" %>
+          </div>
+        </div>
+        <div id="for-sale-container">
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :base_price %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :base_price, class: "text-field" %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label(:transport_type, "Downloadable") %>
+            </div>
+            <div class="two-thirds">
+              <%= f.radio_button(:transport_type, "downloadable", id: "downloadable") %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label(:transport_type, "Shippable") %>
+            </div>
+            <div class="two-thirds">
+              <%= f.radio_button(:transport_type, "shippable", id: "shippable") %>
+            </div>
+          </div>
+          <div id="shippable-fields">
+            <div class="field">
+              <div class="one-thirds">
+                <%= f.label :shipping_price %>
+              </div>
+              <div class="two-thirds">
+                <%= f.text_field :shipping_price, class: "text-field" %>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :currency %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :currency, class: "text-field" %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="one-thirds">
+              <%= f.label :quantity %>
+            </div>
+            <div class="two-thirds">
+              <%= f.text_field :quantity, class: "text-field" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= f.submit "Create photo", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+    <% end %>
+
+  </div>
+</div>
