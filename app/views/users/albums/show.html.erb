@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
 
-    <span class="update-profile"><%= render 'users/partials/profiles/nameplate' %></span>
+    <span class="update_profile"><%= render 'users/partials/profiles/nameplate' %></span>
 
     <% if user_signed_in? && current_user == @user %>
       <div class="nameplate border-bottom">
@@ -38,178 +38,98 @@
 
   <div id="profile-form">
     <div class="profile-form-inside">
-      <div id="close-profile" class="one-space">
+      <div id="close-profile">
         Close
       </div>
       <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/profile_errors' %>
         
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :first_name %><br />
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :first_name, class: "text-field" %>
-          </div>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :last_name %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :last_name, class: "text-field" %>
-          </div>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :image %>
-          </div>
+          <%= f.label :image %>
           <%= f.hidden_field :image, value: Photo.new.cached_image_data %>
-          <div class="two-thirds">
-            <%= f.file_field :image %>
-          </div>
+          <%= f.file_field :image %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :age %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :age, class: "text-field" %>
-          </div>
+          <%= f.label :age %>
+          <%= f.text_field :age, class: "text-field" %>
         </div>
 
         <%= fields_for :location, @location do |u| %>
           <div class="field">
-            <div class="one-thirds">
-              <%= u.label :city %>
-            </div>
-            <div class="two-thirds">
-              <%= u.text_field :city, class: "text-field" %>
-            </div>
+            <%= u.label :city %>
+            <%= u.text_field :city, class: "text-field" %>
           </div>
           <div class="field">
-            <div class="one-thirds">
-              <%= u.label :state %>
-            </div>
-            <div class="two-thirds">
-              <%= u.text_field :state, class: "text-field" %>
-            </div>
+            <%= u.label :state %>
+            <%= u.text_field :state, class: "text-field" %>
           </div>
           <div class="field">
-            <div class="one-thirds">
-              <%= u.label :country %>
-            </div>
-            <div class="two-thirds">
-              <%= u.text_field :country, class: "text-field" %>
-            </div>
+            <%= u.label :country %>
+            <%= u.text_field :country, class: "text-field" %>
           </div>
         <% end %>
 
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :website %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :website, class: "text-field" %>
-          </div>
+          <%= f.label :website %>
+          <%= f.text_field :website, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :facebook_handle %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :facebook_handle, class: "text-field" %>
-          </div>
+          <%= f.label :facebook_handle %>
+          <%= f.text_field :facebook_handle, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :facebook_url %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :facebook_url, class: "text-field" %>
-          </div>
+          <%= f.label :facebook_url %>
+          <%= f.text_field :facebook_url, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :twitter_handle %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :twitter_handle, class: "text-field" %>
-          </div>
+          <%= f.label :twitter_handle %>
+          <%= f.text_field :twitter_handle, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :twitter_url %><br />
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :twitter_url, class: "text-field" %>
-          </div>
+          <%= f.label :twitter_url %>
+          <%= f.text_field :twitter_url, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :instagram_handle %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :instagram_handle, class: "text-field" %>
-          </div>
+          <%= f.label :instagram_handle %>
+          <%= f.text_field :instagram_handle, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :instagram_url %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :instagram_url, class: "text-field" %>
-          </div>
+          <%= f.label :instagram_url %>
+          <%= f.text_field :instagram_url, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :biography %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_area :biography, class: "text-area" %>
-          </div>
+          <%= f.label :biography %>
+          <%= f.text_area :biography, class: "text-area" %>
         </div>
 
           <%= fields_for :theme, @theme do |u| %>
             <div class="field">
-              <div class="one-thirds">
-                <%= u.label :main_color %>
-              </div>
-              <div class="two-thirds">
-                <%= u.text_field :main_color, class: "text-field" %>
-              </div>
+              <%= u.label :main_color %>
+              <%= u.text_field :main_color, class: "text-field" %>
             </div>
             <div class="field">
-              <div class="one-thirds">
-                <%= u.label :text_color %>
-              </div>
-              <div class="two-thirds">
-                <%= u.text_field :text_color, class: "text-field" %>
-              </div>
+              <%= u.label :text_color %>
+              <%= u.text_field :text_color, class: "text-field" %>
             </div>
             <div class="field">
-              <div class="one-thirds">
-                <%= u.label :background_color %>
-              </div>
-              <div class="two-thirds">
-                <%= u.text_field :background_color, class: "text-field" %>
-              </div>
+              <%= u.label :background_color %>
+              <%= u.text_field :background_color, class: "text-field" %>
             </div>
             <div class="field">
-              <div class="one-thirds">
-                <%= u.label :link_color %>
-              </div>
-              <div class="two-thirds">
-                <%= u.text_field :link_color, class: "text-field" %>
-              </div>
+              <%= u.label :link_color %>
+              <%= u.text_field :link_color, class: "text-field" %>
             </div>
             <div class="field">
-              <div class="one-thirds">
-                <%= u.label :hover_color %>
-              </div>
-              <div class="two-thirds">
-                <%= u.text_field :hover_color, class: "text-field" %>
-              </div>
+              <%= u.label :hover_color %>
+              <%= u.text_field :hover_color, class: "text-field" %>
             </div>
           <% end %>
 
@@ -222,14 +142,14 @@
 <% if user_signed_in? && current_user == @user %>
 
   <span class="photo_form"><%= render "users/partials/photos/photo_form" %></span>
-  
+
 <% end %>
 
 <% if user_signed_in? && current_user == @user %>
 
   <div id="edit-album-form">
     <div class="profile-form-inside">
-      <div id="edit-close-album" class="one-space">
+      <div id="edit-close-album">
         Close
       </div>
 

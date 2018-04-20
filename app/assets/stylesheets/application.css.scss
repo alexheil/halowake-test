@@ -4,9 +4,11 @@
  */
 
 $main-color: #ff5252;
-$accent-color1: #ffa1a1;
+$accent-color1: #ffa0a0;
 $accent-color2: #BE5B00;
 $accent-color3: #FFC695;
+$green: #42CC42;
+$lightgreen: #EAFEEA;
 $black: #212121;
 $white: #ffffff;
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -125,7 +127,7 @@ a {
   background: #ffffff;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
 .alert-alert {
@@ -133,7 +135,7 @@ a {
   background: #ffffff;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
 .alert {
@@ -141,21 +143,6 @@ a {
   margin: 0 auto;
   padding: 1vh 0;
   font-family: $fancy-font
-}
-
-.flashback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #212121;
-  filter: alpha(opacity=75);
-  -moz-opacity: 0.75;
-  -khtml-opacity: 0.75;
-  opacity: 0.75;
-  z-index: 1000;
-  display: none;
 }
 
 #close-alert {
@@ -347,7 +334,7 @@ a {
 .side-header {
   position: fixed;
   text-align: center;
-  z-index: 9999;
+  z-index: 1003;
   width: auto;
   height: 100%;
   color: $white;
@@ -360,7 +347,7 @@ a {
   ul {
     padding: 0vh 2vw;
     li {
-      padding: 2vh 0;
+      padding: 3vh 0;
       list-style: none;
     }
   }
@@ -461,10 +448,12 @@ a {
 }
 
 .home-nav-links {
+  @include transition;
   color: $white;
   padding: 2vh 2vw;
+  cursor: pointer;
   &:hover {
-    color: $accent-color1;
+    color: $main-color;
   }
 }
 
@@ -504,9 +493,12 @@ a {
 }
 
 .nav-links {
-  color: $main-color;
+  @include transition;
+  color: $white;
+  cursor: pointer;
+  padding: 1vh 2vw;
   &:hover {
-    color: $accent-color1;
+    color: $main-color;
   }
 }
 
@@ -584,14 +576,18 @@ a {
 
 .submit-button {
   @include buttons;
+  background: $green;
   width: 100%;
   padding: 1vh 1vw;
-  border: 2px solid $main-color;
-  color: $main-color;
+  border: 2px solid $green;
+  color: $white;
   cursor: pointer;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
   &:hover {
-    color: $white;
-    background-color: $main-color;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -599,7 +595,7 @@ a {
 
 @mixin fields {
   width: 100%;
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 100;
   border-bottom: 1px solid $black;
   border-top: 1px solid transparent;
@@ -633,11 +629,11 @@ a {
 }
 
 .field {
-  margin: 2vh 0;
+  margin: 3vh 0;
 }
 
 .field-padding {
-  padding: 2vh 0;
+  padding: 3vh 0;
 }
 
 /* ************** PHOTO PAGE *************** */
@@ -698,6 +694,56 @@ a {
 
 /* *************** JAVASCRIPT *************** */
 
+@mixin javaScriptForms {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 10% 0 0;
+  z-index: 1005;
+  display: none;
+  .profile-form-inside {
+    width: 40%;
+    background: $white;
+    margin: 5vh auto;
+    padding: 3vh 2vw;
+    border-radius: 4px;
+  }
+}
+
+@mixin closeButtons {
+  @include buttons;
+  background-color: $main-color;
+  width: 100%;
+  padding: .51vh .51vw;
+  border: 2px solid $main-color;
+  color: $white;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+  &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+#sign-in-form {
+  @include javaScriptForms;
+}
+
+#register-form {
+  @include javaScriptForms;
+}
+
+#close-sign-in {
+  @include closeButtons;
+}
+
+#close-register {
+  @include closeButtons;
+}
+
 #edit-profile {
   @include buttons;
   width: 100%;
@@ -727,59 +773,19 @@ a {
 }
 
 #close-profile {
-  @include buttons;
-  display: none;
-  width: 100%;
-  padding: 1vh 1vw;
-  border: 2px solid $main-color;
-  color: $main-color;
-  cursor: pointer;
-  &:hover {
-    color: $white;
-    background-color: $main-color;
-  }
+  @include closeButtons;
 }
 
 #close-album {
-  @include buttons;
-  display: none;
-  width: 100%;
-  padding: 1vh 1vw;
-  border: 2px solid $main-color;
-  color: $main-color;
-  cursor: pointer;
-  &:hover {
-    color: $white;
-    background-color: $main-color;
-  }
+  @include closeButtons;
 }
 
 #close-photo-form {
-  @include buttons;
-  display: none;
-  width: 100%;
-  padding: 1vh 1vw;
-  border: 2px solid $main-color;
-  color: $main-color;
-  cursor: pointer;
-  &:hover {
-    color: $white;
-    background-color: $main-color;
-  }
+  @include closeButtons;
 }
 
 #edit-close-album {
-  @include buttons;
-  display: none;
-  width: 100%;
-  padding: 1vh 1vw;
-  border: 2px solid $main-color;
-  color: $main-color;
-  cursor: pointer;
-  &:hover {
-    color: $white;
-    background-color: $main-color;
-  }
+  @include closeButtons;
 }
 
 .back {
@@ -793,59 +799,20 @@ a {
   -moz-opacity: 0.9;
   -khtml-opacity: 0.9;
   opacity: 0.9;
-  z-index: 1000;
+  z-index: 1002;
   display: none;
 }
 
 #profile-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 10% 0 0;
-  z-index: 1001;
-  display: none;
-  .profile-form-inside {
-    width: 65%;
-    background: $white;
-    margin: 5vh auto;
-    padding: 2vh 2vw;
-    border-radius: 4px;
-  }
+  @include javaScriptForms;
 }
 
 #album-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 10% 0 0;
-  z-index: 1001;
-  display: none;
-  .profile-form-inside {
-    width: 65%;
-    background: $white;
-    margin: 5vh auto;
-    padding: 2vh 2vw;
-    border-radius: 4px;
-  }
+  @include javaScriptForms;
 }
 
 #edit-album-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 10% 0 0;
-  z-index: 1001;
-  display: none;
-  .profile-form-inside {
-    width: 65%;
-    background: $white;
-    margin: 5vh auto;
-    padding: 2vh 2vw;
-    border-radius: 4px;
-  }
+  @include javaScriptForms;
 }
 
 #art-fields {
@@ -883,7 +850,7 @@ a {
   left: 0;
   width: 100%;
   margin: 0 10% 0 0;
-  z-index: 1001;
+  z-index: 1005;
   display: none;
   .profile-form-inside {
     width: 65%;
@@ -933,6 +900,7 @@ a {
 #menu-container {
   display: none;
   width: 100%;
+  top: 0;
 }
 
 /* **************** MEDIA QUERIES ************ */
@@ -942,6 +910,31 @@ a {
    @mixin mobile-nav {
     float: none;
     text-align: center;
+  }
+
+  @mixin javaScriptForms {
+    .profile-form-inside {
+      padding: 2vh 2vw;
+      width: 60%;
+    }
+  }
+  #sign-in-form {
+    @include javaScriptForms;
+  }
+
+  #register-form {
+    @include javaScriptForms;
+  }
+  #profile-form {
+    @include javaScriptForms;
+  }
+
+  #album-form {
+    @include javaScriptForms;
+  }
+
+  #edit-album-form {
+    @include javaScriptForms;
   }
 
   .nav {
@@ -1012,6 +1005,31 @@ a {
   .thumbnail-image-three {
     height: 96vw;
     width: 96vw;
+  }
+
+  @mixin javaScriptForms {
+    .profile-form-inside {
+      width: 90%;
+      padding: 2vh 2vw;
+    }
+  }
+  #sign-in-form {
+    @include javaScriptForms;
+  }
+
+  #register-form {
+    @include javaScriptForms;
+  }
+  #profile-form {
+    @include javaScriptForms;
+  }
+
+  #album-form {
+    @include javaScriptForms;
+  }
+
+  #edit-album-form {
+    @include javaScriptForms;
   }
 
 }

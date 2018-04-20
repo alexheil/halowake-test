@@ -28,6 +28,75 @@ var menuToggle = function() {
 $(document).ready(menuToggle);
 $(document).on('turbolinks:load', menuToggle);
 
+var flashTimeout = function() {
+
+  setTimeout(function() {
+    $('.flash_js').fadeOut();
+  }, 5000);
+
+};
+
+$(document).ready(flashTimeout);
+$(document).on('turbolinks:load', flashTimeout);
+
+var signInAndRegister = function() {
+
+  $('#sign-in').click(function() {
+    $('#sign-in-form').fadeIn(300);
+    $('#close-sign-in').fadeIn(300);
+    $('#sign-in').fadeOut(300);
+    $('#register').fadeOut(300);
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
+  });
+
+  $('#register').click(function() {
+    $('#register-form').fadeIn(300);
+    $('#close-register').fadeIn(300);
+    $('#sign-in').fadeOut(300);
+    $('#register').fadeOut(300);
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
+  });
+
+  $('.back').click(function() {
+    $('#sign-in-form').fadeOut(300);
+    $('#register-form').fadeOut(300);
+    $('#close-sign-in').fadeOut(300);
+    $('#close-register').fadeOut(300);
+    $('#sign-in').fadeIn(300);
+    $('#register').fadeIn(300);
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
+  });
+
+  $('#close-sign-in').click(function() {
+    $('#sign-in-form').fadeOut(300);
+    $('#close-sign-in').fadeOut(300);
+    $('#sign-in').fadeIn(300);
+    $('#register').fadeIn(300);
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
+  });
+
+  $('#close-register').click(function() {
+    $('#register-form').fadeOut(300);
+    $('#close-register').fadeOut(300);
+    $('#sign-in').fadeIn(300);
+    $('#register').fadeIn(300);
+    $('#menu-container').fadeOut(300);
+    $('.back').fadeOut(300);
+    $('.wrapper').removeClass("blur", 300);
+  });
+
+};
+
+$(document).ready(signInAndRegister);
+$(document).on('turbolinks:load', signInAndRegister);
 
 var editProfile = function() {
 
@@ -108,6 +177,10 @@ var editProfile = function() {
     $('#edit-profile').fadeIn(300);
     $('#edit-photo-click').fadeIn(300);
     $('#edit-album-click').fadeIn(300);
+    $('#sign-in-form').fadeOut(300);
+    $('#register-form').fadeOut(300);
+    $('#close-sign-in').fadeOut(300);
+    $('#close-register').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
   });

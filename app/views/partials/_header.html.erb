@@ -31,8 +31,87 @@
       <% end %>
       <li><%= link_to "Sign Out", sign_out_path, class: "nav-links" %></li>
     <% else %>
-      <li><%= link_to "Sign In", sign_in_path, class: "nav-links" %></li>
-      <li><%= link_to "Register", register_path, class: "nav-links" %></li>
+      <li><span class="nav-links" id="sign-in">Sign in</span></li>
+      <li><span class="nav-links" id="register">Register</span></li>
     <% end %>
   </ul>
 </div>
+
+<% unless user_signed_in? %>
+
+<div id="sign-in-form">
+  <div class="profile-form-inside">
+    <div id="close-sign-in">
+      Close
+    </div>
+    
+    <div class="three-space medium-text">
+      Sign in
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :login, "Username or email" %>
+        <%= f.text_field :login, autofocus: true, class: "text-field" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "submit-button" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div id="register-form">
+  <div class="profile-form-inside">
+    <div id="close-register">
+      Close
+    </div>
+
+    <div class="three-space medium-text">
+      Register
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, class: "text-field" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "text-field" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "submit-button" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<% end %>
