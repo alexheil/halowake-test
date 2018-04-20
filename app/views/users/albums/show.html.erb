@@ -156,20 +156,12 @@
       <%= form_for(@album, url: user_album_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/album_errors' %>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :title %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_field :title, class: "text-field" %>
-          </div>
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "text-field" %>
         </div>
         <div class="field">
-          <div class="one-thirds">
-            <%= f.label :description %>
-          </div>
-          <div class="two-thirds">
-            <%= f.text_area :description, class: "text-area" %>
-          </div>
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "text-area" %>
         </div>
         <%= f.submit "Update photo album", data: { disable_with: 'Updating...' }, class: "submit-button" %>
       <% end %>
