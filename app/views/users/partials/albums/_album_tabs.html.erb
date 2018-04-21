@@ -1,8 +1,8 @@
 <% if @user.albums.any? %>
-  <div id="albums-tab" class="two-column center tab border-bottom">
+  <div id="albums-tab" class="two-column center tab">
     Albums
   </div>
-  <div id="feed-tab" class="two-column center tab border-bottom">
+  <div id="feed-tab" class="two-column center tab">
     Feed
   </div>
 <% elsif @user.photos.any? || @user.following.count > 0 %>

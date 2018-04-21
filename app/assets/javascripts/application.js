@@ -196,21 +196,38 @@ var editProfile = function() {
 $(document).ready(editProfile);
 $(document).on('turbolinks:load', editProfile);
 
+var followButton = function() {
+
+  if ($(".submit-button").val() == "Following") {
+    $(".submit-button").mouseenter(function() {
+      $(".submit-button").val("Unfollow");
+      $(".submit-button").attr('class', 'unsubmit-button');
+    });
+    $(".submit-button").mouseleave(function() {
+      $(".submit-button").val("Following");
+      $(".unsubmit-button").attr('class', 'submit-button');
+    });
+  };
+
+};
+
+$(document).ready(followButton);
+$(document).on('turbolinks:load', followButton);
 
 var userTabs = function() {
 
   $('.album_tabs').on('click','#albums-tab', function() {
     $('#albums-container').fadeIn(300);
     $('#feed-container').hide();
-    $('#albums-tab').css("background-color", "#ccc");
-    $('#feed-tab').css("background-color", "#fff");
+    $('#albums-tab').css("border-bottom", "1px solid #ccc");
+    $('#feed-tab').css("border-bottom", "1px solid transparent");
   });
 
   $('.album_tabs').on('click','#feed-tab', function() {
     $('#albums-container').hide();
     $('#feed-container').fadeIn(300);
-    $('#feed-tab').css("background-color", "#ccc");
-    $('#albums-tab').css("background-color", "#fff");
+    $('#feed-tab').css("border-bottom", "1px solid #ccc");
+    $('#albums-tab').css("border-bottom", "1px solid transparent");
   });
 
 };
