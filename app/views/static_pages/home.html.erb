@@ -40,13 +40,7 @@
 
 <div id="sign-in-form">
   <div class="profile-form-inside">
-    <div id="close-sign-in">
-      Close
-    </div>
-    
-    <div class="three-space medium-text">
-      Sign in
-    </div>
+    <div class="close"></div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -55,7 +49,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label :password %> <%= link_to "I forgot my password.", '#', class: "mini-text" %>
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 
@@ -66,23 +60,21 @@
         </div>
       <% end -%>
 
-      <div class="actions">
+      <div class="actions border-bottom three-space-bottom-padding">
         <%= f.submit "Log in", class: "submit-button" %>
       </div>
     <% end %>
+
+    <div class="three-space-top">
+      <%= link_to "But I don't have an account yet.", register_path %>
+    </div>
 
   </div>
 </div>
 
 <div id="register-form">
   <div class="profile-form-inside">
-    <div id="close-register">
-      Close
-    </div>
-
-    <div class="three-space medium-text">
-      Register
-    </div>
+    <div class="close"></div>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>

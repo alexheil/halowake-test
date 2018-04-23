@@ -254,25 +254,26 @@ a {
 .thumbnail-image {
   height: 30vh;
   width: 30vh;
-  border-radius: 4px;
+  border-radius: 0px;
   object-fit: cover;
   display: block;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .thumbnail-image-three {
   height: 31.45vw;
   width: 31.45vw;
-  border-radius: 4px;
+  border-radius: 0px;
   object-fit: cover;
   display: block;
   -webkit-backface-visibility: hidden;
   -webkit-transition: .3s ease-in-out;
   -moz-transition: .3s ease-in-out;
   -o-transition: .3s ease-in-out;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
@@ -283,7 +284,7 @@ a {
 .thumbnail-image-large {
   height: 45vw;
   width: 45vw;
-  border-radius: 4px;
+  border-radius: 0px;
   object-fit: cover;
   display: block;
   -webkit-backface-visibility: hidden;
@@ -369,6 +370,10 @@ a {
   font-size: .5em;
 }
 
+.mini-text {
+  font-size: .75em;
+}
+
 .medium-text {
   font-size: 1.5em;
 }
@@ -391,6 +396,14 @@ a {
 
 .three-space {
   margin: 3vh 0;
+}
+
+.three-space-bottom-padding {
+  padding-bottom: 3vh;
+}
+
+.three-space-top {
+  margin-top: 3vh;
 }
 
 .three-space-bottom {
@@ -460,7 +473,7 @@ a {
 }
 
 .header-container {
-  width: 95%;
+  width: 96%;
   margin: 0 auto;
   padding-bottom: 1vh;
   border-bottom: 1px solid #ccc;
@@ -555,7 +568,6 @@ a {
   text-align: center;
   font-size: 1em;
   font-weight: 300;
-  border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
   box-sizing: border-box;
@@ -578,17 +590,14 @@ a {
 
 .submit-button {
   @include buttons;
-  background: $green;
+  background: $main-color;
   width: 100%;
   padding: 1vh 1vw;
-  border: 2px solid $green;
+  border: 1px solid $main-color;
   color: $white;
   cursor: pointer;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  }
-  &:active {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
@@ -598,14 +607,11 @@ a {
   background: $main-color;
   width: 100%;
   padding: 1vh 1vw;
-  border: 2px solid $main-color;
+  border: 1px solid $main-color;
   color: $white;
   cursor: pointer;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28), 0 3px 1px -2px rgba(0, 0, 0, 0.24), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  }
-  &:active {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
@@ -648,7 +654,7 @@ a {
 }
 
 .field {
-  margin: 3vh 0;
+  margin: 0 0 3vh 0;
 }
 
 .field-padding {
@@ -664,7 +670,7 @@ a {
 .big-image {
   max-width: 100%;
   margin: 0 auto;
-  border-radius: 4px;
+  border-radius: 0px;
   display: block;
   -webkit-backface-visibility: hidden;
 }
@@ -726,23 +732,26 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 3vh 2vw;
-    border-radius: 4px;
+    border-radius: 0px;
+  }
+  a {
+    color: #aaa;
+    &:hover {
+      color: $accent-color1;
+    }
   }
 }
 
 @mixin closeButtons {
   @include buttons;
-  background-color: $white;
+  background-color: $main-color;
   width: 100%;
   padding: .51vh .51vw;
   border: 1px solid $main-color;
-  color: $main-color;
+  color: $white;
   cursor: pointer;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
-  &:active {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
@@ -785,6 +794,49 @@ a {
 
 #edit-close-album {
   @include closeButtons;
+}
+
+.close {
+  display: block;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  color: $black;
+  text-decoration: none;
+  position: relative;
+  z-index: 1001;
+  margin: 0 0 3vh 0;
+  cursor: pointer;
+  &:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    z-index: 1001;
+    background: black;
+    position: absolute;
+    left: 11px;
+    top: 0px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+  }
+  &:after {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    z-index: 1001;
+    background: black;
+    position: absolute;
+    left: 11px;
+    top: 0px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+  }
 }
 
 .back {
@@ -857,7 +909,7 @@ a {
     background: $white;
     margin: 5vh auto;
     padding: 2vh 2vw;
-    border-radius: 4px;
+    border-radius: 0px;
   }
 }
 
