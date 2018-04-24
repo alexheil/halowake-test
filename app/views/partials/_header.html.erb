@@ -2,7 +2,7 @@
   <div class="header-container">
     <nav class="nav">
       <div class="site-title">
-        <a href="http://halowake.com"><span class="bold">halo</span>wake</a>
+        <a href="http://halowake.com"><span class="bold">HALO</span>WAKE</a>
       </div>
       <ul>
         <li id="menu-click">Menu</li>
@@ -42,10 +42,6 @@
 <div id="sign-in-form">
   <div class="profile-form-inside">
     <div class="close"></div>
-    
-    <div class="three-space medium-text">
-      Sign in
-    </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -54,7 +50,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label :password %> <%= link_to "I forgot my password.", '#', class: "mini-text" %>
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 
@@ -65,10 +61,14 @@
         </div>
       <% end -%>
 
-      <div class="actions">
+      <div class="actions border-bottom three-space-bottom-padding">
         <%= f.submit "Log in", class: "submit-button" %>
       </div>
     <% end %>
+
+    <div class="three-space-top">
+      <%= link_to "But I don't have an account yet.", register_path %>
+    </div>
 
   </div>
 </div>
@@ -76,10 +76,6 @@
 <div id="register-form">
   <div class="profile-form-inside">
     <div class="close"></div>
-
-    <div class="three-space medium-text">
-      Register
-    </div>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -102,10 +98,14 @@
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class: "submit-button" %>
+      <div class="actions border-bottom three-space-bottom-padding">
+        <%= f.submit "Register", class: "submit-button" %>
       </div>
     <% end %>
+
+    <div class="three-space-top">
+      <%= link_to "But I already have an account.", sign_in_path %>
+    </div>
 
   </div>
 </div>

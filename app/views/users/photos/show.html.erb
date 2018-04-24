@@ -34,9 +34,7 @@
             <% end %>
           </div>
         <% elsif user_signed_in? == false %>
-          <div class="first-column">
             <%= link_to "Follow", sign_in_path %>
-          </div>
         <% end %>
 
         <% if user_signed_in? && current_user == @user %>

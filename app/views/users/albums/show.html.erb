@@ -38,9 +38,8 @@
 
   <div id="profile-form">
     <div class="profile-form-inside">
-      <div id="close-profile">
-        Close
-      </div>
+      <div class="close"></div>
+      
       <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/profile_errors' %>
         
@@ -149,9 +148,7 @@
 
   <div id="edit-album-form">
     <div class="profile-form-inside">
-      <div id="edit-close-album">
-        Close
-      </div>
+      <div class="close"></div>
 
       <%= form_for(@album, url: user_album_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/album_errors' %>

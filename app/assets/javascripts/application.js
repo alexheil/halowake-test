@@ -49,6 +49,8 @@ var signInAndRegister = function() {
     $('#menu-container').fadeOut(300);
     $('.back').fadeIn(300);
     $('.wrapper').addClass("blur", 300);
+    $('.background').addClass("blur", 300);
+    $('.footer').addClass("blur", 300);
   });
 
   $('#register').click(function() {
@@ -59,6 +61,8 @@ var signInAndRegister = function() {
     $('#menu-container').fadeOut(300);
     $('.back').fadeIn(300);
     $('.wrapper').addClass("blur", 300);
+    $('.background').addClass("blur", 300);
+    $('.footer').addClass("blur", 300);
   });
 
   $('.back').click(function() {
@@ -71,19 +75,12 @@ var signInAndRegister = function() {
     $('#menu-container').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
+    $('.background').removeClass("blur", 300);
   });
 
   $('.close').click(function() {
     $('#sign-in-form').fadeOut(300);
     $('#close-sign-in').fadeOut(300);
-    $('#sign-in').fadeIn(300);
-    $('#register').fadeIn(300);
-    $('#menu-container').fadeOut(300);
-    $('.back').fadeOut(300);
-    $('.wrapper').removeClass("blur", 300);
-  });
-
-  $('.close').click(function() {
     $('#register-form').fadeOut(300);
     $('#close-register').fadeOut(300);
     $('#sign-in').fadeIn(300);
@@ -91,6 +88,7 @@ var signInAndRegister = function() {
     $('#menu-container').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
+    $('.background').removeClass("blur", 300);
   });
 
 };
@@ -201,6 +199,10 @@ var editProfile = function() {
     $('#close-register').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
+  });
+
+  $('#optional-fields-click').click(function() {
+    $('#optional-fields').fadeIn(300);
   });
 
 };

@@ -1,12 +1,11 @@
 <div class="back"></div>
-<div class="back-second"></div>
 <div class="background"></div>
 
 <header class="wrapper">
   <div class="home-header-container">
     <nav class="home-nav">
       <div class="home-site-title">
-        <a href="http://halowake.com"><span class="bold">halo</span>wake</a>
+        <a href="http://halowake.com"><span class="bold">HALO</span>WAKE</a>
       </div>
       <ul>
         <li><%= link_to "Discover", "#", class: "home-nav-links" %></li>
@@ -97,10 +96,14 @@
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class: "submit-button" %>
+      <div class="actions border-bottom three-space-bottom-padding">
+        <%= f.submit "Register", class: "submit-button" %>
       </div>
     <% end %>
+
+    <div class="three-space-top">
+      <%= link_to "But I already have an account.", sign_in_path %>
+    </div>
 
   </div>
 </div>
