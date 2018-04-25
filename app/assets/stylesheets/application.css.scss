@@ -426,6 +426,13 @@ a {
   color: $white;
 }
 
+.black {
+  color: $black;
+  &:hover {
+    color: $black;
+  }
+}
+
 .center {
   text-align: center;
 }
