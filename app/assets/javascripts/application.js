@@ -254,6 +254,24 @@ var userTabs = function() {
     $('#feed-button').removeClass("deactive-tab");
   });
 
+  $('.photo_form').on('click','#photo-tab', function() {
+    $('#albums-container').fadeIn(300);
+    $('#feed-container').hide();
+    $('#photo-tab').removeClass("unchecked-tab");
+    $('#photo-tab').addClass("checked-tab");
+    $('#art-tab').removeClass("checked-tab");
+    $('#art-tab').addClass("unchecked-tab");
+  });
+
+  $('.photo_form').on('click','#art-tab', function() {
+    $('#albums-container').hide();
+    $('#feed-container').fadeIn(300);
+    $('#photo-tab').addClass("unchecked-tab");
+    $('#photo-tab').removeClass("checked-tab");
+    $('#art-tab').addClass("checked-tab");
+    $('#art-tab').removeClass("unchecked-tab");
+  });
+
 };
 
 $(document).ready(userTabs);

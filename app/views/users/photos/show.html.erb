@@ -52,8 +52,8 @@
 <span class="photo_purchase_form"><%= render "users/partials/photos/photo_purchase_form" %></span>
 
 <% if user_signed_in? && current_user == @user %>
-
-  <div id="album-form">
+  
+  <span class="photo_form"><div id="album-form">
     <div class="profile-form-inside">
       <div class="close"></div>
 
@@ -70,120 +70,120 @@
         </div>
 
         <div class="field">
-          <%= f.label(:photo_type, "Photo") %>
-          <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
+          <label class="checked-tab" id="photo-tab" for="is-photo-click">Photo</label>
+          <%= f.radio_button(:photo_type, "photo", id: "is-photo-click", checked: true) %>
+
+          <label class="unchecked-tab" id="art-tab" for="is-art-click">Art</label>
+          <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
         </div>
 
-        <div class="field">
-          <%= f.label(:photo_type, "Art") %>
-          <%= f.radio_button(:photo_type, "art", class: "five-space", id: "is-art-click") %>
+        <div id="optional-fields-click" class="field-padding border-top">
+          Options &#9660;
         </div>
 
-        <div class="field-padding border-bottom border-top">
-          Optional fields
-        </div>
-
-        <div id="photo-fields">
-          <div class="field">
-            <%= f.label :resolution %>
-            <%= f.text_field :resolution, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :camera %>
-              <%= f.text_field :camera, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :lens %>
-            <%= f.text_field :lens, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :aperture %>
-            <%= f.text_field :aperture, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :exposure %>
-            <%= f.text_field :exposure, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :flash %>
-            <%= f.text_field :flash, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :focal_length %>
-            <%= f.text_field :focal_length, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :iso %>
-            <%= f.text_field :iso, class: "text-field" %>
-          </div>
-        </div>
-
-        <div id="art-fields">
-          <div class="field">
-            <%= f.label :tool %>
-            <%= f.text_field :tool, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :medium %>
-            <%= f.text_field :medium, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :surface %>
-            <%= f.text_field :surface, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :style %>
-              <%= f.text_field :style, class: "text-field" %>
-          </div>
-          <div class="field">
-            <%= f.label :size %>
-            <%= f.text_field :size, class: "text-field" %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= f.label :description %>
-          <%= f.text_area :description, class: "text-area" %>
-        </div>
-
-        <% if current_user.payment_setting.present? && current_user.payment_setting.stripe_id.present? %>
-          <div class="field">
-            <%= f.label :for_sale %>
-            <%= f.check_box :for_sale, class: "text-field", id: "for-sale" %>
-          </div>
-          <div id="for-sale-container">
+        <div id="optional-fields">
+          <div id="photo-fields" class="three-space-top-padding border-top">
             <div class="field">
-              <%= f.label :base_price %>
-              <%= f.text_field :base_price, class: "text-field" %>
+              <%= f.label :resolution %>
+              <%= f.text_field :resolution, class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label(:transport_type, "Downloadable") %>
-              <%= f.radio_button(:transport_type, "downloadable", id: "downloadable") %>
+              <%= f.label :camera %>
+                <%= f.text_field :camera, class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label(:transport_type, "Shippable") %>
-              <%= f.radio_button(:transport_type, "shippable", id: "shippable") %>
+              <%= f.label :lens %>
+              <%= f.text_field :lens, class: "text-field" %>
             </div>
-            <div id="shippable-fields">
+            <div class="field">
+              <%= f.label :aperture %>
+              <%= f.text_field :aperture, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :exposure %>
+              <%= f.text_field :exposure, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :flash %>
+              <%= f.text_field :flash, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :focal_length %>
+              <%= f.text_field :focal_length, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :iso %>
+              <%= f.text_field :iso, class: "text-field" %>
+            </div>
+          </div>
+
+          <div id="art-fields" class="three-space-top-padding border-top">
+            <div class="field">
+              <%= f.label :tool %>
+              <%= f.text_field :tool, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :medium %>
+              <%= f.text_field :medium, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :surface %>
+              <%= f.text_field :surface, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :style %>
+                <%= f.text_field :style, class: "text-field" %>
+            </div>
+            <div class="field">
+              <%= f.label :size %>
+              <%= f.text_field :size, class: "text-field" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "text-area" %>
+          </div>
+
+          <% if current_user.payment_setting.present? && current_user.payment_setting.stripe_id.present? %>
+            <div class="field">
+              <%= f.label :for_sale %>
+              <%= f.check_box :for_sale, class: "text-field", id: "for-sale" %>
+            </div>
+            <div id="for-sale-container">
               <div class="field">
-                <%= f.label :shipping_price %>
-                <%= f.text_field :shipping_price, class: "text-field" %>
+                <%= f.label :base_price %>
+                <%= f.text_field :base_price, class: "text-field" %>
+              </div>
+              <div class="field">
+                <%= f.label(:transport_type, "Downloadable") %>
+                <%= f.radio_button(:transport_type, "downloadable", id: "downloadable") %>
+              </div>
+              <div class="field">
+                <%= f.label(:transport_type, "Shippable") %>
+                <%= f.radio_button(:transport_type, "shippable", id: "shippable") %>
+              </div>
+              <div id="shippable-fields">
+                <div class="field">
+                  <%= f.label :shipping_price %>
+                  <%= f.text_field :shipping_price, class: "text-field" %>
+                </div>
+              </div>
+              <div class="field">
+                <%= f.label :currency %>
+                <%= f.text_field :currency, class: "text-field" %>
+              </div>
+              <div class="field">
+                <%= f.label :quantity %>
+                <%= f.text_field :quantity, class: "text-field" %>
               </div>
             </div>
-            <div class="field">
-              <%= f.label :currency %>
-              <%= f.text_field :currency, class: "text-field" %>
-            </div>
-            <div class="field">
-              <%= f.label :quantity %>
-              <%= f.text_field :quantity, class: "text-field" %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
 
         <%= f.submit "Update photo", data: { disable_with: 'Updating...' }, class: "submit-button" %>
       <% end %>
 
     </div>
-  </div>
+  </div></span>
 <% end %>

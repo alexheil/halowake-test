@@ -15,12 +15,10 @@
       </div>
 
       <div class="field">
-        <%= f.label(:photo_type, "Photo") %>
-        <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
-      </div>
+        <label class="checked-tab" id="photo-tab" for="is-photo-click">Photo</label>
+        <%= f.radio_button(:photo_type, "photo", id: "is-photo-click", checked: true) %>
 
-      <div class="field">
-        <%= f.label(:photo_type, "Art") %>
+        <label class="unchecked-tab" id="art-tab" for="is-art-click">Art</label>
         <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
       </div>
 
