@@ -19,7 +19,7 @@
       <% end %></span>
     </div>
 
-    <div class="one-space">
+    <div class="one-space-top">
       <div class="one-space">
         <%= @user.profile.age.to_s if @user.profile.age.present? %><%= " | " if @user.profile.age.present? %>
         <%= @user.location.city if @user.location.city.present? %><%= ", " + @user.location.state if @user.location.state.present? %><%= ", " + @user.location.country if @user.location.country.present? %>
@@ -27,7 +27,7 @@
       <div class="one-space">
         <%= link_to "Website", @user.profile.website if @user.profile.website.present? %> <%= "|" if @user.profile.website.present? && (@user.profile.facebook_url.present? || @user.profile.twitter_url.present? || @user.profile.instagram_url.present?) %> <%= link_to @user.profile.facebook_handle, @user.profile.facebook_url, class: "facebook" if @user.profile.facebook_url.present? %> <%= "|" if @user.profile.facebook_url.present? && @user.profile.twitter_url.present? %> <%= link_to @user.profile.twitter_handle, @user.profile.twitter_url, class: "twitter" if @user.profile.twitter_url.present? %> <%= "|" if (@user.profile.twitter_url.present? || @user.profile.facebook_url.present?) && @user.profile.instagram_url.present? %> <%= link_to @user.profile.instagram_handle, @user.profile.instagram_url, class: "instagram" if @user.profile.instagram_url.present? %>
       </div>
-      <div class="one-space">
+      <div class="one-space-top">
         <%= @user.profile.biography if @user.profile.biography.present? %>
       </div>
     </div>

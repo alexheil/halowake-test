@@ -19,6 +19,12 @@
       .close:after {
         background: <%= @user.theme.text_color %>;
       }
+      .close:hover:before {
+        background: <%= @user.theme.hover_color %>
+      }
+      .close:hover:after {
+        background: <%= @user.theme.hover_color %>
+      }
       .text-field {
         color: <%= @user.theme.text_color %>;
         border-bottom: 1px solid <%= @user.theme.text_color %>;

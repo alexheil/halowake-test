@@ -213,6 +213,22 @@ var followButton = function() {
     });
   };
 
+  $('.text-hover').mouseenter(function() {
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.5')
+  });
+
+  $('.text-hover').mouseleave(function() {
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '1')
+  });
+
+  $('.thumbnail-image-feed').mouseenter(function() {
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.5')
+  });
+
+  $('.thumbnail-image-feed').mouseleave(function() {
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '1')
+  });
+
 };
 
 $(document).ready(followButton);

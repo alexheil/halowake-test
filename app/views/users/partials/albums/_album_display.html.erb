@@ -2,24 +2,24 @@
   <div id="albums-container">
     <% @user.albums.each do |album| %>
     
-    <div class="nameplate border-bottom">
-      <div class="first-column relative">
-        <% album.photos.take(1).each do |photo| %>
-          <%= link_to(user_album_path(@user, album)) do %>
-            <img class="thumbnail-image" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
+      <div class="nameplate border-bottom">
+        <div class="first-column relative">
+          <% album.photos.take(1).each do |photo| %>
+            <%= link_to(user_album_path(@user, album)) do %>
+              <img class="thumbnail-image" srcset="<%= photo.image_url(:thumb) %>" width="100%" height="auto" />
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
 
-      <div class="second-column">
-        <div class="medium-text">
-          <%= link_to album.title, user_album_path(@user, album) %>
-        </div>
-        <div class="one-space">
-          <%= album.description %>
+        <div class="second-column">
+          <div class="medium-text">
+            <%= link_to album.title, user_album_path(@user, album) %>
+          </div>
+          <div class="one-space">
+            <%= album.description %>
+          </div>
         </div>
       </div>
-    </div>
 
     <% end %>
   </div>
@@ -27,13 +27,29 @@
   <div id="feed-container">
     <div class="nameplate">
       <% @user.feed.each do |photo| %>
-        <div class="three-column relative">
-          <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
-            <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-          <% end %>
-          <div class="centered">
-            <div class="text-hover large-text">
-              +<%= photo.votes.count %>
+        <div class="three-column-feed border">
+          <div class="relative">
+            <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
+              <img class="thumbnail-image-feed" src="<%= photo.image_url(:thumb) %>">
+            <% end %>
+            <div class="centered">
+              <div class="text-hover large-text">
+                +<%= photo.votes.count %>
+              </div>
+            </div>
+          </div>
+          <div class="feed-container">
+            <div>
+              <%= link_to truncate(photo.title, :length => 50), user_album_photo_path(photo.user, photo.album, photo) %>
+            </div>
+            <div class="one-space-bottom mini-text">
+              Posted by
+              <% if photo.user.profile.first_name.present? && photo.user.profile.last_name.present? %>
+                <%= link_to "#{photo.user.profile.first_name}" + " " + "#{photo.user.profile.last_name}", user_path(photo.user), class: "feed-links" %>
+              <% else %>
+                <%= link_to photo.user.username, user_path(photo.user), class: "feed-links" %>
+              <% end %>
+              <%= time_ago_in_words(photo.created_at) %> ago.
             </div>
           </div>
         </div>
@@ -41,18 +57,7 @@
     </div>
   </div>
 <% else %>
-  <div class="nameplate">
-    <% @user.feed.each do |photo| %>
-      <div class="three-column relative">
-        <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
-          <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-        <% end %>
-        <div class="centered">
-          <div class="text-hover large-text">
-            +<%= photo.votes.count %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+
+  <%# feed goes here %>
+
 <% end %>
