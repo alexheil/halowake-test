@@ -24,12 +24,12 @@
         <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
       </div>
 
-      <div id="optional-fields-click" class="field-padding border-bottom border-top">
+      <div id="optional-fields-click" class="field-padding border-top">
         Options &#9660;
       </div>
 
       <div id="optional-fields">
-        <div id="photo-fields" class="three-space-top">
+        <div id="photo-fields" class="three-space-top-padding border-top">
           <div class="field">
             <%= f.label :resolution %>
             <%= f.text_field :resolution, class: "text-field" %>
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div id="art-fields" class="three-space-top">
+        <div id="art-fields" class="three-space-top-padding border-top">
           <div class="field">
             <%= f.label :tool %>
             <%= f.text_field :tool, class: "text-field" %>

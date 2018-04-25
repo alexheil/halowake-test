@@ -7,20 +7,75 @@
   <style>
     body {
       color: <%= @user.theme.text_color %>;
-      background : <%= @user.theme.background_color %>;
-    }
-    a {
-      color: <%= @user.theme.link_color %>;
-    }
-    a:hover {
-      color: <%= @user.theme.hover_color %>
+      background: <%= @user.theme.background_color %>;
     }
     ::selection {
       background: <%= @user.theme.main_color %>;
     }
+    <% if @user.theme.text_color.present? %>
+      .close:before {
+        background: <%= @user.theme.text_color %>;
+      }
+      .close:after {
+        background: <%= @user.theme.text_color %>;
+      }
+      .text-field {
+        color: <%= @user.theme.text_color %>;
+        border-bottom: 1px solid <%= @user.theme.text_color %>;
+      }
+      .text-area {
+        color: <%= @user.theme.text_color %>;
+        border-bottom: 1px solid <%= @user.theme.text_color %>;
+      }
+    <% end %>
+    <% if @user.theme.background_color.present? %>
+      .side-header a {
+        color: <%= @user.theme.text_color %>;
+      }
+      #close-menu {
+        color: <%= @user.theme.text_color %>;
+      }
+      .alert-notice {
+        background: <%= @user.theme.background_color %>;
+      }
+      .alert-alert {
+        background: <%= @user.theme.background_color %>;
+      }
+      .back {
+        background: <%= @user.theme.background_color %>;
+      }
+      #profile-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+      #album-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+      #sign-in-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+      #register-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+      #edit-album-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+      #purchase-form .profile-form-inside {
+        background: <%= @user.theme.background_color %>;
+      }
+    <% end %>
     <% if @user.theme.link_color.present? %>
+      a {
+        color: <%= @user.theme.link_color %>;
+      }
+      a:hover {
+        color: <%= @user.theme.hover_color %>;
+      }
       .side-header a:hover {
         color: <%= @user.theme.link_color %>;
+      }
+      .active-tab {
+        color: <%= @user.theme.link_color %>;
+        border: 1px solid <%= @user.theme.link_color %>;
       }
       #menu-click {
         color: <%= @user.theme.link_color %>;

@@ -48,7 +48,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password %> <%= link_to "I forgot my password.", '#', class: "mini-text" %>
+        <%= f.label :password %> <%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %>
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 

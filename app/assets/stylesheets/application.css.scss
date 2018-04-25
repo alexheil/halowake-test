@@ -3,14 +3,14 @@
  *= require_self
  */
 
-$main-color: #FF4081;
-$accent-color1: #FFBA62;
-$accent-color2: #FF7320;
-$accent-color3: #FFAD7C;
-$green: #42CC42;
-$lightgreen: #EAFEEA;
-$black: #212121;
-$white: #ffffff;
+$main: #DE5757;
+$light: #E8979F;
+$dark: #A3A6AE;
+$green: #789552;
+$border: #CCCCCC;
+$red: #f44336;
+$black: #4A4B58;
+$white: #F9F9F8;
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
 
 @mixin transition {
@@ -18,7 +18,7 @@ $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
   -moz-transition: .3s;
   -o-transition: .3s;
   &:hover {
-    -webkit-transition: .3s;
+    -webkit-transition: .3tas;
     -moz-transition: .3s;
     -o-transition: .3s;
   }
@@ -32,25 +32,26 @@ body {
   font-family: $fancy-font;
   font-weight: 300;
   background: $white;
+  color: $black;
 }
 
 a {
   @include transition;
-  color: $main-color;
+  color: $main;
   text-decoration: none;
   &:hover {
-    color: $accent-color1;
+    color: $light;
   }
 }
 
 ::selection {
-  color: #fff;
-  background: $main-color;
+  color: $white;
+  background: $main;
 }
 
 ::-moz-selection {
-  color: #fff;
-  background: $main-color;
+  color: $white;
+  background: $main;
 }
 
 .wrapper {
@@ -67,20 +68,6 @@ a {
 .mini-container {
   width: 50%;
   margin: 0 auto;
-}
-
-.back-second {
-  background: #212121;
-  background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -3;
 }
 
 .background {
@@ -124,17 +111,17 @@ a {
 
 .alert-notice {
   border-top: 10px solid $green;
-  background: #ffffff;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  background: $white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .alert-alert {
-  border-top: 10px solid $main-color;
-  background: #ffffff;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-top: 10px solid $main;
+  background: $white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -143,16 +130,6 @@ a {
   margin: 0 auto;
   padding: 1vh 0;
   font-family: $fancy-font
-}
-
-#close-alert {
-  @include transition;
-  width: 100%;
-  color: $main-color;
-  cursor: pointer;
-  &:hover {
-    color: $black;
-  }
 }
 
 /* **************** BLOCKS ******************* */
@@ -304,17 +281,47 @@ a {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $border;
 }
 
 .border-top {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid $border;
 }
 
-.tab {
-  padding: 1vh 0;
+#feed-button {
+  cursor: pointer;
+}
+
+#album-button {  cursor: pointer;
+}
+
+.active-tab {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid $main;
+  @include transition;
+  padding: .51vh 0;
+  background: transparent;
+  color: $main;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
-    background: #eee;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.deactive-tab {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid $border;
+  @include transition;
+  padding: .51vh 0;
+  background: transparent;
+  color: $border;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -344,7 +351,7 @@ a {
   a {
     color: $black;
     &:hover {
-      color: $main-color;
+      color: $main;
     }
   }
   ul {
@@ -406,6 +413,10 @@ a {
   margin-top: 3vh;
 }
 
+.three-space-top-padding {
+  padding-top: 3vh;
+}
+
 .three-space-bottom {
   margin-bottom: 3vh;
 }
@@ -436,14 +447,14 @@ a {
 
 .home-site-title {
   display: inline-block;
-  color: $main-color;
+  color: $main;
   padding: 8vh 0 5vh 0;
   font-weight: 300;
   font-size: 3em;
   text-align: center;
   &:hover {
     text-decoration: none;
-    color: $accent-color1;
+    color: $light;
   }
 }
 
@@ -468,7 +479,7 @@ a {
   padding: 2vh 2vw;
   cursor: pointer;
   &:hover {
-    color: $main-color;
+    color: $main;
   }
 }
 
@@ -476,18 +487,18 @@ a {
   width: 96%;
   margin: 0 auto;
   padding-bottom: 1vh;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $border;
 }
 
 .site-title {
   display: inline-block;
-  color: $main-color;
+  color: $main;
   padding: 2vh 0 1vh 0;
   font-weight: 300;
   font-size: 2em;
   &:hover {
     text-decoration: none;
-    color: $accent-color1;
+    color: $light;
   }
 }
 
@@ -513,7 +524,7 @@ a {
   cursor: pointer;
   padding: 1vh 2vw;
   &:hover {
-    color: $main-color;
+    color: $main;
   }
 }
 
@@ -533,10 +544,10 @@ a {
   }
   .nav-links {
     @include transition;
-    color: #aaa;
+    color: $dark;
     &:hover {
       @include transition;
-      color: #7a7a7a;
+      color: $light;
     }
   }
   ul {
@@ -557,7 +568,7 @@ a {
 .footer-disclaimer {
   font-size: .75em;
   text-align: center;
-  color: #aaa;
+  color: $dark;
 }
 
 /* ************ BUTTONS *************** */
@@ -573,7 +584,7 @@ a {
   box-sizing: border-box;
   border-radius: 10px;
   &:hover {
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -593,10 +604,10 @@ a {
 
 .submit-button {
   @include buttons;
-  background: $main-color;
+  background: $main;
   width: 100%;
   padding: 1vh 1vw;
-  border: 1px solid $main-color;
+  border: 1px solid $main;
   color: $white;
   cursor: pointer;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -607,10 +618,10 @@ a {
 
 .unsubmit-button {
   @include buttons;
-  background: $main-color;
+  background: $main;
   width: 100%;
   padding: 1vh 1vw;
-  border: 1px solid $main-color;
+  border: 1px solid $main;
   color: $white;
   cursor: pointer;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -644,7 +655,7 @@ a {
 .text-field {
   @include fields;
   padding: 1vh 1vw;
-  background: $white;
+  background: transparent;
 }
 
 .text-area {
@@ -653,7 +664,7 @@ a {
   max-width: 100%;
   height: 30vh;
   padding: 1vh 1vw;
-  background: $white;
+  background: transparent;
 }
 
 .field {
@@ -686,7 +697,7 @@ a {
   float: left;
   border: none;
   background-color: transparent;
-  color: $main-color;
+  color: $main;
   cursor: pointer;
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -695,7 +706,7 @@ a {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
-    color: $accent-color1;
+    color: $light;
   }
 }
 
@@ -707,7 +718,7 @@ a {
   margin: 12px 0 0 0;
   border: none;
   background-color: transparent;
-  color: $main-color;
+  color: $main;
   cursor: pointer;
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -716,7 +727,7 @@ a {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
-    color: $accent-color1;
+    color: $light;
   }
 }
 
@@ -739,19 +750,19 @@ a {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   }
   a {
-    color: #aaa;
+    color: $dark;
     &:hover {
-      color: $accent-color1;
+      color: $light;
     }
   }
 }
 
 @mixin closeButtons {
   @include buttons;
-  background-color: $main-color;
+  background-color: $main;
   width: 100%;
   padding: .51vh .51vw;
-  border: 1px solid $main-color;
+  border: 1px solid $main;
   color: $white;
   cursor: pointer;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -768,31 +779,11 @@ a {
   @include javaScriptForms;
 }
 
-#close-sign-in {
-  @include closeButtons;
-}
-
-#close-register {
-  @include closeButtons;
-}
-
 #edit-profile {
   @include closeButtons;
 }
 
 #create-album {
-  @include closeButtons;
-}
-
-#close-profile {
-  @include closeButtons;
-}
-
-#close-album {
-  @include closeButtons;
-}
-
-#close-photo-form {
   @include closeButtons;
 }
 
@@ -817,7 +808,7 @@ a {
     height: 30px;
     width: 1px;
     z-index: 1001;
-    background: black;
+    background: $black;
     position: absolute;
     left: 11px;
     top: 0px;
@@ -832,7 +823,7 @@ a {
     height: 30px;
     width: 1px;
     z-index: 1001;
-    background: black;
+    background: $black;
     position: absolute;
     left: 11px;
     top: 0px;
@@ -849,7 +840,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffffff;
+  background: $white;
   filter: alpha(opacity=80);
   -moz-opacity: 0.80;
   -khtml-opacity: 0.80;
@@ -881,24 +872,14 @@ a {
 #optional-fields-click {
   @include transition;
   cursor: pointer;
-  color: $main-color;
+  color: $main;
   &:hover {
-    color: $accent-color1;
+    color: $light;
   }
 }
 
 .blur {
   -webkit-filter: blur(4px);
-}
-
-#albums-tab {
-  cursor: pointer;
-  border-bottom: 1px solid #ccc;
-}
-
-#feed-tab {
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
 }
 
 #feed-container {
@@ -914,47 +895,33 @@ a {
 }
 
 #purchase-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 10% 0 0;
-  z-index: 1005;
-  display: none;
-  .profile-form-inside {
-    width: 65%;
-    background: $white;
-    margin: 5vh auto;
-    padding: 2vh 2vw;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  }
+  @include javaScriptForms;
 }
 
 #edit-photo-click {
   @include transition;
   cursor: pointer;
-  color: $main-color;
+  color: $main;
   &:hover {
-    color: $accent-color1;
+    color: $light;
   }
 }
 
 #edit-album-click {
   @include transition;
   cursor: pointer;
-  color: $main-color;
+  color: $main;
   &:hover {
-    color: $accent-color1;
+    color: $light;
   }
 }
 
 #menu-click {
   @include transition;
   cursor: pointer;
-  color: $main-color;
+  color: $main;
   &:hover {
-    color: $accent-color1;
+    color: $light;
   }
 }
 
@@ -963,7 +930,7 @@ a {
   cursor: pointer;
   color: $black;
   &:hover {
-    color: $main-color;
+    color: $main;
   }
 }
 
@@ -1068,6 +1035,10 @@ a {
 
 @media screen and (max-width: 650px) {
 
+  .two-column {
+    width: 100%;
+  }
+
   .three-column {
     width: 100%;
   }
@@ -1075,6 +1046,14 @@ a {
   .thumbnail-image-three {
     height: 96vw;
     width: 96vw;
+  }
+
+  .active-tab {
+    width: 100%;
+  }
+
+  .deactive-tab {
+    width: 100%;
   }
 
   @mixin javaScriptForms {
