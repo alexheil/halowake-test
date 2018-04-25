@@ -193,6 +193,14 @@ var editProfile = function() {
 
   $('#optional-fields-click').click(function() {
     $('#optional-fields').fadeIn(300);
+    $('#optional-fields-click').hide();
+    $('#optional-fields-close').fadeIn(300);
+  });
+
+  $('#optional-fields-close').click(function() {
+    $('#optional-fields').fadeOut(300);
+    $('#optional-fields-close').hide();
+    $('#optional-fields-click').fadeIn(300);
   });
 
 };
