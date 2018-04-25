@@ -34,7 +34,7 @@
             <% end %>
             <div class="centered">
               <div class="text-hover large-text">
-                +<%= photo.votes.count %>
+                <%= link_to "+#{photo.votes.count}", user_album_photo_path(photo.user, photo.album, photo) %>
               </div>
             </div>
           </div>
