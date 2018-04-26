@@ -1,7 +1,6 @@
 <div class="wrapper">
   <div class="container">
 
-    <div class="form-container">
       <div class="three-space medium-text">
         Membership options
       </div>
@@ -9,20 +8,26 @@
       <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
 
       <div class="field">
-        <label class="unchecked-membership-tab" id="bronze-tab" for="bronze-id">Bronze</label>
-        <%= f.radio_button(:membership_type, "bronze", id: "bronze-id") %>
 
+        <div class="four-tab">
+          <label class="unchecked-membership-tab" id="bronze-tab" for="bronze-id">Bronze</label>
+          <%= f.radio_button(:membership_type, "bronze", id: "bronze-id") %>
+        </div>
 
-        <label class="unchecked-membership-tab" id="silver-tab" for="silver-id">Silver</label>
-        <%= f.radio_button(:membership_type, "silver", id: "silver-id") %>
+        <div class="four-tab">
+          <label class="unchecked-membership-tab" id="silver-tab" for="silver-id">Silver</label>
+          <%= f.radio_button(:membership_type, "silver", id: "silver-id") %>
+        </div>
 
+        <div class="four-tab">
+          <label class="unchecked-membership-tab" id="gold-tab" for="gold-id">Gold</label>
+          <%= f.radio_button(:membership_type, "gold", id: "gold-id") %>
+        </div>
 
-        <label class="unchecked-membership-tab" id="gold-tab" for="gold-id">Gold</label>
-        <%= f.radio_button(:membership_type, "gold", id: "gold-id") %>
-
-
-        <label class="unchecked-membership-tab" id="platinum-tab" for="platinum-id">Platinum</label>
-        <%= f.radio_button(:membership_type, "platinum", id: "platinum-id") %>
+        <div class="four-tab">
+          <label class="unchecked-membership-tab" id="platinum-tab" for="platinum-id">Platinum</label>
+          <%= f.radio_button(:membership_type, "platinum", id: "platinum-id") %>
+        </div>
 
 
       </div>
@@ -31,7 +36,6 @@
         <%= f.submit "Update membership", data: { disable_with: 'Updating...' }, class: "submit-button" %>
       <% end %>
 
-    </div>
 
   </div>
 </div>
