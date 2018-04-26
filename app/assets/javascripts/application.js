@@ -296,6 +296,14 @@ var userTabs = function() {
     $('#silver-tab').addClass("unchecked-membership-tab");
     $('#gold-tab').addClass("unchecked-membership-tab");
     $('#platinum-tab').addClass("unchecked-membership-tab");
+    $('#bronze-border-top').removeClass("border-top-tab");
+    $('#bronze-border-top').addClass("bronze-border-top-tab");
+    $('#silver-border-top').addClass("border-top-tab");
+    $('#silver-border-top').removeClass("silver-border-top-tab");
+    $('#gold-border-top').addClass("border-top-tab");
+    $('#gold-border-top').removeClass("gold-border-top-tab");
+    $('#platinum-border-top').addClass("border-top-tab");
+    $('#platinum-border-top').removeClass("platinum-border-top-tab");
   });
 
   $('#silver-id').click(function() {
@@ -307,6 +315,14 @@ var userTabs = function() {
     $('#bronze-tab').addClass("unchecked-membership-tab");
     $('#gold-tab').addClass("unchecked-membership-tab");
     $('#platinum-tab').addClass("unchecked-membership-tab");
+    $('#silver-border-top').removeClass("border-top-tab");
+    $('#silver-border-top').addClass("silver-border-top-tab");
+    $('#bronze-border-top').addClass("border-top-tab");
+    $('#bronze-border-top').removeClass("bronze-border-top-tab");
+    $('#gold-border-top').addClass("border-top-tab");
+    $('#gold-border-top').removeClass("gold-border-top-tab");
+    $('#platinum-border-top').addClass("border-top-tab");
+    $('#platinum-border-top').removeClass("platinum-border-top-tab");
   });
 
   $('#gold-id').click(function() {
@@ -318,6 +334,14 @@ var userTabs = function() {
     $('#bronze-tab').addClass("unchecked-membership-tab");
     $('#silver-tab').addClass("unchecked-membership-tab");
     $('#platinum-tab').addClass("unchecked-membership-tab");
+    $('#gold-border-top').removeClass("border-top-tab");
+    $('#gold-border-top').addClass("gold-border-top-tab");
+    $('#bronze-border-top').addClass("border-top-tab");
+    $('#bronze-border-top').removeClass("bronze-border-top-tab");
+    $('#silver-border-top').addClass("border-top-tab");
+    $('#silver-border-top').removeClass("silver-border-top-tab");
+    $('#platinum-border-top').addClass("border-top-tab");
+    $('#platinum-border-top').removeClass("platinum-border-top-tab");
   });
 
   $('#platinum-id').click(function() {
@@ -329,26 +353,42 @@ var userTabs = function() {
     $('#bronze-tab').addClass("unchecked-membership-tab");
     $('#silver-tab').addClass("unchecked-membership-tab");
     $('#gold-tab').addClass("unchecked-membership-tab");
+    $('#platinum-border-top').removeClass("border-top-tab");
+    $('#platinum-border-top').addClass("platinum-border-top-tab");
+    $('#bronze-border-top').addClass("border-top-tab");
+    $('#bronze-border-top').removeClass("bronze-border-top-tab");
+    $('#silver-border-top').addClass("border-top-tab");
+    $('#silver-border-top').removeClass("silver-border-top-tab");
+    $('#gold-border-top').addClass("border-top-tab");
+    $('#gold-border-top').removeClass("gold-border-top-tab");
   });
 
   if ($('#bronze-id').prop('checked')) {
     $('#bronze-tab').removeClass("unchecked-membership-tab");
     $('#bronze-tab').addClass("bronze-tab");
+    $('#bronze-border-top').removeClass("border-top-tab");
+    $('#bronze-border-top').addClass("bronze-border-top-tab");
   };
 
   if ($('#silver-id').prop('checked')) {
     $('#silver-tab').removeClass("unchecked-membership-tab");
     $('#silver-tab').addClass("silver-tab");
+    $('#silver-border-top').removeClass("border-top-tab");
+    $('#silver-border-top').addClass("silver-border-top-tab");
   };
 
   if ($('#gold-id').prop('checked')) {
     $('#gold-tab').removeClass("unchecked-membership-tab");
     $('#gold-tab').addClass("gold-tab");
+    $('#gold-border-top').removeClass("border-top-tab");
+    $('#gold-border-top').addClass("gold-border-top-tab");
   };
 
   if ($('#platinum-id').prop('checked')) {
     $('#platinum-tab').removeClass("unchecked-membership-tab");
     $('#platinum-tab').addClass("platinum-tab");
+    $('#platinum-border-top').removeClass("border-top-tab");
+    $('#platinum-border-top').addClass("platinum-border-top-tab");
   };
 
 };

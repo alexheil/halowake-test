@@ -738,12 +738,13 @@ input[type="radio" i] {
   }
 }
 
-@mixin membership-tab {
-  width: 24%;
+@mixin membershipButtons {
+  width: 90%;
   display: inline-block;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  margin: 2vh 5%;
   @include transition;
   padding: .51vh 0;
   background: transparent;
@@ -753,40 +754,104 @@ input[type="radio" i] {
   }
 }
 
+.bronze-border-top-tab {
+  @include transition;
+  border-top: 10px solid #cd7f32;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.silver-border-top-tab {
+  @include transition;
+  border-top: 10px solid #c0c0c0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.gold-border-top-tab {
+  @include transition;
+  border-top: 10px solid #ffd700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.platinum-border-top-tab {
+  @include transition;
+  border-top: 10px solid #e5e4e2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.border-top-tab {
+  @include transition;
+  border-top: 10px solid $border;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.padding-tab {
+  padding: 2vh 5%;
+}
+
 .four-tab {
-  margin: 0;
+  @include transition;
   width: 24%;
   display: inline-block;
   vertical-align: top;
+  border: 1px solid $border;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
 }
 
 .bronze-tab {
-  @include membership-tab;
+  @include membershipButtons;
   border: 1px solid #cd7f32;
+  border-left: 1px solid #cd7f32;
+  border-right: 1px solid #cd7f32;
+  border-bottom: 1px solid #cd7f32;
+  border-top: 10px solid #cd7f32;
   color: #cd7f32;
 }
 
 .silver-tab {
-  @include membership-tab;
+  @include membershipButtons;
   border: 1px solid #c0c0c0;
+  border-left: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  border-top: 10px solid #c0c0c0;
   color: #c0c0c0;
 }
 
 .gold-tab {
-  @include membership-tab;
+  @include membershipButtons;
   border: 1px solid #ffd700;
+  border-left: 1px solid #ffd700;
+  border-right: 1px solid #ffd700;
+  border-bottom: 1px solid #ffd700;
+  border-top: 10px solid #ffd700;
   color: #ffd700;
 }
 
 .platinum-tab {
-  @include membership-tab;
+  @include membershipButtons;
   border: 1px solid #e5e4e2;
+  border-left: 1px solid #e5e4e2;
+  border-right: 1px solid #e5e4e2;
+  border-bottom: 1px solid #e5e4e2;
+  border-top: 10px solid #e5e4e2;
   color: #e5e4e2;
 }
 
 .unchecked-membership-tab {
-  @include membership-tab;
-  border: 1px solid $border;
+  @include membershipButtons;
+  border-left: 1px solid $border;
+  border-right: 1px solid $border;
+  border-bottom: 1px solid $border;
+  border-top: 10px solid $border;
   color: $border;
 }
 
