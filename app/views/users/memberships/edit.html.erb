@@ -8,14 +8,24 @@
 
       <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
 
-        <%= f.radio_button(:membership_type, "bronze") %>
-        <%= label(:membership_type, "Bronze") %>
-        <%= f.radio_button(:membership_type, "silver") %>
-        <%= label(:membership_type, "Silver") %>
-        <%= f.radio_button(:membership_type, "gold") %>
-        <%= label(:membership_type, "Gold") %>
-        <%= f.radio_button(:membership_type, "platinum") %>
-        <%= label(:membership_type, "Platinum") %>
+      <div class="field">
+        <label class="unchecked-membership-tab" id="bronze-tab" for="bronze-id">Bronze</label>
+        <%= f.radio_button(:membership_type, "bronze", id: "bronze-id") %>
+
+
+        <label class="unchecked-membership-tab" id="silver-tab" for="silver-id">Silver</label>
+        <%= f.radio_button(:membership_type, "silver", id: "silver-id") %>
+
+
+        <label class="unchecked-membership-tab" id="gold-tab" for="gold-id">Gold</label>
+        <%= f.radio_button(:membership_type, "gold", id: "gold-id") %>
+
+
+        <label class="unchecked-membership-tab" id="platinum-tab" for="platinum-id">Platinum</label>
+        <%= f.radio_button(:membership_type, "platinum", id: "platinum-id") %>
+
+
+      </div>
 
 
         <%= f.submit "Update membership", data: { disable_with: 'Updating...' }, class: "submit-button" %>

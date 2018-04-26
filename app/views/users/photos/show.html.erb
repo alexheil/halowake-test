@@ -71,7 +71,7 @@
 
         <div class="field">
           <label class="checked-tab" id="photo-tab" for="is-photo-click">Photo</label>
-          <%= f.radio_button(:photo_type, "photo", id: "is-photo-click", checked: true) %>
+          <%= f.radio_button(:photo_type, "photo", id: "is-photo-click") %>
 
           <label class="unchecked-tab" id="art-tab" for="is-art-click">Art</label>
           <%= f.radio_button(:photo_type, "art", id: "is-art-click") %>
@@ -80,8 +80,10 @@
         <div id="optional-fields-click" class="field-padding border-top">
           Options &#9660;
         </div>
-        <div id="optional-fields-close" class="field-padding border-top">
-          Options &#9660;
+        <div id="optional-fields-close">
+          <div class="field-padding border-top">
+            Options &#9650;
+          </div>
         </div>
 
         <div id="optional-fields">

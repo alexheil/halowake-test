@@ -262,6 +262,13 @@ var userTabs = function() {
     $('#feed-button').removeClass("deactive-tab");
   });
 
+  if ($('#is-art-click').prop('checked')) {
+    $('#photo-tab').addClass("unchecked-tab");
+    $('#photo-tab').removeClass("checked-tab");
+    $('#art-tab').addClass("checked-tab");
+    $('#art-tab').removeClass("unchecked-tab");
+  };
+
   $('.photo_form').on('click','#photo-tab', function() {
     $('#albums-container').fadeIn(300);
     $('#feed-container').hide();
@@ -279,6 +286,70 @@ var userTabs = function() {
     $('#art-tab').addClass("checked-tab");
     $('#art-tab').removeClass("unchecked-tab");
   });
+
+  $('#bronze-id').click(function() {
+    $('#bronze-tab').addClass("bronze-tab");
+    $('#bronze-tab').removeClass("unchecked-membership-tab");
+    $('#silver-tab').removeClass("silver-tab");
+    $('#gold-tab').removeClass("gold-tab");
+    $('#platinum-tab').removeClass("platinum-tab");
+    $('#silver-tab').addClass("unchecked-membership-tab");
+    $('#gold-tab').addClass("unchecked-membership-tab");
+    $('#platinum-tab').addClass("unchecked-membership-tab");
+  });
+
+  $('#silver-id').click(function() {
+    $('#silver-tab').addClass("silver-tab");
+    $('#silver-tab').removeClass("unchecked-membership-tab");
+    $('#bronze-tab').removeClass("bronze-tab");
+    $('#gold-tab').removeClass("gold-tab");
+    $('#platinum-tab').removeClass("platinum-tab");
+    $('#bronze-tab').addClass("unchecked-membership-tab");
+    $('#gold-tab').addClass("unchecked-membership-tab");
+    $('#platinum-tab').addClass("unchecked-membership-tab");
+  });
+
+  $('#gold-id').click(function() {
+    $('#gold-tab').addClass("gold-tab");
+    $('#gold-tab').removeClass("unchecked-membership-tab");
+    $('#bronze-tab').removeClass("bronze-tab");
+    $('#silver-tab').removeClass("silver-tab");
+    $('#platinum-tab').removeClass("platinum-tab");
+    $('#bronze-tab').addClass("unchecked-membership-tab");
+    $('#silver-tab').addClass("unchecked-membership-tab");
+    $('#platinum-tab').addClass("unchecked-membership-tab");
+  });
+
+  $('#platinum-id').click(function() {
+    $('#platinum-tab').addClass("platinum-tab");
+    $('#platinum-tab').removeClass("unchecked-membership-tab");
+    $('#bronze-tab').removeClass("bronze-tab");
+    $('#silver-tab').removeClass("silver-tab");
+    $('#gold-tab').removeClass("gold-tab");
+    $('#bronze-tab').addClass("unchecked-membership-tab");
+    $('#silver-tab').addClass("unchecked-membership-tab");
+    $('#gold-tab').addClass("unchecked-membership-tab");
+  });
+
+  if ($('#bronze-id').prop('checked')) {
+    $('#bronze-tab').removeClass("unchecked-membership-tab");
+    $('#bronze-tab').addClass("bronze-tab");
+  };
+
+  if ($('#silver-id').prop('checked')) {
+    $('#silver-tab').removeClass("unchecked-membership-tab");
+    $('#silver-tab').addClass("silver-tab");
+  };
+
+  if ($('#gold-id').prop('checked')) {
+    $('#gold-tab').removeClass("unchecked-membership-tab");
+    $('#gold-tab').addClass("gold-tab");
+  };
+
+  if ($('#platinum-id').prop('checked')) {
+    $('#platinum-tab').removeClass("unchecked-membership-tab");
+    $('#platinum-tab').addClass("platinum-tab");
+  };
 
 };
 
