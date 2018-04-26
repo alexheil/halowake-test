@@ -754,58 +754,6 @@ input[type="radio" i] {
   }
 }
 
-.bronze-border-top-tab {
-  @include transition;
-  border-top: 10px solid #cd7f32;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.silver-border-top-tab {
-  @include transition;
-  border-top: 10px solid #c0c0c0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.gold-border-top-tab {
-  @include transition;
-  border-top: 10px solid #ffd700;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.platinum-border-top-tab {
-  @include transition;
-  border-top: 10px solid #e5e4e2;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.border-top-tab {
-  @include transition;
-  border-top: 10px solid $border;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.padding-tab {
-  padding: 2vh 5%;
-}
-
-.four-tab {
-  @include transition;
-  width: 24%;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid $border;
-  border-radius: 10px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
-}
-
 .bronze-tab {
   @include membershipButtons;
   border: 1px solid #cd7f32;
