@@ -155,8 +155,8 @@ a {
 }
 
 .two-column {
-  margin: 0;
-  width: 49.76%;
+  margin: 0 auto;
+  width: 50%;
   display: inline-block;
   vertical-align: top;
 }
@@ -169,10 +169,18 @@ a {
 }
 
 .three-column-feed {
-  width: 30vw;
-  margin: 8px;
+  width: 32%;
+  margin: 1vh auto;
   display: inline-block;
   vertical-align: top;
+}
+
+.three-column-feed:last-child {
+    margin: 1vh .599%;
+  }
+
+.three-column-feed:nth-last-child(2) {
+  margin: 1vh .599%;
 }
 
 .three-column:hover .text-hover{
@@ -206,15 +214,15 @@ a {
 }
 
 .first-column {
-  margin: 0;
-  width: 30vh;
+  margin: 0 auto;
+  width: 25%;
   display: inline-block;
   vertical-align: top;
 }
 
 .second-column {
-  margin: 0 0 0 3vw;
-  width: 73%;
+  margin: 0 auto;
+  width: 70%;
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -256,8 +264,8 @@ a {
 }
 
 .thumbnail-image {
-  height: 30vh;
-  width: 30vh;
+  height: 31vh;
+  width: 100%;
   border-radius: 10px;
   object-fit: cover;
   display: block;
@@ -286,8 +294,8 @@ a {
 }
 
 .thumbnail-image-feed {
-  height: 30vw;
-  width: 30vw;
+  height: 31vw;
+  width: 100%;
   object-fit: cover;
   display: block;
   border-top-left-radius: 10px;
@@ -329,7 +337,7 @@ a {
 .border {
   @include transition;
   border: 1px solid $border;
-  border-radius: 10px;
+  border-radius: 11px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -403,6 +411,15 @@ a {
   }
 }
 
+.dark {
+  color: $dark;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .center {
   text-align: center;
 }
@@ -427,6 +444,10 @@ a {
   margin: 1vh 0;
 }
 
+.one-space-left {
+  margin-left: 1vw;
+}
+
 .one-space-bottom {
   margin-bottom: 1vh;
 }
@@ -437,6 +458,10 @@ a {
 
 .three-space {
   margin: 3vh 0;
+}
+
+.three-space-padding {
+  padding: 3vh 0;
 }
 
 .three-space-bottom-padding {
@@ -672,6 +697,7 @@ input[type="radio" i] {
 
 .checked-tab {
   width: 48%;
+  margin: 0 auto;
   display: inline-block;
   border-radius: 10px;
   border: 1px solid $main;
@@ -689,6 +715,7 @@ input[type="radio" i] {
 
 .unchecked-tab {
   width: 48%;
+  margin: 0 auto;
   display: inline-block;
   border-radius: 10px;
   border: 1px solid $border;
@@ -702,10 +729,6 @@ input[type="radio" i] {
   &:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
-}
-
-#photo-tab {
-  margin-right: 1vw;
 }
 
 .active-tab {
@@ -738,15 +761,13 @@ input[type="radio" i] {
   }
 }
 
-@mixin membershipButtons {
-  width: 90%;
+@mixin membershipTabs {
+  width: 24%;
+  margin: 0 auto;
   display: inline-block;
   border-radius: 10px;
-  text-align: center;
   cursor: pointer;
-  margin: 2vh 5%;
   @include transition;
-  padding: .51vh 0;
   background: transparent;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
@@ -754,48 +775,52 @@ input[type="radio" i] {
   }
 }
 
+.padding-tab {
+  padding: 0 2vw;
+}
+
 .bronze-tab {
-  @include membershipButtons;
+  @include membershipTabs;
   border: 1px solid #cd7f32;
   border-left: 1px solid #cd7f32;
   border-right: 1px solid #cd7f32;
   border-bottom: 1px solid #cd7f32;
   border-top: 10px solid #cd7f32;
-  color: #cd7f32;
+  color: $black;
 }
 
 .silver-tab {
-  @include membershipButtons;
+  @include membershipTabs;
   border: 1px solid #c0c0c0;
   border-left: 1px solid #c0c0c0;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
   border-top: 10px solid #c0c0c0;
-  color: #c0c0c0;
+  color: $black;
 }
 
 .gold-tab {
-  @include membershipButtons;
+  @include membershipTabs;
   border: 1px solid #ffd700;
   border-left: 1px solid #ffd700;
   border-right: 1px solid #ffd700;
   border-bottom: 1px solid #ffd700;
   border-top: 10px solid #ffd700;
-  color: #ffd700;
+  color: $black;
 }
 
 .platinum-tab {
-  @include membershipButtons;
+  @include membershipTabs;
   border: 1px solid #e5e4e2;
   border-left: 1px solid #e5e4e2;
   border-right: 1px solid #e5e4e2;
   border-bottom: 1px solid #e5e4e2;
   border-top: 10px solid #e5e4e2;
-  color: #e5e4e2;
+  color: $black;
 }
 
 .unchecked-membership-tab {
-  @include membershipButtons;
+  @include membershipTabs;
   border-left: 1px solid $border;
   border-right: 1px solid $border;
   border-bottom: 1px solid $border;

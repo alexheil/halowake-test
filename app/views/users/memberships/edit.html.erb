@@ -7,41 +7,125 @@
 
       <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
 
-      <div class="field">
+      <div class="nameplate border-top flex">
 
         <label class="unchecked-membership-tab" id="bronze-tab" for="bronze-id">
-          <div class="medium-text padding-tab">
-            Bronze
+          <div class="padding-tab">
+            <div class="three-space-top-padding medium-text">
+              Bronze
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">Price:</span>
+              <div class="one-space-left">
+                Free!
+              </div>
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">You keep:</span>
+              <div class="one-space-left">
+                80% of your sales.
+              </div>
+            </div>
+            <div class="three-space-padding">
+              <span class="bold">For those who sell between:</span>
+              <div class="one-space-left">
+                0 USD and 100 USD monthly.
+              </div>
+            </div>
+            <%= f.radio_button(:membership_type, "bronze", id: "bronze-id") %>
           </div>
-          <%= f.radio_button(:membership_type, "bronze", id: "bronze-id") %>
         </label>
 
         <label class="unchecked-membership-tab border-top-tab" id="silver-tab" for="silver-id">
-          <div class="medium-text padding-tab">
-            Silver
+          <div class="padding-tab">
+            <div class="three-space-top-padding medium-text">
+              Silver
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">Price:</span>
+              <div class="one-space-left">
+                5 USD monthly.
+              </div>
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">You keep:</span>
+              <div class="one-space-left">
+                85% of your sales.
+              </div>
+            </div>
+            <div class="three-space-padding">
+              <span class="bold">For those who sell between:</span>
+              <div class="one-space-left">
+                100 USD and 200 USD monthly.
+              </div>
+            </div>
+            <%= f.radio_button(:membership_type, "silver", id: "silver-id") %>
           </div>
-          <%= f.radio_button(:membership_type, "silver", id: "silver-id") %>
         </label>
 
         <label class="unchecked-membership-tab" id="gold-tab" for="gold-id">
-          <div class="medium-text padding-tab">
-            Gold
+          <div class="padding-tab">
+            <div class="three-space-top-padding medium-text">
+              Gold
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">Price:</span>
+              <div class="one-space-left">
+                15 USD monthly.
+              </div>
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">You keep:</span>
+              <div class="one-space-left">
+                90% of your sales.
+              </div>
+            </div>
+            <div class="three-space-padding">
+              <span class="bold">For those who sell between:</span>
+              <div class="one-space-left">
+                200 USD and 500 USD monthly.
+              </div>
+            </div>
+            <%= f.radio_button(:membership_type, "gold", id: "gold-id") %>
           </div>
-          <%= f.radio_button(:membership_type, "gold", id: "gold-id") %>
         </label>
 
         <label class="unchecked-membership-tab" id="platinum-tab" for="platinum-id">
-          <div class="medium-text padding-tab">
-            Platinum
+          <div class="padding-tab">
+            <div class="three-space-top-padding medium-text">
+              Platinum
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">Price:</span>
+              <div class="one-space-left">
+                40 USD monthly.
+              </div>
+            </div>
+            <div class="three-space-padding border-bottom">
+              <span class="bold">You keep:</span>
+              <div class="one-space-left">
+                95% of your sales.
+              </div>
+            </div>
+            <div class="three-space-padding">
+              <span class="bold">For those who sell between:</span>
+              <div class="one-space-left">
+                500 USD and billions monthly.
+              </div>
+            </div>
+            <%= f.radio_button(:membership_type, "platinum", id: "platinum-id") %>
           </div>
-          <%= f.radio_button(:membership_type, "platinum", id: "platinum-id") %>
         </label>
 
 
       </div>
 
-
+      <div class="form-container">
+        <div class="three-space-bottom-padding center dark">
+          Don't forget that Stripe, our secure payment processor, takes a fee of <i>3% plus 0.30 USD</i> from <i>each transaction</i>.
+        </div>
         <%= f.submit "Update membership", data: { disable_with: 'Updating...' }, class: "submit-button" %>
+      </div>
       <% end %>
 
 

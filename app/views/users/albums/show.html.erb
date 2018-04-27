@@ -4,7 +4,7 @@
     <span class="update_profile"><%= render 'users/partials/profiles/nameplate' %></span>
 
     <% if user_signed_in? && current_user == @user %>
-      <div class="nameplate border-bottom">
+      <div class="nameplate border-bottom flex">
         <div class="first-column">
           <div id="edit-profile">
             Edit profile
@@ -39,7 +39,7 @@
   <div id="profile-form">
     <div class="profile-form-inside">
       <div class="close"></div>
-      
+
       <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
         <%= render 'partials/errors/profile_errors' %>
         

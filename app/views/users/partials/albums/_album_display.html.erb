@@ -2,7 +2,7 @@
   <div id="albums-container">
     <% @user.albums.each do |album| %>
     
-      <div class="nameplate border-bottom">
+      <div class="nameplate border-bottom flex">
         <div class="first-column relative">
           <% album.photos.take(1).each do |photo| %>
             <%= link_to(user_album_path(@user, album)) do %>
@@ -25,7 +25,7 @@
   </div>
 
   <div id="feed-container">
-    <div class="nameplate">
+    <div class="nameplate flex">
       <% @user.feed.each do |photo| %>
         <div class="three-column-feed border">
           <div class="relative">
