@@ -3,14 +3,14 @@
  *= require_self
  */
 
-$main: #DE5757;
-$light: #E8979F;
-$dark: #A3A6AE;
-$green: #789552;
-$border: #CCCCCC;
-$red: #f44336;
-$black: #4A4B58;
-$white: #F9F9F8;
+$main: #DE5757; /* ROMAN */
+$light: #E8979F; /* SEA PINK */
+$dark: #A3A6AE; /* ALUMINIUM */
+$green: #789552; /* ASPARAGUS */
+$border: #BEC8CE; /* LOBLOLLY */
+$red: #F44336; /* POMEGRANATE */
+$black: #4A4B58; /* TROUT */
+$white: #F9F9F8; /* DESERT STORM */
 $fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
 
 @mixin transition {
@@ -250,7 +250,7 @@ a {
 }
 
 .one-fourth {
-  margin: 0;
+  margin: 0 auto;
   width: 24%;
   display: inline-block;
   vertical-align: top;
@@ -634,59 +634,74 @@ a {
 
 @mixin buttons {
   @include transition;
+  width: 100%;
   display: inline-block;
   text-align: center;
   font-size: 1em;
   font-weight: 300;
-  background-color: transparent;
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 10px;
+  color: $white;
+  padding: 1vh 1vw;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
-    color: $white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
 .home-button {
   @include buttons;
-  width: 100%;
-  padding: 1vh 1vw;
   border: 1px solid $white;
+  background-color: transparent;
   color: $white;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   &:hover {
     color: $black;
     background-color: $white;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
 .submit-button {
   @include buttons;
   background: $main;
-  width: 100%;
-  padding: 1vh 1vw;
   border: 1px solid $main;
   color: $white;
-  cursor: pointer;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
 }
 
 .unsubmit-button {
   @include buttons;
   background: $main;
-  width: 100%;
-  padding: 1vh 1vw;
   border: 1px solid $main;
   color: $white;
   cursor: pointer;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
+}
+
+.facebook-button {
+  @include buttons;
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  padding: .51vh .51vw;
+}
+
+.twitter-button {
+  @include buttons;
+  background-color: #55acee;
+  border: 1px solid #55acee;
+  padding: .51vh .51vw;
+}
+
+.pinterest-button {
+  @include buttons;
+  background-color: #cb2027;
+  border: 1px solid #cb2027;
+  padding: .51vh .51vw;
+}
+
+.reddit-button {
+  @include buttons;
+  background-color: #FF4500;
+  border: 1px solid #FF4500;
+  padding: .51vh .51vw;  
 }
 
 /* *********************** TABS ************************* */
@@ -958,15 +973,8 @@ input[type="radio" i] {
 @mixin closeButtons {
   @include buttons;
   background-color: $main;
-  width: 100%;
   padding: .51vh .51vw;
   border: 1px solid $main;
-  color: $white;
-  cursor: pointer;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
 }
 
 #sign-in-form {
