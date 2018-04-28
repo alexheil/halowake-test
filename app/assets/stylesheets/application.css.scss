@@ -704,6 +704,13 @@ a {
   padding: .51vh .51vw;  
 }
 
+.tumblr-button {
+  @include buttons;
+  background-color: #36465D;
+  border: 1px solid #36465D;
+  padding: .51vh .51vw;  
+}
+
 /* *********************** TABS ************************* */
 
 input[type="radio" i] {
@@ -997,6 +1004,10 @@ input[type="radio" i] {
   @include closeButtons;
 }
 
+#share-form {
+  @include javaScriptForms;
+}
+
 .close {
   display: block;
   width: 30px;
@@ -1150,6 +1161,15 @@ input[type="radio" i] {
   @include transition;
   cursor: pointer;
   color: $main;
+  &:hover {
+    color: $light;
+  }
+}
+
+#share-click {
+  @include transition;
+  cursor: pointer;
+  color: $white;
   &:hover {
     color: $light;
   }

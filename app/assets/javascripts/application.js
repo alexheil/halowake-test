@@ -155,6 +155,13 @@ var editProfile = function() {
     $('.wrapper').removeClass("blur", 300);
   });
 
+  $('#share-click').click(function() {
+    $('#share-form').fadeIn(300);
+    $('#edit-photo-click').fadeOut(300);
+    $('.back').fadeIn(300);
+    $('.wrapper').addClass("blur", 300);
+  });
+
   $('.back').click(function() {
     $('#profile-form').fadeOut(300);
     $('#album-form').fadeOut(300);
@@ -169,6 +176,7 @@ var editProfile = function() {
     $('#register-form').fadeOut(300);
     $('#close-sign-in').fadeOut(300);
     $('#close-register').fadeOut(300);
+    $('#share-form').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
   });
@@ -187,6 +195,7 @@ var editProfile = function() {
     $('#register-form').fadeOut(300);
     $('#close-sign-in').fadeOut(300);
     $('#close-register').fadeOut(300);
+    $('#share-form').fadeOut(300);
     $('.back').fadeOut(300);
     $('.wrapper').removeClass("blur", 300);
   });
