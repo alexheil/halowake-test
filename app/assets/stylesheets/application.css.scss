@@ -11,7 +11,7 @@ $border: #BEC8CE; /* LOBLOLLY */
 $red: #F44336; /* POMEGRANATE */
 $black: #4A4B58; /* TROUT */
 $white: #F9F9F8; /* DESERT STORM */
-$fancy-font: 'Open Sans', Helvetica, Arial, sans-serif;
+$fancy-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @mixin transition {
   -webkit-transition: .3s;
@@ -29,6 +29,7 @@ body {
   margin: 0;
   font-size: 18px;
   line-height: 1.75em;
+  letter-spacing: .5px;
   font-family: $fancy-font;
   font-weight: 300;
   background: $white;
@@ -289,7 +290,7 @@ a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    opacity: .50;
+    opacity: .33;
   }
 }
 
@@ -308,7 +309,7 @@ a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    opacity: .50;
+    opacity: .33;
   }
 }
 
@@ -326,7 +327,7 @@ a {
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    opacity: .50;
+    opacity: .33;
   }
 }
 
@@ -851,6 +852,10 @@ input[type="radio" i] {
 }
 
 /* ************** FORMS ************* */
+
+input {
+  -webkit-font-smoothing: antialiased;
+}
 
 @mixin fields {
   width: 100%;

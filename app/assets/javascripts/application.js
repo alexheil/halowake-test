@@ -231,7 +231,7 @@ var followButton = function() {
   };
 
   $('.text-hover').mouseenter(function() {
-    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.5')
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.33')
   });
 
   $('.text-hover').mouseleave(function() {
@@ -239,7 +239,7 @@ var followButton = function() {
   });
 
   $('.thumbnail-image-feed').mouseenter(function() {
-    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.5')
+    $(this).parent().closest('.relative').find('.thumbnail-image-feed').css('opacity', '0.33')
   });
 
   $('.thumbnail-image-feed').mouseleave(function() {
