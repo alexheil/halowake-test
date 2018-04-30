@@ -7,6 +7,7 @@ class CreateThemes < ActiveRecord::Migration[5.0]
       t.string :background_color, default: ""
       t.string :link_color, default: ""
       t.string :hover_color, default: ""
+      t.string :border_color, default: ""
 
       t.timestamps
     end

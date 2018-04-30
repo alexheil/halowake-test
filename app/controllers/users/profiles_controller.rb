@@ -45,7 +45,7 @@ class Users::ProfilesController < ApplicationController
     end
 
     def theme_params
-      params.require(:theme).permit(:main_color, :text_color, :background_color, :link_color, :hover_color)
+      params.require(:theme).permit(:main_color, :text_color, :background_color, :link_color, :hover_color, :border_color)
     end
 
 end

@@ -125,6 +125,10 @@
               <%= u.label :hover_color %>
               <%= u.text_field :hover_color, class: "text-field" %>
             </div>
+            <div class="field">
+              <%= u.label :border_color %>
+              <%= u.text_field :border_color, class: "text-field" %>
+            </div>
           <% end %>
 
          <%= f.submit "Update profile", data: { disable_with: 'Updating...' }, class: "submit-button" %>

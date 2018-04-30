@@ -93,7 +93,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     def theme_params
-      params.permit(:main_color, :text_color, :background_color, :link_color, :hover_color)
+      params.permit(:main_color, :text_color, :background_color, :link_color, :hover_color, :border_color)
     end
 
     def membership_params
