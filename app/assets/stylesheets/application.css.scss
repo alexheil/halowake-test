@@ -189,6 +189,38 @@ a {
     opacity: 1;
 }
 
+.six-column-feed {
+  width: 16%;
+  margin: 1vh auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.six-column-feed:last-child {
+    margin: 1vh .275%;
+  }
+
+.six-column-feed:nth-last-child(2) {
+  margin: 1vh .275%;
+}
+
+.six-column-feed:nth-last-child(3) {
+  margin: 1vh .275%;
+}
+
+.six-column-feed:nth-last-child(4) {
+  margin: 1vh .275%;
+}
+
+.six-column-feed:nth-last-child(5) {
+  margin: 1vh .275%;
+}
+
+.six-column:hover .text-hover{
+  @include transition;
+    opacity: 1;
+}
+
 .relative:hover .text-hover{
   @include transition;
     opacity: 1;
@@ -313,6 +345,25 @@ a {
   }
 }
 
+.thumbnail-image-feed-six {
+  height: 15vw;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  &:hover {
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    opacity: .33;
+  }
+}
+
 .thumbnail-image-large {
   height: 45vw;
   width: 45vw;
@@ -414,6 +465,10 @@ a {
 
 .dark {
   color: $dark;
+}
+
+.grey {
+  color: $border;
 }
 
 .flex {
@@ -547,7 +602,6 @@ a {
   width: 96%;
   margin: 0 auto;
   padding-bottom: 1vh;
-  border-bottom: 1px solid $border;
 }
 
 .site-title {
@@ -903,7 +957,7 @@ input {
 /* ************** PHOTO PAGE *************** */
 
 .dark-background {
-  background: $black;
+  background: #212121;
 }
 
 .big-image {
@@ -969,6 +1023,40 @@ input {
     -o-transition: .3s;
     color: $light;
   }
+}
+
+.mini-follow {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 100;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: $main;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    color: $light;
+  }
+}
+
+.mini-following {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 100;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: $dark;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
 }
 
 /* *************** JAVASCRIPT *************** */

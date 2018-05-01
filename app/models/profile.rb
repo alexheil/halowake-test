@@ -3,37 +3,22 @@ class Profile < ApplicationRecord
 
   include ImageUploader[:image]
 
-  validates :facebook_url, presence: true, if: :facebook_handle_present
-  validates :facebook_handle, presence: true, if: :facebook_url_present
-  validates :twitter_url, presence: true, if: :twitter_handle_present
-  validates :twitter_handle, presence: true, if: :twitter_url_present
-  validates :instagram_url, presence: true, if: :instagram_handle_present
-  validates :instagram_handle, presence: true, if: :instagram_url_present
+  before_save :create_facebook_url
+  before_save :create_twitter_url
+  before_save :create_instagram_url
 
   private
 
-    def facebook_handle_present
-      self.facebook_handle.present?
+    def create_facebook_url
+      self.facebook_url = "https://facebook.com/#{self.facebook_handle}" if self.facebook_handle.present?
     end
 
-    def facebook_url_present
-      self.facebook_url.present?
+    def create_twitter_url
+      self.twitter_url = "https://twitter.com/#{self.twitter_handle}" if self.twitter_handle.present?
     end
 
-    def twitter_handle_present
-      self.twitter_handle.present?
-    end
-
-    def twitter_url_present
-      self.twitter_url.present?
-    end
-
-    def instagram_handle_present
-      self.instagram_handle.present?
-    end
-
-    def instagram_url_present
-      self.instagram_url.present?
+    def create_instagram_url
+      self.instagram_url = "https://instagram.com/#{self.instagram_handle}" if self.instagram_handle.present?
     end
 
 end

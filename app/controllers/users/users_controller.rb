@@ -11,8 +11,24 @@ class Users::UsersController < ApplicationController
   end
 
   def purchases
-    @user = current_user
+    @user = User.friendly.find(params[:user_id])
     @purchase = @user.purchases
   end
+
+  def votes
+    @user = User.friendly.find(params[:user_id])
+  end
+
+  def following
+    @user = User.friendly.find(params[:user_id])
+  end
+
+  def followers
+    @user = User.friendly.find(params[:user_id])
+  end
+
+  private
+
+    # redirects
   
 end

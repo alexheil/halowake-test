@@ -1,12 +1,21 @@
-<% @album.photos.each do |photo| %>
-  <div class="three-column relative">
-    <%= link_to(user_album_photo_path(@user, @album, photo)) do %>
-      <img class="thumbnail-image-three" src="<%= photo.image_url(:thumb) %>">
-    <% end %>
-    <div class="centered">
-      <div class="text-hover large-text">
-        +<%= photo.votes.count %>
+<div class="nameplate flex">
+  <% @album.photos.each do |photo| %>
+    <div class="three-column-feed border">
+      <div class="relative">
+        <%= link_to(user_album_photo_path(photo.user, photo.album, photo)) do %>
+          <img class="thumbnail-image-feed" src="<%= photo.image_url(:thumb) %>">
+        <% end %>
+        <div class="centered">
+          <div class="text-hover large-text">
+            <%= link_to "+#{photo.votes.count}", user_album_photo_path(photo.user, photo.album, photo), class: "black" %>
+          </div>
+        </div>
+      </div>
+      <div class="feed-container">
+        <div>
+          <%= link_to truncate(photo.title, :length => 50), user_album_photo_path(photo.user, photo.album, photo) %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -154,11 +154,31 @@
       #optional-fields-click-close:hover {
         color: <%= @user.theme.hover_color %>;
       }
-      .vote {
+      .downvote {
         color: <%= @user.theme.link_color %>;
       }
-      .vote:hover {
+      .upvote {
+        color: <%= @user.theme.text_color %>;
+      }
+      .upvote:hover {
         color: <%= @user.theme.hover_color %>;
+      }
+      .follow {
+        color: <%= @user.theme.link_color %>;
+      }
+      .follow:hover {
+        color: <%= @user.theme.hover_color %>;
+      }
+    <% end %>
+    <% if @user.theme.border_color.present? %>
+      .border-bottom {
+        border-bottom: 1px solid <%= @user.theme.border_color %>;
+      }
+      .border {
+        border: 1px solid <%= @user.theme.border_color %>;
+      }
+      .grey {
+        color: <%= @user.theme.border_color %>;
       }
     <% end %>
   </style>

@@ -222,11 +222,9 @@ var followButton = function() {
   if ($(".submit-button").val() == "Following") {
     $(".submit-button").mouseenter(function() {
       $(".submit-button").val("Unfollow");
-      $(".submit-button").attr('class', 'unsubmit-button');
     });
     $(".submit-button").mouseleave(function() {
       $(".submit-button").val("Following");
-      $(".unsubmit-button").attr('class', 'submit-button');
     });
   };
 

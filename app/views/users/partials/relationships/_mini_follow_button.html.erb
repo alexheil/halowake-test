@@ -1,0 +1,19 @@
+<% if user_signed_in? && current_user != user %>
+  <div>
+    <% if current_user.following?(user) %>
+      <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+               html: { method: :delete }, remote: true) do |f| %>
+        <%= f.submit "Following", class: "mini-following" %>
+      <% end %>
+    <% else %>
+      <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+        <div><%= hidden_field_tag :followed_id, user.id %></div>
+        <%= f.submit "Follow", class: "mini-follow" %>
+      <% end %>
+    <% end %>
+  </div>
+<% elsif user_signed_in? == false %>
+  <div">
+    <%= link_to "Follow", sign_in_path, class: "feed-links" %>
+  </div>
+<% end %>

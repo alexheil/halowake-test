@@ -23,7 +23,7 @@
 
     <span class="album_description"><%= render "users/partials/albums/album_description" %></span>
 
-    <main class="five-space">
+    <main>
 
       <% if @album.photos.any? %>
         <span class="album_links"><%= render "users/partials/albums/album_links" %></span>
@@ -85,24 +85,12 @@
           <%= f.text_field :facebook_handle, class: "text-field" %>
         </div>
         <div class="field">
-          <%= f.label :facebook_url %>
-          <%= f.text_field :facebook_url, class: "text-field" %>
-        </div>
-        <div class="field">
           <%= f.label :twitter_handle %>
           <%= f.text_field :twitter_handle, class: "text-field" %>
         </div>
         <div class="field">
-          <%= f.label :twitter_url %>
-          <%= f.text_field :twitter_url, class: "text-field" %>
-        </div>
-        <div class="field">
           <%= f.label :instagram_handle %>
           <%= f.text_field :instagram_handle, class: "text-field" %>
-        </div>
-        <div class="field">
-          <%= f.label :instagram_url %>
-          <%= f.text_field :instagram_url, class: "text-field" %>
         </div>
         <div class="field">
           <%= f.label :biography %>

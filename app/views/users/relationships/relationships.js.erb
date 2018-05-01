@@ -1,5 +1,7 @@
-$('.follow_button').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/follow_button') %>');
-$('.follower_count').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/follower_count') %>');
+$('.follow_button_<%= @user.id %>').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/follow_button') %>');
+$('.follower_count_<%= @user.id %>').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/follower_count') %>');
+$('.following_count_<%= @user.id %>').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/following_count') %>');
+$('.mini_follow_button_<%= @user.id %>').html('<%=  escape_javascript(render :partial => 'users/partials/relationships/mini_follow_button', :locals => {:user => @user}) %>');
 $('.flash_js').fadeIn(300);
 $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
 setTimeout(function() {

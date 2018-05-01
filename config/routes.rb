@@ -38,6 +38,9 @@ Rails.application.routes.draw do
       end
     end
     get 'purchases' => 'users/users#purchases'
+    get 'votes' => 'users/users#votes'
+    get 'following' => 'users/users#following'
+    get 'followers' => 'users/users#followers'
   end
 
   resources :relationships, controller: 'users/relationships', only: [:create, :update, :destroy]

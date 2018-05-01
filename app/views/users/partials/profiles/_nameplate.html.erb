@@ -1,7 +1,7 @@
 <div class="nameplate border-bottom flex">
   <div class="first-column">
 
-    <span class="follow_button"><%= render "users/partials/relationships/follow_button" %></span>
+    <span class="follow_button_<%= @user.id %>"><%= render "users/partials/relationships/follow_button" %></span>
 
     <% if @user.profile.image_url(:thumb).present? %>
       <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
@@ -13,19 +13,23 @@
       <%= link_to @user.username, user_path(@user) unless @user.profile.first_name.present? || @user.profile.last_name.present? %> 
       <%= link_to(user_path(@user)) do %>
         <%= @user.profile.first_name if @user.profile.first_name.present? %> <%= @user.profile.last_name if @user.profile.last_name.present? %>
-      <% end %><span class="tiny-text"> - <span class="follower_count"><%= render "users/partials/relationships/follower_count" %></span>
+      <% end %><span class="tiny-text"> <span class="grey">|</span> 
       <% if @user.is_member %>
-        <%= " - " + @user.membership.membership_type.capitalize %> - <%= @user.customer_id %> - <%= @user.membership.percent %> - <%= @user.membership.current_id %> - <%= @user.membership.membership_id %>
-      <% end %></span>
+        <%= @user.membership.membership_type.capitalize %> - <%= @user.customer_id %> - <%= @user.membership.percent %> - <%= @user.membership.current_id %> - <%= @user.membership.membership_id %>
+      <% end %>
+      <span class="grey">|</span> <%= link_to pluralize(@user.votes.count, "vote"), user_votes_path(@user) %>
+      <span class="grey">|</span> <span class="following_count_<%= @user.id %>"><%= render "users/partials/relationships/following_count" %></span>
+      <span class="grey">|</span> <span class="follower_count_<%= @user.id %>"><%= render "users/partials/relationships/follower_count" %></span>
+      </span>
     </div>
 
     <div class="one-space-top">
       <div class="one-space">
-        <%= @user.profile.age.to_s if @user.profile.age.present? %><%= " | " if @user.profile.age.present? %>
+        <%= @user.profile.age.to_s if @user.profile.age.present? %><span class="grey"><%= " | " if @user.profile.age.present? %></span>
         <%= @user.location.city if @user.location.city.present? %><%= ", " + @user.location.state if @user.location.state.present? %><%= ", " + @user.location.country if @user.location.country.present? %>
       </div>
-      <div class="one-space">
-        <%= link_to "Website", @user.profile.website if @user.profile.website.present? %> <%= "|" if @user.profile.website.present? && (@user.profile.facebook_url.present? || @user.profile.twitter_url.present? || @user.profile.instagram_url.present?) %> <%= link_to @user.profile.facebook_handle, @user.profile.facebook_url, class: "facebook" if @user.profile.facebook_url.present? %> <%= "|" if @user.profile.facebook_url.present? && @user.profile.twitter_url.present? %> <%= link_to @user.profile.twitter_handle, @user.profile.twitter_url, class: "twitter" if @user.profile.twitter_url.present? %> <%= "|" if (@user.profile.twitter_url.present? || @user.profile.facebook_url.present?) && @user.profile.instagram_url.present? %> <%= link_to @user.profile.instagram_handle, @user.profile.instagram_url, class: "instagram" if @user.profile.instagram_url.present? %>
+      <div class="one-space grey">
+        <%= link_to "Website", @user.profile.website, target: :_blank if @user.profile.website.present? %> <%= "|" if @user.profile.website.present? && (@user.profile.facebook_url.present? || @user.profile.twitter_url.present? || @user.profile.instagram_url.present?) %> <%= link_to "Facebook", @user.profile.facebook_url, target: :_blank, class: "facebook" if @user.profile.facebook_url.present? %> <%= "|" if @user.profile.facebook_url.present? && @user.profile.twitter_url.present? %> <%= link_to "Twitter", @user.profile.twitter_url, target: :_blank, class: "twitter" if @user.profile.twitter_url.present? %> <%= "|" if (@user.profile.twitter_url.present? || @user.profile.facebook_url.present?) && @user.profile.instagram_url.present? %> <%= link_to "Instagram", @user.profile.instagram_url, target: :_blank, class: "instagram" if @user.profile.instagram_url.present? %>
       </div>
       <div class="one-space-top">
         <%= @user.profile.biography if @user.profile.biography.present? %>

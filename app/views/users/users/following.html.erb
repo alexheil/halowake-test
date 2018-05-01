@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="container">
+
+    <%= render 'users/partials/profiles/nameplate' %>
+
+    <div class="nameplate flex">
+      <% @user.following.each do |user| %>
+        <div class="six-column-feed border">
+          <div class="relative">
+            <%= link_to(user_path(user)) do %>
+              <img class="thumbnail-image-feed-six" src="<%= user.profile.image_url(:thumb) %>">
+            <% end %>
+            <div class="centered">
+              <div class="text-hover large-text">
+                <%= link_to "#{user.photos.count}", user_path(user), class: "black" %>
+              </div>
+            </div>
+          </div>
+          <div class="feed-container">
+            <div>
+              <% if user.profile.first_name.present? && user.profile.last_name.present? %>
+                <%= link_to "#{user.profile.first_name}" + " " + "#{user.profile.last_name}", user_path(user) %>
+              <% else %>
+                <%= link_to user.username, user_path(user) %>
+              <% end %>
+            </div>
+            <div class="mini-text">
+              <span class="mini_follow_button_<%= user.id %>"><%= render 'users/partials/relationships/mini_follow_button', :user => user %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

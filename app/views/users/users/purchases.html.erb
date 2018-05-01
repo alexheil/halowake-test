@@ -3,7 +3,7 @@
 
     <%= render 'users/partials/profiles/nameplate' %>
 
-    <div class="border-bottom">
+    <div class="border-bottom flex">
       <div id="albums-tab" class="two-column center tab">
         Bought
       </div>
@@ -17,7 +17,7 @@
 
       <div id="albums-container">
         <% Purchase.where(buyer_id: current_user.id).find_each do |purchase| %>
-          <div class="border-bottom one-space">
+          <div class="border-bottom one-space flex">
             <div class="one-fourth">
               <%= link_to Photo.find(purchase.photo_id).title, user_album_photo_purchase_path(User.find(purchase.seller_id).slug, Album.find(Photo.find(purchase.photo_id).album_id).slug, Photo.find(purchase.photo_id).slug, Purchase.find(purchase.id)) %>
             </div>

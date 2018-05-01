@@ -1,8 +1,8 @@
 <% if user_signed_in? && current_user.voted?(@photo) %>
-  <%= button_to "+", user_album_photo_vote_path(@user, @album, @photo, current_user.vote_id(@photo)), method: :delete, remote: true, data: { disable_with: '...' }, class: "downvote" %>
+  <%= button_to "+", user_album_photo_vote_path(@user, @album, @photo, current_user.vote_id(@photo)), method: :delete, remote: true, class: "downvote" %>
 <% else %>
   <%= form_for(Vote.new, url: user_album_photo_votes_path(@user, @album, @photo), remote: true) do |f| %>
-    <%= f.submit "+", data: { disable_with: '...' }, class: "upvote" %>
+    <%= f.submit "+", class: "upvote" %>
   <% end %>
 <% end %>
 
