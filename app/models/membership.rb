@@ -4,6 +4,10 @@ class Membership < ApplicationRecord
 
   belongs_to :user
 
+  validates :user_id, presence: true
+  validates :percent, presence: true
+  validates :membership_type, presence: true
+
   before_save :percent_for_membership
 
   private

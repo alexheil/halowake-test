@@ -44,7 +44,7 @@
   <div class="nameplate border-bottom">
     <% if @photo.camera.present? %>
       <div class="one-space-bottom medium-text">
-        <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24" %>
+        <%= link_to @photo.camera, "https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=aps&field-keywords=#{@photo.camera}&linkCode=ll2&tag=letlyrics08-20&linkId=293aefe04a0280e01bef782242640c24", target: :_blank  %>
       </div>
     <% end %>
     <% if @photo.lens.present? %>

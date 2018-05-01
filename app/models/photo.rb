@@ -15,6 +15,12 @@ class Photo < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :purchases
 
+  validates :photo_type, presence: true
+
+  validates :user_id, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :description, length: { maximum: 3000 }, allow_blank: true
+
   validates :currency, presence: true, if: :is_for_sale
   validates :base_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
   validates :shipping_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: -1}, if: :is_for_sale && :shippable?

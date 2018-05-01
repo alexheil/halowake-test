@@ -6,6 +6,10 @@ class Album < ApplicationRecord
 
   has_many :photos, dependent: :destroy
 
+  validates :user_id, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :description, length: { maximum: 3000 }, allow_blank: true
+
   before_save :should_generate_new_friendly_id?, if: :title_changed?
 
   private
