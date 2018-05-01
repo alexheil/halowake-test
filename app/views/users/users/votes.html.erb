@@ -3,9 +3,36 @@
 
     <%= render 'users/partials/profiles/nameplate' %>
 
-    <% @user.votes.each do |vote| %>
-      
-    <% end %>
+    <div class="nameplate flex">
+      <% @user.votes.each do |vote| %>
+        <div class="three-column-feed border">
+          <div class="relative">
+            <%= link_to(user_album_photo_path(vote.photo.user, vote.photo.album, vote.photo)) do %>
+              <img class="thumbnail-image-feed" src="<%= vote.photo.image_url(:thumb) %>">
+            <% end %>
+            <div class="centered">
+              <div class="text-hover large-text">
+                <%= link_to "+#{vote.photo.votes.count}", user_album_photo_path(vote.photo.user, vote.photo.album, vote.photo), class: "black" %>
+              </div>
+            </div>
+          </div>
+          <div class="feed-container">
+            <div>
+              <%= link_to truncate(vote.photo.title, :length => 50), user_album_photo_path(vote.photo.user, vote.photo.album, vote.photo) %>
+            </div>
+            <div class="mini-text">
+              Posted by
+              <% if vote.user.profile.first_name.present? && vote.user.profile.last_name.present? %>
+                <%= link_to "#{vote.user.profile.first_name}" + " " + "#{vote.user.profile.last_name}", user_path(vote.user), class: "feed-links" %>
+              <% else %>
+                <%= link_to vote.user.username, user_path(vote.user), class: "feed-links" %>
+              <% end %>
+              <%= time_ago_in_words(vote.photo.created_at) %> ago.
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
   </div>
 </div>
