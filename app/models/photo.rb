@@ -15,11 +15,24 @@ class Photo < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :purchases
 
-  validates :photo_type, presence: true
-
   validates :user_id, presence: true
+  validates :photo_type, presence: true
   validates :title, presence: true, length: { maximum: 255 }
   validates :description, length: { maximum: 3000 }, allow_blank: true
+
+  validates :resolution, allow_blank: true
+  validates :camera, length: { maximum: 255 }, allow_blank: true
+  validates :lens, allow_blank: true
+  validates :aperture, allow_blank: true
+  validates :exposure, allow_blank: true
+  validates :flash, allow_blank: true
+  validates :focal_length, length: { maximum: 5 }, allow_blank: true
+  validates :iso, allow_blank: true
+  validates :tool, allow_blank: true
+  validates :medium, allow_blank: true
+  validates :surface, allow_blank: true
+  validates :size, allow_blank: true
+  validates :style, allow_blank: true
 
   validates :currency, presence: true, if: :is_for_sale
   validates :base_price, presence: true, length: { maximum: 6 }, numericality: { greater_than: 0}, if: :is_for_sale
