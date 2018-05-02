@@ -20,30 +20,36 @@ class Users::PhotosController < ApplicationController
     @album = Album.friendly.find(params[:album_id])
     @photo = @album.photos.build(photo_params)
     @photo.user_id = @user.id
-    if @photo.save
+    if @result = @photo.save
       respond_to do |format|
         format.html { redirect_to user_album_path(@user, @album) }
         format.js { render :action => "photos" }
         flash.now[:notice] = "You've successfully added a photo!"
       end
     else
-      redirect_to (:back)
-      flash.now[:alert] = "You've failed!"
+      respond_to do |format|
+        format.html { redirect_to user_album_path(@user, @album) }
+        format.js { render :action => "photos" }
+        flash.now[:alert] = "You've failed to add a photo!"
+      end
     end
   end
 
   def update
     @album = Album.friendly.find(params[:album_id])
     @photo = Photo.friendly.find(params[:id])
-    if @photo.update_attributes(photo_params)
+    if @result = @photo.update_attributes(photo_params)
       respond_to do |format|
         format.html { redirect_to user_album_path(@user, @album) }
         format.js { render :action => "photos" }
         flash.now[:notice] = "You've successfully updated your photo!"
       end
     else
-      redirect_to (:back)
-      flash.now[:alert] = "You've failed!"
+      respond_to do |format|
+        format.html { redirect_to user_album_path(@user, @album) }
+        format.js { render :action => "photos" }
+        flash.now[:alert] = "You've failed to update this photo!"
+      end
     end
   end
 
