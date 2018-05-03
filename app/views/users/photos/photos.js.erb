@@ -9,12 +9,14 @@
   $('#edit-photo-click').fadeIn(300);
   $('.back').fadeOut(300);
   $('.wrapper').removeClass("blur", 300);
+  $('#photo_errors').fadeOut(300);
   $('.flash_js').fadeIn(300);
   $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');
   setTimeout(function() {
     $('.flash_js').fadeOut();
   }, 5000);
 <% else %>
+  $('#photo_errors').fadeIn(300);
   $('#photo_errors').html('<%= escape_javascript(render :partial => 'partials/errors/photo_errors') %>');
   $('.flash_js').fadeIn(300);
   $('.flash_js').html('<%=  escape_javascript(render :partial => 'partials/flash') %>');

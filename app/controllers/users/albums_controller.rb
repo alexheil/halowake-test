@@ -18,29 +18,35 @@ class Users::AlbumsController < ApplicationController
 
   def create
     @album = @user.albums.build(album_params)
-    if @album.save
+    if @result = @album.save
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "albums" }
         flash.now[:notice] = "You've successfully added a photo album!"
       end
     else
-      render 'new'
-      flash.now[:alert] = "You've failed!"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "albums" }
+        flash.now[:alert] = "You've failed!"
+      end
     end
   end
 
   def update
     @album = Album.friendly.find(params[:id])
-    if @album.update_attributes(album_params)
+    if @result = @album.update_attributes(album_params)
       respond_to do |format|
         format.html { redirect_to root_url }
         format.js { render :action => "albums" }
         flash.now[:notice] = "You've successfully updated your photo album!"
       end
     else
-      redirect_to (:back)
-      flash.now[:alert] = "You've failed!"
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "albums" }
+        flash.now[:alert] = "You've failed!"
+      end
     end
   end
 

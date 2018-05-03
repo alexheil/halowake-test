@@ -10,15 +10,18 @@ class Users::ProfilesController < ApplicationController
     @theme = @user.theme
     @location.update_attributes(location_params)
     @theme.update_attributes(theme_params)
-    if @profile.update_attributes(profile_params)
+    if @result = @profile.update_attributes(profile_params) && @theme.update_attributes(theme_params)
       respond_to do |format|
         format.html { redirect_to (:back) }
         format.js { render :action => "profiles" }
         flash.now[:notice] = "You have successfully updated your profile."
       end
     else
-      render 'edit'
-      flash[:alert] = "You failed to update your profile."
+      respond_to do |format|
+        format.html { redirect_to (:back) }
+        format.js { render :action => "profiles" }
+        flash.now[:alert] = "You've failed to update your profile."
+      end
     end
   end
 

@@ -41,7 +41,7 @@
       <div class="close"></div>
 
       <%= form_for(@profile, url: user_profile_path(@user), remote: true) do |f| %>
-        <%= render 'partials/errors/profile_errors' %>
+        <span id="profile_errors"><%= render 'partials/errors/profile_errors' %></span>
         
         <div class="field">
           <%= f.label :first_name %>
@@ -100,27 +100,27 @@
           <%= fields_for :theme, @theme do |u| %>
             <div class="field">
               <%= u.label :main_color %>
-              <%= u.text_field :main_color, class: "text-field" %>
+              <%= u.text_field :main_color, placeholder: "Example: #DE5757", class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :text_color %>
-              <%= u.text_field :text_color, class: "text-field" %>
+              <%= u.text_field :text_color, placeholder: "Example: #4A4B58", class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :background_color %>
-              <%= u.text_field :background_color, class: "text-field" %>
+              <%= u.text_field :background_color, placeholder: "Example: #F9F9F8", class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :link_color %>
-              <%= u.text_field :link_color, class: "text-field" %>
+              <%= u.text_field :link_color, placeholder: "Example: #DE5757", class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :hover_color %>
-              <%= u.text_field :hover_color, class: "text-field" %>
+              <%= u.text_field :hover_color, placeholder: "Example: #E8979F", class: "text-field" %>
             </div>
             <div class="field">
               <%= u.label :border_color %>
-              <%= u.text_field :border_color, class: "text-field" %>
+              <%= u.text_field :border_color, placeholder: "Example: #BEC8CE", class: "text-field" %>
             </div>
           <% end %>
 
@@ -143,7 +143,7 @@
       <div class="close"></div>
 
       <%= form_for(@album, url: user_album_path(@user), remote: true) do |f| %>
-        <%= render 'partials/errors/album_errors' %>
+        <span id="album_errors"><%= render 'partials/errors/album_errors' %></span>
         <div class="field">
           <%= f.label :title %>
           <%= f.text_field :title, class: "text-field" %>

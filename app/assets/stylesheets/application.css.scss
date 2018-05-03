@@ -475,6 +475,10 @@ a {
   color: $border;
 }
 
+#error_explanation {
+  color: $red;
+}
+
 .flex {
   display: flex;
   flex-wrap: wrap;
