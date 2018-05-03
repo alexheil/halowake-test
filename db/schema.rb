@@ -66,33 +66,33 @@ ActiveRecord::Schema.define(version: 20180125192226) do
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "album_id"
-    t.string   "title",          default: ""
+    t.string   "title",                                  default: ""
     t.text     "image_data"
-    t.integer  "photo_type",     default: 0
-    t.text     "description",    default: ""
-    t.string   "resolution",     default: ""
-    t.string   "camera",         default: ""
-    t.string   "lens",           default: ""
-    t.string   "aperture",       default: ""
-    t.string   "exposure",       default: ""
-    t.string   "flash",          default: ""
-    t.string   "focal_length",   default: ""
-    t.string   "iso",            default: ""
-    t.string   "tool",           default: ""
-    t.string   "medium",         default: ""
-    t.string   "surface",        default: ""
-    t.string   "size",           default: ""
-    t.string   "style",          default: ""
-    t.boolean  "for_sale",       default: false
+    t.integer  "photo_type",                             default: 0
+    t.text     "description",                            default: ""
+    t.string   "resolution",                             default: ""
+    t.string   "camera",                                 default: ""
+    t.string   "lens",                                   default: ""
+    t.decimal  "aperture",       precision: 3, scale: 1
+    t.string   "exposure",                               default: ""
+    t.string   "flash",                                  default: ""
+    t.decimal  "focal_length",   precision: 4, scale: 1
+    t.string   "iso",                                    default: ""
+    t.string   "tool",                                   default: ""
+    t.string   "medium",                                 default: ""
+    t.string   "surface",                                default: ""
+    t.string   "size",                                   default: ""
+    t.string   "style",                                  default: ""
+    t.boolean  "for_sale",                               default: false
     t.integer  "base_price"
     t.integer  "shipping_price"
-    t.integer  "transport_type", default: 0
+    t.integer  "transport_type",                         default: 0
     t.integer  "total_price"
     t.string   "currency"
     t.integer  "quantity"
     t.string   "slug"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.index ["album_id"], name: "index_photos_on_album_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end

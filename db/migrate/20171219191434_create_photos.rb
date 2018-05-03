@@ -10,10 +10,10 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :resolution, default: ""
       t.string :camera, default: ""
       t.string :lens, default: ""
-      t.string :aperture, default: ""
+      t.decimal :aperture, precision: 3, scale: 1
       t.string :exposure, default: ""
       t.string :flash, default: ""
-      t.string :focal_length, default: ""
+      t.decimal :focal_length, precision: 4, scale: 1
       t.string :iso, default: ""
       t.string :tool, default: ""
       t.string :medium, default: ""

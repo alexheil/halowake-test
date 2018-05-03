@@ -57,7 +57,7 @@
 
 <% if user_signed_in? && current_user == @user %>
   
-  <span class="photo_form"><div id="album-form">
+  <span class="update_photo_form"><div id="album-form">
     <div class="profile-form-inside">
       <div class="close"></div>
 
@@ -98,54 +98,54 @@
             </div>
             <div class="field">
               <%= f.label :camera %>
-                <%= f.text_field :camera, class: "text-field" %>
+              <%= f.text_field :camera, placeholder: "Example: Canon EOS 5D Mark III", class: "text-field" %>
             </div>
             <div class="field">
               <%= f.label :lens %>
-              <%= f.text_field :lens, class: "text-field" %>
+              <%= f.text_field :lens, placeholder: "Example: EF24-105mm f/4L IS USM", class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label :aperture %>
-              <%= f.text_field :aperture, class: "text-field" %>
+              <%= f.label :aperture %> (ƒ/)
+              <%= f.text_field :aperture, placeholder: "Example: 7.1", class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label :exposure %>
-              <%= f.text_field :exposure, class: "text-field" %>
+              <%= f.label :exposure %> (in seconds)
+              <%= f.text_field :exposure, placeholder: "Example: 1/100 or 30", class: "text-field" %>
             </div>
             <div class="field">
               <%= f.label :flash %>
               <%= f.text_field :flash, class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label :focal_length %>
-              <%= f.text_field :focal_length, class: "text-field" %>
+              <%= f.label :focal_length %> (in millimeters)
+              <%= f.text_field :focal_length, placeholder: "Example: 28.0", class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label :iso %>
-              <%= f.text_field :iso, class: "text-field" %>
+              <%= f.label :iso, "ISO" %>
+              <%= f.text_field :iso, placeholder: "Example: 250", class: "text-field" %>
             </div>
           </div>
 
           <div id="art-fields" class="three-space-top-padding border-top">
             <div class="field">
               <%= f.label :tool %>
-              <%= f.text_field :tool, class: "text-field" %>
+              <%= f.text_field :tool, placeholder: "Example: Brush", class: "text-field" %>
             </div>
             <div class="field">
               <%= f.label :medium %>
-              <%= f.text_field :medium, class: "text-field" %>
+              <%= f.text_field :medium, placeholder: "Example: Paint", class: "text-field" %>
             </div>
             <div class="field">
               <%= f.label :surface %>
-              <%= f.text_field :surface, class: "text-field" %>
+              <%= f.text_field :surface, placeholder: "Example: Canvas", class: "text-field" %>
             </div>
             <div class="field">
               <%= f.label :style %>
-                <%= f.text_field :style, class: "text-field" %>
+                <%= f.text_field :style, placeholder: "Example: Abstract", class: "text-field" %>
             </div>
             <div class="field">
-              <%= f.label :size %>
-              <%= f.text_field :size, class: "text-field" %>
+              <%= f.label :size %> (in inches)
+              <%= f.text_field :size, placeholder: "Example: 24x36", class: "text-field" %>
             </div>
           </div>
 

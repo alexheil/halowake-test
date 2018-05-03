@@ -24,11 +24,11 @@ class Photo < ApplicationRecord
   #validates :resolution, allow_blank: true
   validates :camera, length: { maximum: 255 }, allow_blank: true
   validates :lens, length: { maximum: 255 }, allow_blank: true
-  validates :aperture, length: { maximum: 5 }, allow_blank: true
-  validates :exposure, length: { maximum: 6 }, allow_blank: true
+  validates :aperture, length: { maximum: 4 }, format: { with: /[0-9]{1,2}[.][0-9]{1}/ }, allow_blank: true
+  validates :exposure, length: { maximum: 6 }, format: { with: /[^a-zA-Z.:<>?\\\{\}\[\]!@#$%^,&\*\(\)][1-9][0-9]*(?:\/[1-9][0-9])*/ }, allow_blank: true
   #validates :flash, allow_blank: true
-  validates :focal_length, length: { maximum: 5 }
-  validates :iso, length: { maximum: 5 }, allow_blank: true
+  validates :focal_length, length: { maximum: 6 }, format: { with: /[0-9]{1,4}[.][0-9]{1}/ }, allow_blank: true
+  validates :iso, length: { maximum: 5 }, format: { with: /[0-9]{1,5}/ }, allow_blank: true
   validates :tool, length: { maximum: 255 }, allow_blank: true
   validates :medium, length: { maximum: 255 }, allow_blank: true
   validates :surface, length: { maximum: 255 }, allow_blank: true

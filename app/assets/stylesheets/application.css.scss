@@ -467,6 +467,10 @@ a {
   color: $dark;
 }
 
+::placeholder {
+  color: $border;
+}
+
 .grey {
   color: $border;
 }

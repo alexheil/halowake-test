@@ -200,13 +200,25 @@ var editProfile = function() {
     $('.wrapper').removeClass("blur", 300);
   });
 
-  $('#optional-fields-click').click(function() {
+  $('.photo_form').on('click','#optional-fields-click', function() {
     $('#optional-fields').fadeIn(300);
     $('#optional-fields-click').hide();
     $('#optional-fields-close').fadeIn(300);
   });
 
-  $('#optional-fields-close').click(function() {
+  $('.photo_form').on('click','#optional-fields-close', function() {
+    $('#optional-fields').fadeOut(300);
+    $('#optional-fields-close').hide();
+    $('#optional-fields-click').fadeIn(300);
+  });
+
+  $('.update_photo_form').on('click','#optional-fields-click', function() {
+    $('#optional-fields').fadeIn(300);
+    $('#optional-fields-click').hide();
+    $('#optional-fields-close').fadeIn(300);
+  });
+
+  $('.update_photo_form').on('click','#optional-fields-close', function() {
     $('#optional-fields').fadeOut(300);
     $('#optional-fields-close').hide();
     $('#optional-fields-click').fadeIn(300);
@@ -286,6 +298,24 @@ var userTabs = function() {
   });
 
   $('.photo_form').on('click','#art-tab', function() {
+    $('#albums-container').hide();
+    $('#feed-container').fadeIn(300);
+    $('#photo-tab').addClass("unchecked-tab");
+    $('#photo-tab').removeClass("checked-tab");
+    $('#art-tab').addClass("checked-tab");
+    $('#art-tab').removeClass("unchecked-tab");
+  });
+
+  $('.update_photo_form').on('click','#photo-tab', function() {
+    $('#albums-container').fadeIn(300);
+    $('#feed-container').hide();
+    $('#photo-tab').removeClass("unchecked-tab");
+    $('#photo-tab').addClass("checked-tab");
+    $('#art-tab').removeClass("checked-tab");
+    $('#art-tab').addClass("unchecked-tab");
+  });
+
+  $('.update_photo_form').on('click','#art-tab', function() {
     $('#albums-container').hide();
     $('#feed-container').fadeIn(300);
     $('#photo-tab').addClass("unchecked-tab");
@@ -376,21 +406,39 @@ $(document).on('turbolinks:load', forSale);
 
 var photoOrArt = function() {
 
-  $('#is-art-click').click(function() {
+  $('.photo_form').on('click','#is-art-click', function() {
     $('#art-fields').fadeIn(300);
     $('#photo-fields').hide();
   });
 
-  $('#is-photo-click').click(function() {
+  $('.photo_form').on('click','#is-photo-click', function() {
     $('#art-fields').hide();
     $('#photo-fields').fadeIn(300);
   });
 
-  $('#shippable').click(function() {
+  $('.photo_form').on('click','#shippable', function() {
     $('#shippable-fields').fadeIn(300);
   });
 
-  $('#downloadable').click(function() {
+  $('.photo_form').on('click','#downloadable', function() {
+    $('#shippable-fields').hide();
+  });
+
+  $('.update-photo_form').on('click','#is-art-click', function() {
+    $('#art-fields').fadeIn(300);
+    $('#photo-fields').hide();
+  });
+
+  $('.update-photo_form').on('click','#is-photo-click', function() {
+    $('#art-fields').hide();
+    $('#photo-fields').fadeIn(300);
+  });
+
+  $('.update-photo_form').on('click','#shippable', function() {
+    $('#shippable-fields').fadeIn(300);
+  });
+
+  $('.update-photo_form').on('click','#downloadable', function() {
     $('#shippable-fields').hide();
   });
 

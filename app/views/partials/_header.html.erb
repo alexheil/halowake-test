@@ -16,19 +16,17 @@
     <li id="close-menu">Close</li>
     <li><%= link_to "Discover", "#", class: "nav-links" %></li>
     <% if user_signed_in? %>
-      <% if current_user.is_member %>
-        <li><%= link_to "Your Page", user_path(current_user), class: "nav-links" %></li>
-        <li><%= link_to "Purchases", user_purchases_path(current_user), class: "nav-links" %></li>
-        <li><%= link_to "Membership", edit_user_membership_path(current_user), class: "nav-links" %></li>
-        <li><%= link_to "Account Settings", edit_registration_path(current_user), class: "nav-links" %></li>
-        <li>
-          <% if current_user.payment_setting.present? %>
-            <%= link_to "Payment Settings", edit_user_payment_settings_path(current_user), class: "nav-links" %>
-          <% else %>
-            <%= link_to "Payment Settings", new_user_payment_settings_path(current_user), class: "nav-links" %>
-          <% end %>
-        </li>
-      <% end %>
+      <li><%= link_to "Your Page", user_path(current_user), class: "nav-links" %></li>
+      <li><%= link_to "Purchases", user_purchases_path(current_user), class: "nav-links" %></li>
+      <li><%= link_to "Membership", edit_user_membership_path(current_user), class: "nav-links" %></li>
+      <li><%= link_to "Account Settings", edit_registration_path(current_user), class: "nav-links" %></li>
+      <li>
+        <% if current_user.payment_setting.present? %>
+          <%= link_to "Payment Settings", edit_user_payment_settings_path(current_user), class: "nav-links" %>
+        <% else %>
+          <%= link_to "Payment Settings", new_user_payment_settings_path(current_user), class: "nav-links" %>
+        <% end %>
+      </li>
       <li><%= link_to "Sign Out", sign_out_path, class: "nav-links" %></li>
     <% else %>
       <li><span class="nav-links" id="sign-in">Sign in</span></li>
@@ -39,75 +37,75 @@
 
 <% unless user_signed_in? %>
 
-<div id="sign-in-form">
-  <div class="profile-form-inside">
-    <div class="close"></div>
+  <div id="sign-in-form">
+    <div class="profile-form-inside">
+      <div class="close"></div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :login, "Username or email" %>
-        <%= f.text_field :login, autofocus: true, class: "text-field" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %> <%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %>
-        <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
-      </div>
-
-      <% if devise_mapping.rememberable? -%>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label :login, "Username or email" %>
+          <%= f.text_field :login, autofocus: true, class: "text-field" %>
         </div>
-      <% end -%>
 
-      <div class="actions border-bottom three-space-bottom-padding">
-        <%= f.submit "Log in", class: "submit-button" %>
+        <div class="field">
+          <%= f.label :password %> <%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %>
+          <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="actions border-bottom three-space-bottom-padding">
+          <%= f.submit "Log in", class: "submit-button" %>
+        </div>
+      <% end %>
+
+      <div class="three-space-top">
+        <%= link_to "But I don't have an account yet.", register_path %>
       </div>
-    <% end %>
 
-    <div class="three-space-top">
-      <%= link_to "But I don't have an account yet.", register_path %>
     </div>
-
   </div>
-</div>
 
-<div id="register-form">
-  <div class="profile-form-inside">
-    <div class="close"></div>
+  <div id="register-form">
+    <div class="profile-form-inside">
+      <div class="close"></div>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-      <div class="field">
-        <%= f.label :username %>
-        <%= f.text_field :username, autofocus: true, class: "text-field" %>
+        <div class="field">
+          <%= f.label :username %>
+          <%= f.text_field :username, autofocus: true, class: "text-field" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "text-field" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+        </div>
+
+        <div class="actions border-bottom three-space-bottom-padding">
+          <%= f.submit "Register", class: "submit-button" %>
+        </div>
+      <% end %>
+
+      <div class="three-space-top">
+        <%= link_to "But I already have an account.", sign_in_path %>
       </div>
 
-      <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "text-field" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
-      </div>
-
-      <div class="actions border-bottom three-space-bottom-padding">
-        <%= f.submit "Register", class: "submit-button" %>
-      </div>
-    <% end %>
-
-    <div class="three-space-top">
-      <%= link_to "But I already have an account.", sign_in_path %>
     </div>
-
   </div>
-</div>
 
 <% end %>
