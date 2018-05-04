@@ -1,26 +1,31 @@
+<%= provide(:title, "Checkout" + " | " + "Halowake") %>
+
 <div class="wrapper">
   <div class="container">
 
-    <div class="form-container">
-      <div class="three-space medium-text">
-        Checkout
+    <div class="three-space medium-text">
+      Checkout
+    </div>
+
+    <div class="nameplate border-top">
+      <div class="form-container">
+
+        <%= @purchase.complete_price %>
+
+        <%= form_for(@purchase, url: charge_user_album_photo_purchase_path(@seller, @album, @photo, @purchase), :html => {:id => "payment-form"}) do |f| %>
+          <span class="payment-errors"></span>
+
+          <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+
+          <!-- Used to display form errors. -->
+          <div id="card-errors" role="alert"></div>
+
+          <button type="submit" class="submit-button">Submit payment</button>
+        <% end %>
+
       </div>
-
-      <%= @purchase.complete_price %>
-
-      <%= form_for(@purchase, url: charge_user_album_photo_purchase_path(@seller, @album, @photo, @purchase), :html => {:id => "payment-form"}) do |f| %>
-        <span class="payment-errors"></span>
-
-        <div id="card-element">
-          <!-- A Stripe Element will be inserted here. -->
-        </div>
-
-        <!-- Used to display form errors. -->
-        <div id="card-errors" role="alert"></div>
-
-        <button type="submit" class="submit-button">Submit payment</button>
-      <% end %>
-
     </div>
 
   </div>

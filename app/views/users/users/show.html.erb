@@ -1,3 +1,8 @@
+<% if @user.profile.first_name.present? && @user.profile.last_name.present? %>
+  <%= provide(:title, sanitize(@user.profile.first_name) + " " + sanitize(@user.profile.last_name) + " | " + "Halowake") %>
+<% else %>
+  <%= provide(:title, sanitize(@user.username) + " | " + "Halowake") %>
+<% end %>
 <div class="wrapper">
   <div class="container">
 

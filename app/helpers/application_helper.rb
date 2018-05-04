@@ -4,6 +4,8 @@ module ApplicationHelper
     base_title = "Halowake"
     if page_title.empty?
       base_title
+    elsif @user
+      "#{page_title}"
     else
       "#{page_title} | #{base_title}"
     end

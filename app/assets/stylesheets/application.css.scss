@@ -262,7 +262,7 @@ a {
 }
 
 .one-thirds {
-  margin: 0;
+  margin: 0 auto;
   width: 25%;
   display: inline-block;
   vertical-align: bottom;
@@ -276,7 +276,7 @@ a {
 }
 
 .one-half {
-  margin: 0;
+  margin: 0 auto;
   width: 49%;
   display: inline-block;
   vertical-align: top;
@@ -496,6 +496,10 @@ a {
   font-size: .75em;
 }
 
+.smedium-text {
+  font-size: 1.25em;
+}
+
 .medium-text {
   font-size: 1.5em;
 }
@@ -558,6 +562,10 @@ a {
 
 .ten-space {
   margin: 10vh 0;
+}
+
+.fifty-space-top {
+  margin-top: 50vh;
 }
 
 /* ********************** HEADER ****************** */
@@ -735,6 +743,14 @@ a {
   @include buttons;
   background: $main;
   border: 1px solid $main;
+  color: $white;
+  cursor: pointer;
+}
+
+.cancel-button {
+  @include buttons;
+  background: $dark;
+  border: 1px solid $dark;
   color: $white;
   cursor: pointer;
 }
@@ -935,7 +951,7 @@ input {
 }
 
 .form-container {
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
 }
 
@@ -960,6 +976,20 @@ input {
 
 .field-padding {
   padding: 3vh 0;
+}
+
+.one-half-form {
+  margin: 0 auto 3vh auto;
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.one-thirds-form {
+  margin: 0 auto 3vh auto;
+  width: 31%;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 /* ************** PHOTO PAGE *************** */
@@ -1404,6 +1434,22 @@ input {
   .flash {
     width: 80%;
     left: 10%;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .one-half-form {
+    width: 100%;
+  }
+
+  .one-thirds-form {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
   }
 
 }

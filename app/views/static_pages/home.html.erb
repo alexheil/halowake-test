@@ -89,10 +89,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
+        <%= f.label :password %> <span class="dark mini-text">(<%= @minimum_password_length.to_s + " characters minimum." if @minimum_password_length %> Leave blank if you don't want to change it.)</span>
         <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
       </div>
 
