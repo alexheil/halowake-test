@@ -7,6 +7,19 @@ class Purchase < ApplicationRecord
 
   before_save :generated_slug
 
+  validates :user_id, presence: true
+  validates :photo_id, presence: true
+  validates :buyer_id, presence: true
+  validates :seller_id, presence: true
+  validates :stripe_charge_id, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+  validates :complete_price, presence: true
+  validates :zip_code, length: { 5 }, format: { with: /[0-9]{5}/ }, allow_blank: true
+  validates :city, format: { with: /\A[-a-z]+\z/i }, allow_blank: true
+  validates :state, format: { with: /\A[-a-z]{2}\z/i }, allow_blank: true
+  validates :country, format: { with: /\A[-a-z]+\z/i }, allow_blank: true
+  validates :is_shipped, presence: true
+
   def self.need_to_pay_mailer
     Purchase.where("stripe_charge_id" => nil).find_each do |purchase|
       UserMailer.need_to_pay_email(User.find(purchase.buyer_id), purchase).deliver_now
