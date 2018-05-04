@@ -28,7 +28,7 @@ class Photo < ApplicationRecord
   validates :exposure, length: { maximum: 6 }, format: { with: /\A[-1-9]+[0-9]{0,}?([\/][-1-9])?+[0-9]{0,}?\z/ }, allow_blank: true
   #validates :flash, allow_blank: true
   validates :focal_length, length: { maximum: 6 }, format: { with: /[0-9]{1,4}[.][0-9]{1}/ }, allow_blank: true
-  validates :iso, length: { maximum: 5 }, format: { with: /[0-9]{1,5}/ }, allow_blank: true
+  validates :iso, length: { maximum: 5 }, format: { with: /[1-9]{1}[0-9]{2,4}/ }, allow_blank: true
   validates :tool, length: { maximum: 255 }, allow_blank: true
   validates :medium, length: { maximum: 255 }, allow_blank: true
   validates :surface, length: { maximum: 255 }, allow_blank: true

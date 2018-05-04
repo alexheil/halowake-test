@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
   validates :user_id, presence: true
   validates :first_name, format: { with: /\A[-a-z]+\z/i }, allow_blank: true
   validates :last_name, format: { with: /\A[-a-z]+\z/i }, allow_blank: true
-  validates :age, length: { maximum: 2 }, numericality: { less_than_or_equal_to: 99, greater_than: 12}, allow_blank: true
+  validates :age, length: { is: 2 }, numericality: { less_than_or_equal_to: 99, greater_than: 12}, allow_blank: true
   validates :biography, length: { maximum: 4000 }, allow_blank: true
   validates :website, format: { with: /\A((http|https)?:\/\/)?(www.)?[a-zA-Z0-9]+.[a-z]+\/?/i }, allow_blank: true
   validates :facebook_handle, length: { maximum: 30 }, allow_blank: true
