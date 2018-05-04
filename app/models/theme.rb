@@ -1,12 +1,12 @@
 class Theme < ApplicationRecord
   belongs_to :user
 
-  validates :main_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
-  validates :text_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
-  validates :background_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
-  validates :link_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
-  validates :hover_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
-  validates :border_color, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :main_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :text_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :background_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :link_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :hover_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
+  validates :border_color, length: { in: 3..6 }, format: { with: /\A[#]{1}?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i }, allow_blank: true
 
   before_save :add_pound_to_hex
 
