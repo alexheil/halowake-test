@@ -3,37 +3,37 @@
 <div class="wrapper">
   <div class="container">
 
-      <div class="three-space medium-text">
-        Register
-      </div>
+    <div class="three-space medium-text">
+      Register
+    </div>
 
-      <div class="nameplate border-top">
-        <div class="form-container">
+    <div class="nameplate border-top">
+      <div class="form-container">
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-        <div class="field">
-          <%= f.label :username %>
-          <%= f.text_field :username, autofocus: true, class: "text-field" %>
-        </div>
+          <div class="field">
+            <%= f.label :username %>
+            <%= f.text_field :username, autofocus: true, class: "text-field" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.email_field :email, class: "text-field" %>
-        </div>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "text-field" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :password %> <span class="dark mini-text">(<%= @minimum_password_length.to_s + " characters minimum." if @minimum_password_length %> Leave blank if you don't want to change it.)</span>
-          <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
-        </div>
+          <div class="field">
+            <%= f.label :password %> <span class="dark mini-text">(<%= @minimum_password_length.to_s + " characters minimum." if @minimum_password_length %> Leave blank if you don't want to change it.)</span>
+            <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+          </div>
 
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
-      <% end %>
+          <div class="actions">
+            <%= f.submit "Sign up" %>
+          </div>
+        <% end %>
 
-      <%= render "users/shared/links" %>
+        <%= render "users/shared/links" %>
 
       </div>
     </div>
