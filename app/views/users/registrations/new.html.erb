@@ -28,9 +28,7 @@
             <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
           </div>
 
-          <div class="actions">
-            <%= f.submit "Sign up" %>
-          </div>
+          <%= f.submit "Register", data: { disable_with: 'Registering...' }, class: "submit-button" %>
         <% end %>
 
         <%= render "users/shared/links" %>
