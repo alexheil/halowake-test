@@ -481,7 +481,7 @@ var photoOrArt = function() {
     $('#shippable-fields').fadeIn(300);
   });
 
-//  $('.update_photo_form').on('click','#downloadable', function() {
+  $('.update_photo_form').on('click','#downloadable', function() {
     $('#shippable-fields').fadeOut(300);
   });
 
